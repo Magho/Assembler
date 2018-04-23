@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+F:/passOne/Row.h
+cstring
+-
+string
+-
+
+F:/passOne/main.cpp
+iostream
+-
+cstring
+-
+vector
+-
+map
+-
+cstdlib
+-
+Row.h
+F:/passOne/Row.h
+
+F:/passOne/optable.cpp
+optable.h
+F:/passOne/optable.h
+
+F:/passOne/optable.h
+map
+-
+cstring
+-
+
