@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/passOne.dir/main.cpp.obj"
-  "CMakeFiles/passOne.dir/optable.cpp.obj"
+  "CMakeFiles/passOne.dir/main.cpp.o"
+  "CMakeFiles/passOne.dir/optable.cpp.o"
   "passOne.pdb"
-  "passOne.exe"
-  "passOne.exe.manifest"
-  "libpassOne.dll.a"
+  "passOne"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "F:/passOne/main.cpp" "F:/passOne/cmake-build-debug/CMakeFiles/passOne.dir/main.cpp.obj"
-  "F:/passOne/optable.cpp" "F:/passOne/cmake-build-debug/CMakeFiles/passOne.dir/optable.cpp.obj"
+  "/home/magho/workspaceC++/Assembler/passOne/main.cpp" "/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/CMakeFiles/passOne.dir/main.cpp.o"
+  "/home/magho/workspaceC++/Assembler/passOne/optable.cpp" "/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/CMakeFiles/passOne.dir/optable.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
