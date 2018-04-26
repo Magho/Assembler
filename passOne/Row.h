@@ -1,24 +1,27 @@
 //
-// Created by HP on 23-Apr-18.
+// Created by HP on 24-Apr-18.
 //
 
-#include <cstring>
+#ifndef ASSEMBLER_ROW_H
+#define ASSEMBLER_ROW_H
 #include <string>
-
-using namespace std;
+#include <cstring>
+using namespace std ;
 
 class Row{
 
-private: int Address;
+private: string Address;
     string label;
     string op_code;
     string operand;
+    string errorMessage;
 
     // setOperand (string setOperand);
     string comment;
 public:
     bool hasDuplicateError=false;
-    bool isComment;
+    bool isComment=false;
+    bool hasInvalidOPCODE=false;
     void setLabel(string );
     string getLabel ();
     void setOperand (string);
@@ -26,10 +29,15 @@ public:
     string getOperand (void);
     void setcomment (string );
     string  getcomment (void);
-    void setAddress (int );
-    int  getAddress (void) ;
+    void setAddress (string );
+    string  getAddress (void) ;
     string getop_code(void);
+    string getErrorMessage(void);
+    void setErrorMessage(string);
+
+
 };
 
 
 
+#endif //ASSEMBLER_ROW_H

@@ -1,6 +1,11 @@
 //
-// Created by king on 4/23/2018.
+// Created by HP on 24-Apr-18.
 //
+
+#ifndef ASSEMBLER_OPTABLE_H
+#define ASSEMBLER_OPTABLE_H
+
+
 #include<map>
 #include <cstring>
 using namespace std ;
@@ -15,3 +20,4 @@ public:
 };
 
 
+#endif //ASSEMBLER_OPTABLE_H

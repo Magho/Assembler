@@ -6,13 +6,17 @@
 
 #IncludeRegexTransform: 
 
-F:/passOne/Row.h
-cstring
--
+E:/Assembler/passOne/Row.h
 string
 -
+cstring
+-
 
-F:/passOne/main.cpp
+E:/Assembler/passOne/cmake-build-debug/Row.cpp
+../Row.h
+E:/Assembler/passOne/Row.h
+
+E:/Assembler/passOne/main.cpp
 iostream
 -
 cstring
@@ -23,16 +27,44 @@ map
 -
 cstdlib
 -
+algorithm
+-
+list
+-
+fstream
+-
 Row.h
-F:/passOne/Row.h
+E:/Assembler/passOne/Row.h
 
-F:/passOne/optable.cpp
+E:/Assembler/passOne/optable.cpp
 optable.h
-F:/passOne/optable.h
+E:/Assembler/passOne/optable.h
 
-F:/passOne/optable.h
+E:/Assembler/passOne/optable.h
 map
 -
 cstring
 -
+
+E:/Assembler/passOne/validation.cpp
+validation.h
+E:/Assembler/passOne/validation.h
+Row.h
+E:/Assembler/passOne/Row.h
+optable.h
+E:/Assembler/passOne/optable.h
+
+E:/Assembler/passOne/validation.h
+cstring
+-
+string
+-
+map
+-
+list
+-
+vector
+-
+Row.h
+E:/Assembler/passOne/Row.h
 

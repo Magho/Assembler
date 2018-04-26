@@ -117,33 +117,33 @@ int main() {
 
 //        vector <Row> listFile ;
 //        listFile.push_back(r);
-      //  cout << listFile.at(0).getOperand();
-        //cout <<"aayy";
-   fillFileList();
-   Pass1();
+    //  cout << listFile.at(0).getOperand();
+    //cout <<"aayy";
+    fillFileList();
+    Pass1();
     cout << "test";
 
     return 0;
 }
 void fillFileList(){
-     Row r ;
-     r.setLabel("prog");
-     r.setop_code("start");
-     r.setOperand("1000");
-     listFile.push_back(r);
+    Row r ;
+    r.setLabel("prog");
+    r.setop_code("start");
+    r.setOperand("1000");
+    listFile.push_back(r);
 
-     r.setLabel("loop");
-     r.setop_code("lda");
-     r.setOperand("x");
-     listFile.push_back(r);
+    r.setLabel("loop");
+    r.setop_code("lda");
+    r.setOperand("x");
+    listFile.push_back(r);
 
-     r.setop_code("byte");
-     r.setOperand("c'rita'");
-     listFile.push_back(r);
+    r.setop_code("byte");
+    r.setOperand("c'rita'");
+    listFile.push_back(r);
 
-     r.setop_code("comp");
-     r.setOperand("x");
-     listFile.push_back(r);
+    r.setop_code("comp");
+    r.setOperand("x");
+    listFile.push_back(r);
 }
 void Pass1 () {
 
@@ -151,7 +151,7 @@ void Pass1 () {
 
     // TODO read first input line
 
-Row row =listFile.at(0);
+    Row row =listFile.at(0);
     if (row.getop_code().compare("start") == 0) {
         // TODO save value of [OPERAND] as starting address
         // TODO initialize [LOCCTR] to stating address
@@ -197,7 +197,7 @@ Row row =listFile.at(0);
                 // TODO add #[OPERAND] to LOCCTR//7welha l hex
                 LOCCTR= atoi( row.getOperand().c_str() );
             } else if (row.getop_code().compare("byte") == 0){
-              cout<<"vv" << row.getOperand().at(0);
+                cout<<"vv" << row.getOperand().at(0);
                 // TODO find the length of constant in bytes
                 // TODO length to LOCCTR
 
@@ -258,4 +258,3 @@ size_t split(const std::string &txt, std::vector<std::string> &strs, char ch) {
 
     return strs.size();
 }
-

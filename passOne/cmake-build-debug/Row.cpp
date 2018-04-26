@@ -1,7 +1,8 @@
 //
 // Created by HP on 24-Apr-18.
 //
-#include "Row.h"
+
+#include "../Row.h"
 
 void Row :: setLabel (string lab){
     label = lab;
@@ -41,11 +42,4 @@ string Row :: getAddress (void){
     return Address ;
 }
 
-string Row ::getErrorMessage() {
-    return  errorMessage;
-}
-void Row ::setErrorMessage(string error ) {
-    errorMessage = error;
 
-
-}
