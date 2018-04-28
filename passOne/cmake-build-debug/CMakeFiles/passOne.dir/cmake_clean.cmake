@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/passOne.dir/Row.cpp.obj"
   "CMakeFiles/passOne.dir/validation.cpp.obj"
   "CMakeFiles/passOne.dir/parsing_map.cpp.obj"
+  "CMakeFiles/passOne.dir/Line.cpp.obj"
+  "CMakeFiles/passOne.dir/parsing.cpp.obj"
   "passOne.pdb"
   "passOne.exe"
   "passOne.exe.manifest"

@@ -10,6 +10,7 @@
 #include <list>
 #include <vector>
 #include "Row.h"
+#include "Line.h"
 
 using namespace std ;
 
@@ -23,12 +24,12 @@ private:
     string operand;
     string label ;
     vector <string> labels ;
-    list<map<string, string>> TheParsinglist;
+    list<Line> TheParsinglist;
     list<Row> validationRows;
 
 public:
 
-    void setParsinglist(list<map<string, string>> list1);
+    void setParsinglist(list<Line>list1);
     string getLabel ();
     void  validate(void);
     list<Row>getValidationMap(void);

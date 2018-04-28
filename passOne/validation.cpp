@@ -8,12 +8,12 @@
 
 
 
-void validation ::setParsinglist(list<map<string, string>> list1)  {
+void validation ::setParsinglist(list<Line>list1)  {
 
     TheParsinglist = list1;
 }
 
-
+/*
 void validation ::validate() {
 
 
@@ -21,10 +21,10 @@ void validation ::validate() {
 
         Row row;
         optable opT;
-        map<string, string> temp = TheParsinglist.front();
-
+        Line  temp = TheParsinglist.front();
+        TheParsinglist.pop_front();
         // first check if it's a comment line
-        if (temp.at("commentonly") == "true") {
+        if (temp.isComment/*.at("commentonly") == "true") {
 
             row.isComment = true;
 
@@ -132,4 +132,4 @@ void validation ::validate() {
     }
 
 
-
+*/

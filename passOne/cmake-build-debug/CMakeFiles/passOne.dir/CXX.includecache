@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+D:/magho/passOne/Line.cpp
+Line.h
+D:/magho/passOne/Line.h
+
+D:/magho/passOne/Line.h
+string
+-
+cstring
+-
+
 D:/magho/passOne/Row.h
 string
 -
@@ -33,8 +43,10 @@ Row.h
 D:/magho/passOne/Row.h
 optable.h
 D:/magho/passOne/optable.h
-parsing_map.h
-D:/magho/passOne/parsing_map.h
+Line.h
+D:/magho/passOne/Line.h
+parsing.h
+D:/magho/passOne/parsing.h
 
 D:/magho/passOne/optable.cpp
 optable.h
@@ -45,6 +57,36 @@ map
 -
 cstring
 -
+
+D:/magho/passOne/parsing.cpp
+parsing.h
+D:/magho/passOne/parsing.h
+fstream
+-
+iostream
+-
+map
+-
+list
+-
+vector
+-
+algorithm
+-
+Line.h
+D:/magho/passOne/Line.h
+
+D:/magho/passOne/parsing.h
+cstring
+-
+string
+-
+vector
+-
+list
+-
+Line.h
+D:/magho/passOne/Line.h
 
 D:/magho/passOne/parsing_map.cpp
 parsing_map.h
@@ -95,4 +137,6 @@ vector
 -
 Row.h
 D:/magho/passOne/Row.h
+Line.h
+D:/magho/passOne/Line.h
 

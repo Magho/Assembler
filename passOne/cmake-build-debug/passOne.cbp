@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/magho/passOne/Line.cpp">
+			<Option target="passOne"/>
+		</Unit>
+		<Unit filename="D:/magho/passOne/Line.h">
+			<Option target="passOne"/>
+		</Unit>
 		<Unit filename="D:/magho/passOne/Row.cpp">
 			<Option target="passOne"/>
 		</Unit>
@@ -96,6 +102,12 @@
 			<Option target="passOne"/>
 		</Unit>
 		<Unit filename="D:/magho/passOne/optable.h">
+			<Option target="passOne"/>
+		</Unit>
+		<Unit filename="D:/magho/passOne/parsing.cpp">
+			<Option target="passOne"/>
+		</Unit>
+		<Unit filename="D:/magho/passOne/parsing.h">
 			<Option target="passOne"/>
 		</Unit>
 		<Unit filename="D:/magho/passOne/parsing_map.cpp">

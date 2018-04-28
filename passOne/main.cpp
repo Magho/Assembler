@@ -8,8 +8,9 @@
 using namespace std ;
 #include "Row.h"
 #include "optable.h"
-#include "parsing_map.h"
-
+#include "Line.h"
+#include "parsing.h"
+#include "validation.h"
 
 
 //
@@ -28,17 +29,18 @@ void printFileList();
 static vector <Row> listFile ;
 map<string,string> symTab;
 optable opTab;
-parsing_map parser;
+parsing parser;
+validation validate;
 
 int main() {
 
     opTab.setTable();
-//    list<map<string, string>> parsingList=parser.parisngFunction("D:\\magho\\passOne\\test.txt");
+    list<Line> parsingList=parser.parisngFunction("D:\\magho\\passOne\\test.txt");
 //    parser.printTheList(parsingList);
-
-    fillFileList();
-    Pass1();
-    printFileList();
+     validate.setParsinglist(parsingList);
+//    fillFileList();
+//    Pass1();
+//    printFileList();
     return 0;
 }
 
@@ -167,11 +169,6 @@ void fillFileList(){
     r.setOperand("4096");
     listFile.push_back(r);
 
-    r.setLabel("rita");
-    r.setop_code("equ");
-    r.setOperand("length");
-    listFile.push_back(r);
-
     r.setLabel("null");
     r.setop_code("end");
     r.setOperand("first");
@@ -283,9 +280,10 @@ void Pass1 () {
         }
 
     }
+
     if(index>=(listFile.size())){
-        listFile.at(index-1).hasError=true;
-        listFile.at(index-1).errorMessge="here is no end statement";
+        cout<<"oopss";
+
     }
 
     // TODO write last line to intermediate file

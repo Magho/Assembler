@@ -176,13 +176,63 @@ CMakeFiles/passOne.dir/parsing_map.cpp.obj.provides: CMakeFiles/passOne.dir/pars
 CMakeFiles/passOne.dir/parsing_map.cpp.obj.provides.build: CMakeFiles/passOne.dir/parsing_map.cpp.obj
 
 
+CMakeFiles/passOne.dir/Line.cpp.obj: CMakeFiles/passOne.dir/flags.make
+CMakeFiles/passOne.dir/Line.cpp.obj: ../Line.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\magho\passOne\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/passOne.dir/Line.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\passOne.dir\Line.cpp.obj -c D:\magho\passOne\Line.cpp
+
+CMakeFiles/passOne.dir/Line.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/passOne.dir/Line.cpp.i"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\magho\passOne\Line.cpp > CMakeFiles\passOne.dir\Line.cpp.i
+
+CMakeFiles/passOne.dir/Line.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/passOne.dir/Line.cpp.s"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\magho\passOne\Line.cpp -o CMakeFiles\passOne.dir\Line.cpp.s
+
+CMakeFiles/passOne.dir/Line.cpp.obj.requires:
+
+.PHONY : CMakeFiles/passOne.dir/Line.cpp.obj.requires
+
+CMakeFiles/passOne.dir/Line.cpp.obj.provides: CMakeFiles/passOne.dir/Line.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/Line.cpp.obj.provides.build
+.PHONY : CMakeFiles/passOne.dir/Line.cpp.obj.provides
+
+CMakeFiles/passOne.dir/Line.cpp.obj.provides.build: CMakeFiles/passOne.dir/Line.cpp.obj
+
+
+CMakeFiles/passOne.dir/parsing.cpp.obj: CMakeFiles/passOne.dir/flags.make
+CMakeFiles/passOne.dir/parsing.cpp.obj: ../parsing.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\magho\passOne\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/passOne.dir/parsing.cpp.obj"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\passOne.dir\parsing.cpp.obj -c D:\magho\passOne\parsing.cpp
+
+CMakeFiles/passOne.dir/parsing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/passOne.dir/parsing.cpp.i"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\magho\passOne\parsing.cpp > CMakeFiles\passOne.dir\parsing.cpp.i
+
+CMakeFiles/passOne.dir/parsing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/passOne.dir/parsing.cpp.s"
+	C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\magho\passOne\parsing.cpp -o CMakeFiles\passOne.dir\parsing.cpp.s
+
+CMakeFiles/passOne.dir/parsing.cpp.obj.requires:
+
+.PHONY : CMakeFiles/passOne.dir/parsing.cpp.obj.requires
+
+CMakeFiles/passOne.dir/parsing.cpp.obj.provides: CMakeFiles/passOne.dir/parsing.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/parsing.cpp.obj.provides.build
+.PHONY : CMakeFiles/passOne.dir/parsing.cpp.obj.provides
+
+CMakeFiles/passOne.dir/parsing.cpp.obj.provides.build: CMakeFiles/passOne.dir/parsing.cpp.obj
+
+
 # Object files for target passOne
 passOne_OBJECTS = \
 "CMakeFiles/passOne.dir/main.cpp.obj" \
 "CMakeFiles/passOne.dir/optable.cpp.obj" \
 "CMakeFiles/passOne.dir/Row.cpp.obj" \
 "CMakeFiles/passOne.dir/validation.cpp.obj" \
-"CMakeFiles/passOne.dir/parsing_map.cpp.obj"
+"CMakeFiles/passOne.dir/parsing_map.cpp.obj" \
+"CMakeFiles/passOne.dir/Line.cpp.obj" \
+"CMakeFiles/passOne.dir/parsing.cpp.obj"
 
 # External object files for target passOne
 passOne_EXTERNAL_OBJECTS =
@@ -192,11 +242,13 @@ passOne.exe: CMakeFiles/passOne.dir/optable.cpp.obj
 passOne.exe: CMakeFiles/passOne.dir/Row.cpp.obj
 passOne.exe: CMakeFiles/passOne.dir/validation.cpp.obj
 passOne.exe: CMakeFiles/passOne.dir/parsing_map.cpp.obj
+passOne.exe: CMakeFiles/passOne.dir/Line.cpp.obj
+passOne.exe: CMakeFiles/passOne.dir/parsing.cpp.obj
 passOne.exe: CMakeFiles/passOne.dir/build.make
 passOne.exe: CMakeFiles/passOne.dir/linklibs.rsp
 passOne.exe: CMakeFiles/passOne.dir/objects1.rsp
 passOne.exe: CMakeFiles/passOne.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\magho\passOne\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable passOne.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\magho\passOne\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable passOne.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\passOne.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -209,6 +261,8 @@ CMakeFiles/passOne.dir/requires: CMakeFiles/passOne.dir/optable.cpp.obj.requires
 CMakeFiles/passOne.dir/requires: CMakeFiles/passOne.dir/Row.cpp.obj.requires
 CMakeFiles/passOne.dir/requires: CMakeFiles/passOne.dir/validation.cpp.obj.requires
 CMakeFiles/passOne.dir/requires: CMakeFiles/passOne.dir/parsing_map.cpp.obj.requires
+CMakeFiles/passOne.dir/requires: CMakeFiles/passOne.dir/Line.cpp.obj.requires
+CMakeFiles/passOne.dir/requires: CMakeFiles/passOne.dir/parsing.cpp.obj.requires
 
 .PHONY : CMakeFiles/passOne.dir/requires
 

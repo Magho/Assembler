@@ -122,6 +122,33 @@ passOne/fast:
 	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/build
 .PHONY : passOne/fast
 
+Line.obj: Line.cpp.obj
+
+.PHONY : Line.obj
+
+# target to build an object file
+Line.cpp.obj:
+	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/Line.cpp.obj
+.PHONY : Line.cpp.obj
+
+Line.i: Line.cpp.i
+
+.PHONY : Line.i
+
+# target to preprocess a source file
+Line.cpp.i:
+	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/Line.cpp.i
+.PHONY : Line.cpp.i
+
+Line.s: Line.cpp.s
+
+.PHONY : Line.s
+
+# target to generate assembly for a file
+Line.cpp.s:
+	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/Line.cpp.s
+.PHONY : Line.cpp.s
+
 Row.obj: Row.cpp.obj
 
 .PHONY : Row.obj
@@ -206,6 +233,33 @@ optable.cpp.s:
 	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/optable.cpp.s
 .PHONY : optable.cpp.s
 
+parsing.obj: parsing.cpp.obj
+
+.PHONY : parsing.obj
+
+# target to build an object file
+parsing.cpp.obj:
+	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/parsing.cpp.obj
+.PHONY : parsing.cpp.obj
+
+parsing.i: parsing.cpp.i
+
+.PHONY : parsing.i
+
+# target to preprocess a source file
+parsing.cpp.i:
+	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/parsing.cpp.i
+.PHONY : parsing.cpp.i
+
+parsing.s: parsing.cpp.s
+
+.PHONY : parsing.s
+
+# target to generate assembly for a file
+parsing.cpp.s:
+	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/parsing.cpp.s
+.PHONY : parsing.cpp.s
+
 parsing_map.obj: parsing_map.cpp.obj
 
 .PHONY : parsing_map.obj
@@ -269,6 +323,9 @@ help:
 	@echo ... passOne
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... Line.obj
+	@echo ... Line.i
+	@echo ... Line.s
 	@echo ... Row.obj
 	@echo ... Row.i
 	@echo ... Row.s
@@ -278,6 +335,9 @@ help:
 	@echo ... optable.obj
 	@echo ... optable.i
 	@echo ... optable.s
+	@echo ... parsing.obj
+	@echo ... parsing.i
+	@echo ... parsing.s
 	@echo ... parsing_map.obj
 	@echo ... parsing_map.i
 	@echo ... parsing_map.s
