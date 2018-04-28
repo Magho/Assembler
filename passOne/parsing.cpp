@@ -37,7 +37,7 @@ list<Line> parsing :: parisngFunction (string path) {
                 bbbb.setcomment(str);
 
             } else if (str.size() == 0) {
-                bbbb.isMoreThanFourWords = true;
+                bbbb.isEmptyLine = true;
             } else {
 
                 split(str, string1, ' ');
@@ -59,7 +59,7 @@ list<Line> parsing :: parisngFunction (string path) {
                         if ((int(x) >= 65 && int(x) <= 90 )| (int(x) <= 122 && int(x) >= 97)) {
                             bbbb.setWord1(string1[i]);
                         } else {
-                            bbbb.isMoreThanFourWords = true;
+                            bbbb.islabelStartWithNoChar = true;
                             break;
                         }
                     }
