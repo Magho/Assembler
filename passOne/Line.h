@@ -12,16 +12,16 @@ using namespace std ;
 class Line {
  private:
 
-        string comment;
-        string word1;
-        string word2;
-        string word3;
+        string comment="null";
+        string word1="null";
+        string word2="null";
+        string word3="null";
 
     public:
 
         bool isComment;
         bool isMoreThanFourWords;
-
+        int NumofwORD ;
         void setcomment (string );
         string  getcomment (void);
 

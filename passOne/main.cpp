@@ -34,6 +34,8 @@ validation validate;
 
 int main() {
 
+
+
     opTab.setTable();
     list<Line> parsingList=parser.parisngFunction("D:\\magho\\passOne\\test.txt");
 //    parser.printTheList(parsingList);

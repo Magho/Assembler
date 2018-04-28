@@ -13,7 +13,7 @@ void validation ::setParsinglist(list<Line>list1)  {
     TheParsinglist = list1;
 }
 
-/*
+
 void validation ::validate() {
 
 
@@ -21,17 +21,38 @@ void validation ::validate() {
 
         Row row;
         optable opT;
-        Line  temp = TheParsinglist.front();
+        Line line = TheParsinglist.front();
         TheParsinglist.pop_front();
+
+
         // first check if it's a comment line
-        if (temp.isComment/*.at("commentonly") == "true") {
+        if (line.isComment) {
 
             row.isComment = true;
 
         }
 
+        else if(line.NumofwORD == 1){
+
+            if (opT.opTable.find(line.getWord1()) == opT.opTable.end()) {
+                row.errorMessge =" No op_code is exist";
+            } else {
+                // found
+                row.setop_code(line.getWord1());
+                validationRows.push_back(row);
+
+            }
+
+
+
+
+
+            }
+
+
+    }
             // second  check if there is only one word so if it's not an op_code there is an error here
-        else if (temp.size() == 1) {
+       /* else if (temp.size() == 1) {
 
             if (opT.opTable.find(temp.at("word1")) == opT.opTable.end()) {
                 // not found
@@ -129,7 +150,7 @@ void validation ::validate() {
 
     }
 
-    }
+*/    }
 
 
-*/
+

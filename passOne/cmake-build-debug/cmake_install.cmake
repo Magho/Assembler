@@ -1,4 +1,4 @@
-# Install script for directory: D:/magho/passOne
+# Install script for directory: E:/Assembler/passOne
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/magho/passOne/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "E:/Assembler/passOne/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
