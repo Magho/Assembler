@@ -53,8 +53,16 @@ list<Line> parsing :: parisngFunction (string path) {
                         bbbb.setcomment(str123);
 
                         break;
-                    } else if (i == 0)
-                        bbbb.setWord1(string1[i]);
+                    }
+                     else if (i == 0) {
+                        char x = string1[i][0];
+                        if ((int(x) >= 65 && int(x) <= 90 )| (int(x) <= 122 && int(x) >= 97)) {
+                            bbbb.setWord1(string1[i]);
+                        } else {
+                            bbbb.isMoreThanFourWords = true;
+                            break;
+                        }
+                    }
                     else if (i == 1)
                         bbbb.setWord2(string1[i]);
                     else if (i == 2)
