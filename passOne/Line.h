@@ -20,7 +20,9 @@ class Line {
     public:
 
         bool isComment= false;
-        bool isMoreThanFourWords;
+        bool isMoreThanFourWords = false;
+        bool isEmptyLine = false;
+        bool islabelStartWithNoChar = false;
         int NumofwORD=0 ;
         void setcomment (string );
         string  getcomment (void);
