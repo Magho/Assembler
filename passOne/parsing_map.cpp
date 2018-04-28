@@ -60,8 +60,15 @@ list<map<string, string>> parsing_map :: parisngFunction (string path) {
                         bbbb.insert(std::pair<string, string>("comment", str123));
 
                         break;
-                    } else if (i == 0)
-                        bbbb.insert(std::pair<string, string>("word1", string1[i]));
+                    } else if (i == 0) {
+                        char x = string1[i][0];
+                        if ((int(x) >= 65 && int(x) <= 90 )| (int(x) <= 122 && int(x) >= 97)) {
+                            bbbb.insert(std::pair<string, string>("word1", string1[i]));
+                        } else {
+                            bbbb.insert(std::pair<string, string>("error", "true"));
+                            break;
+                        }
+                    }
                     else if (i == 1)
                         bbbb.insert(std::pair<string, string>("word2", string1[i]));
                     else if (i == 2)
