@@ -35,7 +35,7 @@ void validation ::validate() {
 
             if (opT.opTable.find(temp.at("word1")) == opT.opTable.end()) {
                 // not found
-                row.setErrorMessage(" No op_code is exist");
+//                row.setErrorMessage(" No op_code is exist");
             } else {
                 // found
                 row.setop_code(temp.at("word1"));
@@ -74,7 +74,7 @@ void validation ::validate() {
         // if not case of the above then there is error
         else {
 
-                row.setErrorMessage("undefined op_code field");
+//                row.setErrorMessage("undefined op_code field");
 
             }
 
@@ -118,7 +118,7 @@ void validation ::validate() {
 
             }else{
 
-                row.setErrorMessage("undefined op_code");
+//                row.setErrorMessage("undefined op_code");
             }
 
 

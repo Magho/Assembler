@@ -18,7 +18,7 @@ class validation {
 
 
 private:
-    string operator;
+    string operat;
     string comment;
     string operand;
     string label ;
