@@ -123,14 +123,14 @@ void optable :: setTable (void){
 
     opTable.insert(pair<string, string>("wd", "dc"));
 
-   /* opTable.insert(pair<string, string>("resw", NULL));
-    opTable.insert(pair<string, string>("resb", NULL));
-    opTable.insert(pair<string, string>("word", NULL));
-    opTable.insert(pair<string, string>("byte", NULL));
-    opTable.insert(pair<string, string>("end", NULL));
-    opTable.insert(pair<string, string>("start", NULL));
-    opTable.insert(pair<string, string>("equ", NULL));
-    opTable.insert(pair<string, string>("org", NULL));*/
+    opTable.insert(pair<string, string>("resw", "null"));
+    opTable.insert(pair<string, string>("resb", "null"));
+    opTable.insert(pair<string, string>("word", "null"));
+    opTable.insert(pair<string, string>("byte", "null"));
+    opTable.insert(pair<string, string>("end", "null"));
+    opTable.insert(pair<string, string>("start", "null"));
+    opTable.insert(pair<string, string>("equ", "null"));
+    opTable.insert(pair<string, string>("org", "null"));
 
 
 

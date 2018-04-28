@@ -39,7 +39,7 @@ int main() {
     opTab.setTable();
     list<Line> parsingList=parser.parisngFunction("D:\\magho\\passOne\\test.txt");
 //    parser.printTheList(parsingList);
-     validate.setParsinglist(parsingList);
+    validate.setParsinglist(parsingList);
 //    fillFileList();
 //    Pass1();
 //    printFileList();
@@ -47,15 +47,14 @@ int main() {
 }
 
 void printFileList() {
-      for(int i=0;i<listFile.size();i++) {
-          Row r=listFile.at(i);
-          cout <<r.getAddress()<<"  "<<r.getLabel()<<"  "<<r.getop_code()<<"  "<<r.getOperand()<<"  "<<r.getcomment()<<"  " <<r.errorMessge<<endl;
-      }
-  /*  for ( std::map< string, string >::const_iterator iter = symTab.begin();
-          iter != symTab.end(); ++iter )
-        cout << iter->first << '\t' << iter->second << '\n';
-
-    cout << endl;*/
+    for(int i=0;i<listFile.size();i++) {
+        Row r=listFile.at(i);
+        cout <<r.getAddress()<<"  "<<r.getLabel()<<"  "<<r.getop_code()<<"  "<<r.getOperand()<<"  "<<r.getcomment()<<"  " <<r.errorMessge<<endl;
+    }
+    /*  for ( std::map< string, string >::const_iterator iter = symTab.begin();
+            iter != symTab.end(); ++iter )
+          cout << iter->first << '\t' << iter->second << '\n';
+      cout << endl;*/
 }
 
 void fillFileList(){
@@ -81,10 +80,10 @@ void fillFileList(){
     r.setOperand("length");
     listFile.push_back(r);
 
-   /* r.setLabel("null");
-    r.setop_code("org");
-    r.setOperand("5500");
-    listFile.push_back(r);*/
+    /* r.setLabel("null");
+     r.setop_code("org");
+     r.setOperand("5500");
+     listFile.push_back(r);*/
 
     r.setLabel("null");
     r.setop_code("comp");

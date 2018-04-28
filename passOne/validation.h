@@ -32,7 +32,7 @@ public:
     void setParsinglist(list<Line>list1);
     string getLabel ();
     void  validate(void);
-    list<Row>getValidationMap(void);
+    list<Row>getValidationList(void);
 
 
 

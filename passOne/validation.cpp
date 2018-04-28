@@ -2,6 +2,7 @@
 // Created by king on 4/26/2018.
 //
 
+#include <iostream>
 #include "validation.h"
 #include "Row.h"
 #include "optable.h"
@@ -12,22 +13,23 @@ void validation ::setParsinglist(list<Line>list1)  {
 
     TheParsinglist = list1;
 }
+list<Row> validation ::getValidationList() {
+    return validationRows;
+}
 
 
 void validation ::validate() {
 
-
-    for (int i = 0; i < TheParsinglist.size(); i++) {
+int size = TheParsinglist.size();
+    for (int i = 0; i < size; i++) {
 
         Row row;
         optable opT;
-        Line line = TheParsinglist.front();
-        TheParsinglist.pop_front();
-
-
+        opT.setTable();
+        Line line = TheParsinglist.back();
+        TheParsinglist.pop_back();
         // first check if it's a comment line
         if (line.isComment) {
-
             row.isComment = true;
 
         }
@@ -39,15 +41,67 @@ void validation ::validate() {
             } else {
                 // found
                 row.setop_code(line.getWord1());
+
+                if(line.getcomment()!= "null"){
+                    row.setcomment(line.getcomment());
+                    }
                 validationRows.push_back(row);
 
             }
 
 
 
+            } else if (line.NumofwORD == 2 ){
 
+
+            if (opT.opTable.find(line.getWord1()) == opT.opTable.end()) {
+
+
+                /* start condition if second word is op_code or error */
+
+                if (opT.opTable.find(line.getWord2()) == opT.opTable.end()) {
+                    row.errorMessge =" No op_code is exist";
+                } else {
+                    // found
+                    row.setop_code(line.getWord2());
+                    row.setLabel(line.getWord1());
+                    if(line.getcomment()!= "null"){
+                        row.setcomment(line.getcomment());
+                    }
+                    validationRows.push_back(row);
+
+                }
+
+                /* end of the condition */
+            } else {
+                // found
+                row.setop_code(line.getWord1());
+                row.setOperand(line.getWord2());
+                if(line.getcomment()!= "null"){
+                    row.setcomment(line.getcomment());
+                }
+                validationRows.push_back(row);
 
             }
+
+        }else if (line.NumofwORD == 3){
+            if (opT.opTable.find(line.getWord2()) == opT.opTable.end()) {
+                row.errorMessge =" No op_code is exist or in a wrong position";
+            } else {
+
+                // found
+                row.setop_code(line.getWord2());
+                row.setLabel(line.getWord1());
+                row.setOperand(line.getWord3());
+                if(line.getcomment()!= "null"){
+                    row.setcomment(line.getcomment());
+                }
+                validationRows.push_back(row);
+
+            }
+
+
+        }
 
 
     }

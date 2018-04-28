@@ -19,9 +19,9 @@ class Line {
 
     public:
 
-        bool isComment;
+        bool isComment= false;
         bool isMoreThanFourWords;
-        int NumofwORD ;
+        int NumofwORD=0 ;
         void setcomment (string );
         string  getcomment (void);
 
