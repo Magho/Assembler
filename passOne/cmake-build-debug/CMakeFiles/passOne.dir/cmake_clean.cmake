@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/passOne.dir/optable.cpp.obj"
   "CMakeFiles/passOne.dir/Row.cpp.obj"
   "CMakeFiles/passOne.dir/validation.cpp.obj"
+  "CMakeFiles/passOne.dir/parsing_map.cpp.obj"
   "passOne.pdb"
   "passOne.exe"
   "passOne.exe.manifest"

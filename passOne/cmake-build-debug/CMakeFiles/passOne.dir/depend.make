@@ -7,9 +7,13 @@ CMakeFiles/passOne.dir/Row.cpp.obj: Row.cpp
 CMakeFiles/passOne.dir/main.cpp.obj: ../Row.h
 CMakeFiles/passOne.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/passOne.dir/main.cpp.obj: ../optable.h
+CMakeFiles/passOne.dir/main.cpp.obj: ../parsing_map.h
 
 CMakeFiles/passOne.dir/optable.cpp.obj: ../optable.cpp
 CMakeFiles/passOne.dir/optable.cpp.obj: ../optable.h
+
+CMakeFiles/passOne.dir/parsing_map.cpp.obj: ../parsing_map.cpp
+CMakeFiles/passOne.dir/parsing_map.cpp.obj: ../parsing_map.h
 
 CMakeFiles/passOne.dir/validation.cpp.obj: ../Row.h
 CMakeFiles/passOne.dir/validation.cpp.obj: ../optable.h

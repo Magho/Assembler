@@ -206,6 +206,33 @@ optable.cpp.s:
 	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/optable.cpp.s
 .PHONY : optable.cpp.s
 
+parsing_map.obj: parsing_map.cpp.obj
+
+.PHONY : parsing_map.obj
+
+# target to build an object file
+parsing_map.cpp.obj:
+	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/parsing_map.cpp.obj
+.PHONY : parsing_map.cpp.obj
+
+parsing_map.i: parsing_map.cpp.i
+
+.PHONY : parsing_map.i
+
+# target to preprocess a source file
+parsing_map.cpp.i:
+	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/parsing_map.cpp.i
+.PHONY : parsing_map.cpp.i
+
+parsing_map.s: parsing_map.cpp.s
+
+.PHONY : parsing_map.s
+
+# target to generate assembly for a file
+parsing_map.cpp.s:
+	$(MAKE) -f CMakeFiles\passOne.dir\build.make CMakeFiles/passOne.dir/parsing_map.cpp.s
+.PHONY : parsing_map.cpp.s
+
 validation.obj: validation.cpp.obj
 
 .PHONY : validation.obj
@@ -251,6 +278,9 @@ help:
 	@echo ... optable.obj
 	@echo ... optable.i
 	@echo ... optable.s
+	@echo ... parsing_map.obj
+	@echo ... parsing_map.i
+	@echo ... parsing_map.s
 	@echo ... validation.obj
 	@echo ... validation.i
 	@echo ... validation.s

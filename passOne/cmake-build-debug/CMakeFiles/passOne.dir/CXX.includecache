@@ -35,6 +35,8 @@ Row.h
 D:/magho/passOne/Row.h
 optable.h
 D:/magho/passOne/optable.h
+parsing_map.h
+D:/magho/passOne/parsing_map.h
 
 D:/magho/passOne/optable.cpp
 optable.h
@@ -44,6 +46,34 @@ D:/magho/passOne/optable.h
 map
 -
 cstring
+-
+
+D:/magho/passOne/parsing_map.cpp
+parsing_map.h
+D:/magho/passOne/parsing_map.h
+fstream
+-
+iostream
+-
+map
+-
+list
+-
+vector
+-
+algorithm
+-
+
+D:/magho/passOne/parsing_map.h
+cstring
+-
+string
+-
+vector
+-
+list
+-
+map
 -
 
 D:/magho/passOne/validation.cpp

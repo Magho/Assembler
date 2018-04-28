@@ -8,6 +8,7 @@
 using namespace std ;
 #include "Row.h"
 #include "optable.h"
+#include "parsing_map.h"
 
 
 
@@ -27,10 +28,14 @@ void printFileList();
 static vector <Row> listFile ;
 map<string,string> symTab;
 optable opTab;
+parsing_map parser;
 
 int main() {
 
     opTab.setTable();
+//    list<map<string, string>> parsingList=parser.parisngFunction("D:\\magho\\passOne\\test.txt");
+//    parser.printTheList(parsingList);
+
     fillFileList();
     Pass1();
     printFileList();
@@ -38,15 +43,15 @@ int main() {
 }
 
 void printFileList() {
-    /*  for(int i=0;i<listFile.size();i++) {
+      for(int i=0;i<listFile.size();i++) {
           Row r=listFile.at(i);
           cout <<r.getAddress()<<"  "<<r.getLabel()<<"  "<<r.getop_code()<<"  "<<r.getOperand()<<"  "<<r.getcomment()<<endl;
-      }*/
-    for ( std::map< string, string >::const_iterator iter = symTab.begin();
+      }
+  /*  for ( std::map< string, string >::const_iterator iter = symTab.begin();
           iter != symTab.end(); ++iter )
         cout << iter->first << '\t' << iter->second << '\n';
 
-    cout << endl;
+    cout << endl;*/
 }
 
 void fillFileList(){
@@ -71,6 +76,11 @@ void fillFileList(){
     r.setop_code("add");
     r.setOperand("length");
     listFile.push_back(r);
+
+   /* r.setLabel("null");
+    r.setop_code("org");
+    r.setOperand("5500");
+    listFile.push_back(r);*/
 
     r.setLabel("null");
     r.setop_code("comp");
@@ -157,6 +167,11 @@ void fillFileList(){
     r.setOperand("4096");
     listFile.push_back(r);
 
+    r.setLabel("rita");
+    r.setop_code("equ");
+    r.setOperand("length");
+    listFile.push_back(r);
+
     r.setLabel("null");
     r.setop_code("end");
     r.setOperand("first");
@@ -228,13 +243,39 @@ void Pass1 () {
                         break;
                 }
 
-            } else {
+            }else {
                 row.hasInvalidOPCODE=true;
             }
         }
         index++;
         row = listFile.at(index);
-        listFile.at(index).setAddress(LOCCTR);
+        if(row.getop_code().compare("equ") == 0){
+            string label =row.getOperand();
+            int num=atoi( label.c_str());
+            stringstream str;
+            str << num;
+            if(str.str().size()==label.size()){
+                listFile.at(index).setAddress(label);
+            }else if(symTab.count(label)) {
+                listFile.at(index).setAddress(symTab.at(label));
+            }else{
+                cout<<"not defined label may be forward ref"<<endl;
+            }
+        }else if(row.getop_code().compare("org") == 0){
+            string label =row.getOperand();
+            int num=atoi( label.c_str());
+            stringstream str;
+            str << num;
+            if(str.str().size()==label.size()){
+                LOCCTR=row.getOperand();
+            }else if(symTab.count(label)) {
+                LOCCTR=symTab.at(label);
+            }else{
+                cout<<"not defined label may be forward ref"<<endl;
+            }
+        }else {
+            listFile.at(index).setAddress(LOCCTR);
+        }
 
     }
     if(index>=(listFile.size())){

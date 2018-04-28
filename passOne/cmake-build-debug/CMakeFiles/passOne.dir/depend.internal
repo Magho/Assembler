@@ -8,9 +8,13 @@ CMakeFiles/passOne.dir/main.cpp.obj
  D:/magho/passOne/Row.h
  D:/magho/passOne/main.cpp
  D:/magho/passOne/optable.h
+ D:/magho/passOne/parsing_map.h
 CMakeFiles/passOne.dir/optable.cpp.obj
  D:/magho/passOne/optable.cpp
  D:/magho/passOne/optable.h
+CMakeFiles/passOne.dir/parsing_map.cpp.obj
+ D:/magho/passOne/parsing_map.cpp
+ D:/magho/passOne/parsing_map.h
 CMakeFiles/passOne.dir/validation.cpp.obj
  D:/magho/passOne/Row.h
  D:/magho/passOne/optable.h

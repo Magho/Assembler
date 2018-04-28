@@ -98,6 +98,12 @@
 		<Unit filename="D:/magho/passOne/optable.h">
 			<Option target="passOne"/>
 		</Unit>
+		<Unit filename="D:/magho/passOne/parsing_map.cpp">
+			<Option target="passOne"/>
+		</Unit>
+		<Unit filename="D:/magho/passOne/parsing_map.h">
+			<Option target="passOne"/>
+		</Unit>
 		<Unit filename="D:/magho/passOne/validation.cpp">
 			<Option target="passOne"/>
 		</Unit>
