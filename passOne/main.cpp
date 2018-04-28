@@ -45,7 +45,7 @@ int main() {
 void printFileList() {
       for(int i=0;i<listFile.size();i++) {
           Row r=listFile.at(i);
-          cout <<r.getAddress()<<"  "<<r.getLabel()<<"  "<<r.getop_code()<<"  "<<r.getOperand()<<"  "<<r.getcomment()<<endl;
+          cout <<r.getAddress()<<"  "<<r.getLabel()<<"  "<<r.getop_code()<<"  "<<r.getOperand()<<"  "<<r.getcomment()<<"  " <<r.errorMessge<<endl;
       }
   /*  for ( std::map< string, string >::const_iterator iter = symTab.begin();
           iter != symTab.end(); ++iter )
@@ -67,7 +67,7 @@ void fillFileList(){
     r.setOperand("retadr");
     listFile.push_back(r);
 
-    r.setLabel("cloop");
+    r.setLabel("first");
     r.setop_code("jsub");
     r.setOperand("rdrec");
     listFile.push_back(r);
@@ -204,7 +204,8 @@ void Pass1 () {
             if (row.getLabel().compare("null") != 0) {
                 bool found = checkIfSymbolDefinedBefore(row.getLabel());//return true if exist
                 if (found) {
-                    row.hasDuplicateError=true;
+                    listFile.at(index).hasError=true;
+                    listFile.at(index).errorMessge="The Label already exists";
                 } else {
                     symTab.insert(pair<string, string>(row.getLabel(), LOCCTR));
                 }
@@ -237,14 +238,16 @@ void Pass1 () {
                             str << (row.getOperand().size() - 3) / 2;
                             LOCCTR = addHex(LOCCTR, str.str());
                         } else {
-                            cout << "error odd number as ahmed said";
+                            listFile.at(index).hasError=true;
+                            listFile.at(index).errorMessge="The hexidecimal value has an odd numbers of digits";
                         }
                     }
                         break;
                 }
 
             }else {
-                row.hasInvalidOPCODE=true;
+                listFile.at(index).hasError=true;
+                listFile.at(index).errorMessge="Invalid op-code";
             }
         }
         index++;
@@ -259,7 +262,8 @@ void Pass1 () {
             }else if(symTab.count(label)) {
                 listFile.at(index).setAddress(symTab.at(label));
             }else{
-                cout<<"not defined label may be forward ref"<<endl;
+                listFile.at(index).hasError=true;
+                listFile.at(index).errorMessge="Not defined label, may be forward ref";
             }
         }else if(row.getop_code().compare("org") == 0){
             string label =row.getOperand();
@@ -271,7 +275,8 @@ void Pass1 () {
             }else if(symTab.count(label)) {
                 LOCCTR=symTab.at(label);
             }else{
-                cout<<"not defined label may be forward ref"<<endl;
+                listFile.at(index).hasError=true;
+                listFile.at(index).errorMessge="Not defined label, may be forward ref";
             }
         }else {
             listFile.at(index).setAddress(LOCCTR);
@@ -279,7 +284,8 @@ void Pass1 () {
 
     }
     if(index>=(listFile.size())){
-        cout<<"error there is no end statement"<<endl;
+        listFile.at(index-1).hasError=true;
+        listFile.at(index-1).errorMessge="here is no end statement";
     }
 
     // TODO write last line to intermediate file

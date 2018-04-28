@@ -41,11 +41,11 @@ string Row :: getAddress (void){
     return Address ;
 }
 
-string Row ::getErrorMessage() {
-    return  errorMessage;
-}
-void Row ::setErrorMessage(string error ) {
-    errorMessage = error;
+string Row ::getError() {
 
-
+    return error;
 }
+void Row ::setError(string r ) {
+    error = r ;
+}
+
