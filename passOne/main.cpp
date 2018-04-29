@@ -38,7 +38,6 @@ validation validate;
 int main() {
 
 
-
     opTab.setTable();
    list<Line> parsingList=parser.parisngFunction("E:\\Assembler1\\passOne\\test.txt");
    int size = parsingList.size();
@@ -145,10 +144,10 @@ void printFileList() {
         printf("\n");
         //cout <<r.getAddress()<<"  "<<r.getLabel()<<"  "<<r.getop_code()<<"  "<<r.getOperand()<<"  "<<r.getcomment()<<"  " <<r.errorMessge<<endl;
     }
-    /*  for ( std::map< string, string >::const_iterator iter = symTab.begin();
+      for ( std::map< string, string >::const_iterator iter = symTab.begin();
             iter != symTab.end(); ++iter )
           cout << iter->first << '\t' << iter->second << '\n';
-      cout << endl;*/
+      cout << endl;
 }
 
 void fillFileList(){
@@ -305,7 +304,12 @@ void Pass1 () {
                         listFile.at(index).hasError = true;
                         listFile.at(index).errorMessge = "The Label already exists";
                     } else {
-                        symTab.insert(pair<string, string>(row.getLabel(), LOCCTR));
+                        if(row.getop_code().compare("equ")==0){
+                            symTab.insert(pair<string, string>(row.getLabel(), row.getOperand()));
+
+                        }else {
+                            symTab.insert(pair<string, string>(row.getLabel(), LOCCTR));
+                        }
                     }
                 }
                 //search OPTAB for OPCODE
@@ -354,7 +358,8 @@ void Pass1 () {
             index++;
             row = listFile.at(index);
             if (row.getop_code().compare("equ") == 0) {
-               // cout<<"eeeqqqquuuuu"<<endl;
+                cout<<LOCCTR;
+                LOCCTR=addHex(LOCCTR,"-3");
                 string label = row.getOperand();
                 int num = atoi(label.c_str());
                 stringstream str;
@@ -375,6 +380,7 @@ void Pass1 () {
                 if (str.str().size() == label.size()) {
                     LOCCTR = row.getOperand();
                 } else if (symTab.count(label)) {
+                    cout<< symTab.at(label);
                     LOCCTR = symTab.at(label);
                 } else {
                     listFile.at(index).hasError = true;
