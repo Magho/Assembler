@@ -396,6 +396,7 @@ void Pass1 () {
                     index++;
                     listFile.at(index).setAddress(LOCCTR);
                 } else {
+                    LOCCTR=addHex(LOCCTR,"-3");
                     listFile.at(index).hasError = true;
                     listFile.at(index).errorMessge = "Not defined label, may be forward ref";
                 }
