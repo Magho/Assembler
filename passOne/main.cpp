@@ -122,48 +122,85 @@ list<Line>fillLine(){
 
 void printFileList() {
     cout<<"\n\n"<<endl;
+    FILE *ptr;
+    ptr = fopen("pass1_Output.txt","w");
+    fprintf(ptr,"%3s%10s%10s%10s%10s%10s\n","line","Address","Label","Opcode","Operands","Comment");
+
     printf("%3s%10s%10s%10s%10s%10s\n","line","Address","Label","Opcode","Operands","Comment");
     for(int i=0;i<listFile.size();i++) {
         Row r=listFile.at(i);
         printf("%-7d",i);
+        fprintf(ptr,"%-7d",i);
+
         printf("%-12s",r.getAddress().c_str());
+        fprintf(ptr,"%-12s",r.getAddress().c_str());
+
         if(r.getLabel() != "null" ){
             printf("%-9s",r.getLabel().c_str());
+            fprintf(ptr,"%-9s",r.getLabel().c_str());
         }else{
             printf("%-9s","");
+            fprintf(ptr,"%-9s","");
         }
-        if(r.getop_code() != "null")
+
+        if(r.getop_code() != "null"){
             printf("%-8s",r.getop_code().c_str());
-        else
+            fprintf(ptr,"%-8s",r.getop_code().c_str());
+        }else{
             printf("%-8s","");
-        if(r.getOperand() != "null")
+            fprintf(ptr,"%-8s","");
+        }
+        if(r.getOperand() != "null"){
             printf("%-10s",r.getOperand().c_str());
-        else
+            fprintf(ptr,"%-10s",r.getOperand().c_str());
+        }else{
             printf("%-10s","");
-        if(r.getcomment() != "null")
+            fprintf(ptr,"%-10s","");
+        }
+        if(r.getcomment() != "null"){
             printf("%s  ",r.getcomment().c_str());
+            fprintf(ptr,"%s  ",r.getcomment().c_str());
+        }
         if(r.errorMessge!="") {
                 printf("\n");
                 printf("%20s%s","****Error:",r.errorMessge.c_str());
+                fprintf(ptr,"\n%20s%s","****Error:",r.errorMessge.c_str());
         }
         printf("\n");
+        fprintf(ptr,"\n");
     }
     printf("\n\n");
     printf("--------------------------------\n");
+    fprintf(ptr,"\n\n--------------------------------\n");
+
     printf("|%10s%s%8s|","","symbol Table","");
+    fprintf(ptr,"|%10s%s%8s|","","symbol Table","");
+
     printf("\n");
     printf("--------------------------------\n");
+    fprintf(ptr,"\n--------------------------------\n");
+
     printf("|%-16s|","Label");
+    fprintf(ptr,"|%-16s|","Label");
     printf("%10s%4s","Address","|");
+    fprintf(ptr,"%10s%4s","Address","|");
+
     printf("\n");
     printf("--------------------------------\n");
+    fprintf(ptr,"\n--------------------------------\n");
     for ( std::map< string, string >::const_iterator iter = symTab.begin();
             iter != symTab.end(); ++iter ){
         printf("|%-16s|",iter->first.c_str());
+        fprintf(ptr,"|%-16s|",iter->first.c_str());
+
         printf("%10s%4s",iter->second.c_str(),"|");
+        fprintf(ptr,"%10s%4s",iter->second.c_str(),"|");
+
         printf("\n");
         printf("--------------------------------\n");
+        fprintf(ptr,"\n--------------------------------\n");
     }
+    fclose(ptr);
 }
 
 void fillFileList(){
