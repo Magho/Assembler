@@ -1,4 +1,4 @@
-"D:\cDrive\CLion 2018.1.1\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" D:\megho\passOne
+"E:\clion\CLion 2018.1.1\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" E:\Assembler1\passOne
 -- The C compiler identification is GNU 4.9.2
 -- The CXX compiler identification is GNU 4.9.2
 -- Check for working C compiler: C:/Program Files (x86)/CodeBlocks/MinGW/bin/gcc.exe
@@ -14,6 +14,6 @@
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
 -- Configuring done
-Warning: Source file "D:/megho/passOne/Row.cpp" is listed multiple times for target "passOne".
+Warning: Source file "E:/Assembler1/passOne/Row.cpp" is listed multiple times for target "passOne".
 -- Generating done
--- Build files have been written to: D:/megho/passOne/cmake-build-debug
+-- Build files have been written to: E:/Assembler1/passOne/cmake-build-debug
