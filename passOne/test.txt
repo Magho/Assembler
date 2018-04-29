@@ -2,10 +2,10 @@
 prog   start 1000
 add 10
 loop      add 3
-output equ 600
 +sub 3
 org output
 loo      add 3
+org input
 input  resb 4096
 input2 resb  6
        end   
