@@ -1,6 +1,7 @@
 .1234567890123456789
 prog   start 1000
-add 10
+add add
+ lop   sub pop  .sdsd
 loop      add 3
 +sub 3
 org output

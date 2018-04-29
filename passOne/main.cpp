@@ -45,7 +45,7 @@ int main() {
 
    //parser.printTheList(parsingList);
 
-///   parser.printTheList(parsingList);
+///   parser.printTheList(parsingList);`
  validate.setParsinglist(parsingList);
   validate.validate();
   std::list<Row> test = validate.getValidationList();

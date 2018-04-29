@@ -29,6 +29,10 @@ int size = TheParsinglist.size();
         opT.setTable();
         Line line = TheParsinglist.back();
         TheParsinglist.pop_back();
+        if (line.isMoreThanFourWords){
+            row.errorMessge = " more than the availaple words";
+            row.hasError = true;
+        }
        // cout<<line.NumofwORD <<"num"<<endl;
 
         // first check if it's a comment line
@@ -167,7 +171,7 @@ int size = TheParsinglist.size();
 
                 if (opT.opTable.find(line.getWord2()) == opT.opTable.end()){
                 row.setOperand(line.getWord2());} else{
-
+                    row.hasError= true;
                     row.errorMessge = "syntax error  repeated opcode";
                 }
 
