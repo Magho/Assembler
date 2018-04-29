@@ -1,7 +1,8 @@
 .1234567890123456789
 prog   start 1000
-add 10
+ add 20
 inp  equ  1000
+in  equ   1200
 loop      add 3
 +sub 3
 loop      add 3
