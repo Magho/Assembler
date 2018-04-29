@@ -291,7 +291,7 @@ void Pass1 () {
         listFile.at(index).setAddress("0");
     }
 
-    while ((row.getop_code().compare("end") != 0) && (index < listFile.size() - 1)) {
+    while ((row.getop_code().compare("end") != 0) && (index < listFile.size()-1)) {
         //is not a comment line
         //cout<<row()<<endl;
         if (!row.hasError) {
@@ -411,8 +411,8 @@ void Pass1 () {
         }
     }
 
-        cout << index << endl << listFile.size();
-        if (index > (listFile.size() - 1)) {
+
+        if (listFile.at(listFile.size()-1).getop_code().compare("end")!=0) {
             Row r;
             r.hasError = true;
             r.errorMessge = "NO End Statement";
