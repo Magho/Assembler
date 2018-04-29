@@ -39,7 +39,7 @@ int main() {
 
 
     opTab.setTable();
-   list<Line> parsingList=parser.parisngFunction("E:\\Assembler1\\passOne\\test.txt");
+   list<Line> parsingList=parser.parisngFunction("D:\\megho\\passOne\\test.txt");
    int size = parsingList.size();
 
 
@@ -51,12 +51,10 @@ int main() {
   std::list<Row> test = validate.getValidationList();
   //cout << validate.getValidationList().size()<<endl;
   for(int i=0;i<validate.getValidationList().size();i++){
-
     //  cout << test.front().getLabel()<<" " <<test.front().getop_code()<<" "<<test.front().getOperand()<<" "<<test.front().getcomment()<<test.front().format<<" "<<test.front().errorMessge<<endl;
       listFile.push_back(test.front());
       test.pop_front();
-      cout<<listFile.at(i).getop_code();
-
+     // cout<<listFile.at(i).getop_code();
   }
 
 
@@ -303,9 +301,22 @@ void Pass1 () {
                     if (found) {
                         listFile.at(index).hasError = true;
                         listFile.at(index).errorMessge = "The Label already exists";
+                        goto h;
                     } else {
                         if(row.getop_code().compare("equ")==0){
-                            symTab.insert(pair<string, string>(row.getLabel(), row.getOperand()));
+                            string label = row.getOperand();
+                            int num = atoi(label.c_str());
+                            stringstream str;
+                            str << num;
+                            if (str.str().size() == label.size()) {
+                                symTab.insert(pair<string, string>(row.getLabel(), row.getOperand()));
+                            } else if (symTab.count(label)) {
+                                symTab.insert(pair<string, string>(row.getLabel(), symTab.at(label)));
+                            } else {
+                                listFile.at(index).hasError = true;
+                                listFile.at(index).errorMessge = "Not defined label, may be forward ref";
+                            }
+
 
                         }else {
                             symTab.insert(pair<string, string>(row.getLabel(), LOCCTR));
@@ -313,7 +324,7 @@ void Pass1 () {
                     }
                 }
                 //search OPTAB for OPCODE
-                if (searchOPTABForOPCODE(row.getop_code())) {
+                if (searchOPTABForOPCODE(row.getop_code())&&opTab.opTable.at(row.getop_code())!="null") {
                     // increase location counter by length of the line (assume all 3)
                     stringstream str;
                     str << row.format;
@@ -355,10 +366,9 @@ void Pass1 () {
                 }
             }
 
-            index++;
+    h:        index++;
             row = listFile.at(index);
             if (row.getop_code().compare("equ") == 0) {
-                cout<<LOCCTR;
                 LOCCTR=addHex(LOCCTR,"-3");
                 string label = row.getOperand();
                 int num = atoi(label.c_str());
@@ -380,7 +390,6 @@ void Pass1 () {
                 if (str.str().size() == label.size()) {
                     LOCCTR = row.getOperand();
                 } else if (symTab.count(label)) {
-                    cout<< symTab.at(label);
                     LOCCTR = symTab.at(label);
                 } else {
                     listFile.at(index).hasError = true;

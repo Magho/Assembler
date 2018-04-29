@@ -1,11 +1,10 @@
-
 .1234567890123456789
-prog   start 0000
+prog   start 1000
 add 10
 inp  equ  1000
-      add 3
-       org   inp
+loop      add 3
++sub 3
+loop      add 3
+input  resb 4096
 input2 resb  6
-       org   input
-       org   input3
        end   

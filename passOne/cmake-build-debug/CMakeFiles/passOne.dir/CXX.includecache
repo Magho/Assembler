@@ -6,25 +6,25 @@
 
 #IncludeRegexTransform: 
 
-E:/Assembler1/passOne/Line.cpp
+D:/megho/passOne/Line.cpp
 Line.h
-E:/Assembler1/passOne/Line.h
+D:/megho/passOne/Line.h
 
-E:/Assembler1/passOne/Line.h
+D:/megho/passOne/Line.h
 string
 -
 cstring
 -
 
-E:/Assembler1/passOne/Row.h
+D:/megho/passOne/Row.h
 string
 -
 
-E:/Assembler1/passOne/cmake-build-debug/Row.cpp
+D:/megho/passOne/cmake-build-debug/Row.cpp
 ../Row.h
-E:/Assembler1/passOne/Row.h
+D:/megho/passOne/Row.h
 
-E:/Assembler1/passOne/main.cpp
+D:/megho/passOne/main.cpp
 iostream
 -
 cstring
@@ -42,29 +42,29 @@ sstream
 cstdio
 -
 Row.h
-E:/Assembler1/passOne/Row.h
+D:/megho/passOne/Row.h
 optable.h
-E:/Assembler1/passOne/optable.h
+D:/megho/passOne/optable.h
 Line.h
-E:/Assembler1/passOne/Line.h
+D:/megho/passOne/Line.h
 parsing.h
-E:/Assembler1/passOne/parsing.h
+D:/megho/passOne/parsing.h
 validation.h
-E:/Assembler1/passOne/validation.h
+D:/megho/passOne/validation.h
 
-E:/Assembler1/passOne/optable.cpp
+D:/megho/passOne/optable.cpp
 optable.h
-E:/Assembler1/passOne/optable.h
+D:/megho/passOne/optable.h
 
-E:/Assembler1/passOne/optable.h
+D:/megho/passOne/optable.h
 map
 -
 cstring
 -
 
-E:/Assembler1/passOne/parsing.cpp
+D:/megho/passOne/parsing.cpp
 parsing.h
-E:/Assembler1/passOne/parsing.h
+D:/megho/passOne/parsing.h
 fstream
 -
 iostream
@@ -78,9 +78,9 @@ vector
 algorithm
 -
 Line.h
-E:/Assembler1/passOne/Line.h
+D:/megho/passOne/Line.h
 
-E:/Assembler1/passOne/parsing.h
+D:/megho/passOne/parsing.h
 cstring
 -
 string
@@ -90,11 +90,11 @@ vector
 list
 -
 Line.h
-E:/Assembler1/passOne/Line.h
+D:/megho/passOne/Line.h
 
-E:/Assembler1/passOne/parsing_map.cpp
+D:/megho/passOne/parsing_map.cpp
 parsing_map.h
-E:/Assembler1/passOne/parsing_map.h
+D:/megho/passOne/parsing_map.h
 fstream
 -
 iostream
@@ -108,7 +108,7 @@ vector
 algorithm
 -
 
-E:/Assembler1/passOne/parsing_map.h
+D:/megho/passOne/parsing_map.h
 cstring
 -
 string
@@ -120,17 +120,17 @@ list
 map
 -
 
-E:/Assembler1/passOne/validation.cpp
+D:/megho/passOne/validation.cpp
 iostream
 -
 validation.h
-E:/Assembler1/passOne/validation.h
+D:/megho/passOne/validation.h
 Row.h
-E:/Assembler1/passOne/Row.h
+D:/megho/passOne/Row.h
 optable.h
-E:/Assembler1/passOne/optable.h
+D:/megho/passOne/optable.h
 
-E:/Assembler1/passOne/validation.h
+D:/megho/passOne/validation.h
 cstring
 -
 string
@@ -142,7 +142,7 @@ list
 vector
 -
 Row.h
-E:/Assembler1/passOne/Row.h
+D:/megho/passOne/Row.h
 Line.h
-E:/Assembler1/passOne/Line.h
+D:/megho/passOne/Line.h
 

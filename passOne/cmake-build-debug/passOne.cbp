@@ -8,18 +8,18 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="E:/Assembler1/passOne/cmake-build-debug"/>
+				<Option working_dir="D:/megho/passOne/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="passOne">
-				<Option output="E:/Assembler1/passOne/cmake-build-debug/passOne.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/Assembler1/passOne/cmake-build-debug"/>
+				<Option output="D:/megho/passOne/cmake-build-debug/passOne.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/megho/passOne/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -32,15 +32,15 @@
 					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/include-fixed"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 passOne"/>
-					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 passOne"/>
+					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="passOne/fast">
-				<Option output="E:/Assembler1/passOne/cmake-build-debug/passOne.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/Assembler1/passOne/cmake-build-debug"/>
+				<Option output="D:/megho/passOne/cmake-build-debug/passOne.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/megho/passOne/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -53,76 +53,76 @@
 					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/include-fixed"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 passOne/fast"/>
-					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 passOne/fast"/>
+					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="E:/Assembler1/passOne/cmake-build-debug"/>
+				<Option working_dir="D:/megho/passOne/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="E:/Assembler1/passOne/cmake-build-debug"/>
+				<Option working_dir="D:/megho/passOne/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;D:/megho/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="E:/Assembler1/passOne/Line.cpp">
+		<Unit filename="D:/megho/passOne/Line.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/Line.h">
+		<Unit filename="D:/megho/passOne/Line.h">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/Row.cpp">
+		<Unit filename="D:/megho/passOne/Row.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/Row.h">
+		<Unit filename="D:/megho/passOne/Row.h">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/cmake-build-debug/Row.cpp">
+		<Unit filename="D:/megho/passOne/cmake-build-debug/Row.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/main.cpp">
+		<Unit filename="D:/megho/passOne/main.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/optable.cpp">
+		<Unit filename="D:/megho/passOne/optable.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/optable.h">
+		<Unit filename="D:/megho/passOne/optable.h">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/parsing.cpp">
+		<Unit filename="D:/megho/passOne/parsing.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/parsing.h">
+		<Unit filename="D:/megho/passOne/parsing.h">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/parsing_map.cpp">
+		<Unit filename="D:/megho/passOne/parsing_map.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/parsing_map.h">
+		<Unit filename="D:/megho/passOne/parsing_map.h">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/validation.cpp">
+		<Unit filename="D:/megho/passOne/validation.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/validation.h">
+		<Unit filename="D:/megho/passOne/validation.h">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/CMakeLists.txt">
+		<Unit filename="D:/megho/passOne/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
