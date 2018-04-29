@@ -47,9 +47,26 @@ int main() {
 }
 
 void printFileList() {
+    cout<<"\n\n"<<endl;
+    printf("%3s%10s%10s%10s%10s%10s\n","line","Address","Label","Opcode","Operands","Comment");
     for(int i=0;i<listFile.size();i++) {
         Row r=listFile.at(i);
-        cout <<r.getAddress()<<"  "<<r.getLabel()<<"  "<<r.getop_code()<<"  "<<r.getOperand()<<"  "<<r.getcomment()<<"  " <<r.errorMessge<<endl;
+        printf("%-7d",i);
+        printf("%-12s",r.getAddress().c_str());
+        if(r.getLabel() != "null" ){
+            printf("%-9s",r.getLabel().c_str());
+        }else{
+            printf("%-9s","");
+        }
+        printf("%-8s",r.getop_code().c_str());
+        printf("%-10s",r.getOperand().c_str());
+        printf("%s  ",r.getcomment().c_str());
+        if(r.errorMessge!="") {
+                printf("\n");
+                printf("%20s%s","****Error:",r.errorMessge.c_str());
+        }
+        printf("\n");
+        //cout <<r.getAddress()<<"  "<<r.getLabel()<<"  "<<r.getop_code()<<"  "<<r.getOperand()<<"  "<<r.getcomment()<<"  " <<r.errorMessge<<endl;
     }
     /*  for ( std::map< string, string >::const_iterator iter = symTab.begin();
             iter != symTab.end(); ++iter )
