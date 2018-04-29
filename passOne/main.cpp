@@ -389,8 +389,12 @@ void Pass1 () {
                 str << num;
                 if (str.str().size() == label.size()) {
                     LOCCTR = row.getOperand();
+                    index++;
+                    listFile.at(index).setAddress(LOCCTR);
                 } else if (symTab.count(label)) {
                     LOCCTR = symTab.at(label);
+                    index++;
+                    listFile.at(index).setAddress(LOCCTR);
                 } else {
                     listFile.at(index).hasError = true;
                     listFile.at(index).errorMessge = "Not defined label, may be forward ref";
