@@ -1,5 +1,9 @@
 TERMPROJ START 3A0
-.THIS IS A COMMENT LINE
+.THIS IS A COMMENT -LI
++add
+lkf   +add
+resb   resb
+lml   +ldch    opop
 LBL1 BYTE C'ABCDEF' .dasdasdasd sa saas assa assa
 LBL2 RESB 4  sa  sa
 LBL2 RESW 1

@@ -32,7 +32,6 @@ list<Line> parsing :: parisngFunction (string path) {
 
             //check if comment line
             if (startsWith(str, ".")) {
-
                 bbbb.isComment = true;
                 bbbb.setcomment(str);
 
@@ -41,8 +40,9 @@ list<Line> parsing :: parisngFunction (string path) {
             } else {
 
                 split(str, string1, ' ');
-                for (int i = 0; i < string1.size(); i++) {
 
+
+                for (int i = 0; i < string1.size(); i++) {
                     if (startsWith(string1[i], ".")) {
                         string str123 = "";
                         for (int j = i; j < string1.size(); j++) {
@@ -56,17 +56,20 @@ list<Line> parsing :: parisngFunction (string path) {
                     }
                      else if (i == 0) {
                         char x = string1[i][0];
-                        if ((int(x) >= 65 && int(x) <= 90 )| (int(x) <= 122 && int(x) >= 97)) {
+                        if ((int(x) >= 65 && int(x) <= 90 )| (int(x) <= 122 && int(x) >= 97) || x=='+') {
                             bbbb.setWord1(string1[i]);
                         } else {
                             bbbb.islabelStartWithNoChar = true;
                             break;
                         }
                     }
-                    else if (i == 1)
+                    else if (i == 1){
+
                         bbbb.setWord2(string1[i]);
-                    else if (i == 2)
-                        bbbb.setWord3(string1[i]);
+
+                    }
+                    else if (i == 2){
+                        bbbb.setWord3(string1[i]);}
                     else {
                         bbbb.isMoreThanFourWords = true;
                         break;
@@ -118,15 +121,15 @@ void parsing :: printTheList (list<Line> aaaaa) {
         aaaaa.pop_front();
 
         cout << "comment is " + bbbb.getcomment();
-        cout << "word1" + bbbb.getWord1();
-        cout << "word2" + bbbb.getWord2();
-        cout << "word3" + bbbb.getWord3();
+        cout << "word1" + bbbb.getWord1()<<" ";
+        cout << "word2" + bbbb.getWord2()<<" ";
+        cout << "word3" + bbbb.getWord3()<<" ";
 
         //make it "true or false" rather than "0 or 1"
         std::cout << std::boolalpha;
-        cout << "is comment" + bbbb.isComment;
+        cout << "is comment" + bbbb.isComment<<" ";
 
-        std::cout << std::boolalpha;
+        std::cout << std::boolalpha<<endl;
         cout << "is more than four words" + bbbb.isMoreThanFourWords;
 
     }

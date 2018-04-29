@@ -6,25 +6,25 @@
 
 #IncludeRegexTransform: 
 
-E:/Assembler/passOne/Line.cpp
+D:/cDrive/CLionProjects/passOne/Line.cpp
 Line.h
-E:/Assembler/passOne/Line.h
+D:/cDrive/CLionProjects/passOne/Line.h
 
-E:/Assembler/passOne/Line.h
+D:/cDrive/CLionProjects/passOne/Line.h
 string
 -
 cstring
 -
 
-E:/Assembler/passOne/Row.h
+D:/cDrive/CLionProjects/passOne/Row.h
 string
 -
 
-E:/Assembler/passOne/cmake-build-debug/Row.cpp
+D:/cDrive/CLionProjects/passOne/cmake-build-debug/Row.cpp
 ../Row.h
-E:/Assembler/passOne/Row.h
+D:/cDrive/CLionProjects/passOne/Row.h
 
-E:/Assembler/passOne/main.cpp
+D:/cDrive/CLionProjects/passOne/main.cpp
 iostream
 -
 cstring
@@ -39,30 +39,32 @@ cstdlib
 -
 sstream
 -
+cstdio
+-
 Row.h
-E:/Assembler/passOne/Row.h
+D:/cDrive/CLionProjects/passOne/Row.h
 optable.h
-E:/Assembler/passOne/optable.h
+D:/cDrive/CLionProjects/passOne/optable.h
 Line.h
-E:/Assembler/passOne/Line.h
+D:/cDrive/CLionProjects/passOne/Line.h
 parsing.h
-E:/Assembler/passOne/parsing.h
+D:/cDrive/CLionProjects/passOne/parsing.h
 validation.h
-E:/Assembler/passOne/validation.h
+D:/cDrive/CLionProjects/passOne/validation.h
 
-E:/Assembler/passOne/optable.cpp
+D:/cDrive/CLionProjects/passOne/optable.cpp
 optable.h
-E:/Assembler/passOne/optable.h
+D:/cDrive/CLionProjects/passOne/optable.h
 
-E:/Assembler/passOne/optable.h
+D:/cDrive/CLionProjects/passOne/optable.h
 map
 -
 cstring
 -
 
-E:/Assembler/passOne/parsing.cpp
+D:/cDrive/CLionProjects/passOne/parsing.cpp
 parsing.h
-E:/Assembler/passOne/parsing.h
+D:/cDrive/CLionProjects/passOne/parsing.h
 fstream
 -
 iostream
@@ -76,9 +78,9 @@ vector
 algorithm
 -
 Line.h
-E:/Assembler/passOne/Line.h
+D:/cDrive/CLionProjects/passOne/Line.h
 
-E:/Assembler/passOne/parsing.h
+D:/cDrive/CLionProjects/passOne/parsing.h
 cstring
 -
 string
@@ -88,11 +90,11 @@ vector
 list
 -
 Line.h
-E:/Assembler/passOne/Line.h
+D:/cDrive/CLionProjects/passOne/Line.h
 
-E:/Assembler/passOne/parsing_map.cpp
+D:/cDrive/CLionProjects/passOne/parsing_map.cpp
 parsing_map.h
-E:/Assembler/passOne/parsing_map.h
+D:/cDrive/CLionProjects/passOne/parsing_map.h
 fstream
 -
 iostream
@@ -106,7 +108,7 @@ vector
 algorithm
 -
 
-E:/Assembler/passOne/parsing_map.h
+D:/cDrive/CLionProjects/passOne/parsing_map.h
 cstring
 -
 string
@@ -118,17 +120,17 @@ list
 map
 -
 
-E:/Assembler/passOne/validation.cpp
+D:/cDrive/CLionProjects/passOne/validation.cpp
 iostream
 -
 validation.h
-E:/Assembler/passOne/validation.h
+D:/cDrive/CLionProjects/passOne/validation.h
 Row.h
-E:/Assembler/passOne/Row.h
+D:/cDrive/CLionProjects/passOne/Row.h
 optable.h
-E:/Assembler/passOne/optable.h
+D:/cDrive/CLionProjects/passOne/optable.h
 
-E:/Assembler/passOne/validation.h
+D:/cDrive/CLionProjects/passOne/validation.h
 cstring
 -
 string
@@ -140,7 +142,7 @@ list
 vector
 -
 Row.h
-E:/Assembler/passOne/Row.h
+D:/cDrive/CLionProjects/passOne/Row.h
 Line.h
-E:/Assembler/passOne/Line.h
+D:/cDrive/CLionProjects/passOne/Line.h
 

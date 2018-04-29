@@ -15,6 +15,7 @@ string Line :: getcomment (void){
 
 void Line :: setWord1 (string t){
     word1 = t;
+
     NumofwORD ++;
 }
 string Line :: getWord1 (void){

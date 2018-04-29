@@ -5,6 +5,8 @@
 #include <map>
 #include <cstdlib>
 #include <sstream>
+#include <cstdio>
+
 using namespace std ;
 #include "Row.h"
 #include "optable.h"
@@ -37,9 +39,14 @@ int main() {
 
 
     opTab.setTable();
-    list<Line> parsingList=parser.parisngFunction("D:\\magho\\passOne\\test.txt");
-//    parser.printTheList(parsingList);
-    validate.setParsinglist(parsingList);
+   list<Line> parsingList=parser.parisngFunction("D:\\cDrive\\CLionProjects\\passOne\\test.txt");
+   parser.printTheList(parsingList);
+///   parser.printTheList(parsingList);
+ // validate.setParsinglist(parsingList);
+ // validate.validate();
+  std::list<Row> test = validate.getValidationList();
+  std::list<Line> test1 = parsingList;
+
 //    fillFileList();
 //    Pass1();
 //    printFileList();
@@ -187,10 +194,10 @@ void fillFileList(){
     r.setOperand("4096");
     listFile.push_back(r);
 
-    r.setLabel("null");
-    r.setop_code("end");
-    r.setOperand("first");
-    listFile.push_back(r);
+//    r.setLabel("null");
+//    r.setop_code("end");
+//    r.setOperand("first");
+//    listFile.push_back(r);
 
 
 }
@@ -213,7 +220,7 @@ void Pass1 () {
         listFile.at(index).setAddress("0");
     }
 
-    while ((row.getop_code().compare("end") != 0)&&(index<listFile.size()) ){
+    while ((row.getop_code().compare("end") != 0)&&(index<listFile.size()-1) ){
         //is not a comment line
         if (!row.isComment) {
             if (row.getLabel().compare("null") != 0) {
@@ -228,7 +235,8 @@ void Pass1 () {
             //search OPTAB for OPCODE
             if (searchOPTABForOPCODE(row.getop_code())) {
                 // increase location counter by length of the line (assume all 3)
-                LOCCTR = addHex(LOCCTR,"3");
+              //  opTab.opTable
+//                LOCCTR = addHex(LOCCTR,"3");////////////////
             } else if (row.getop_code().compare("word") == 0) {
                 // increase location counter by length of the word  (3 bytes)
                 LOCCTR = addHex(LOCCTR,"3");
@@ -299,10 +307,14 @@ void Pass1 () {
 
     }
 
-    if(index>=(listFile.size())){
-        cout<<"oopss";
+cout<<index<<endl<<listFile.size();
+        if(index>(listFile.size()-1)){
+            Row r;
+            r.hasError=true;
+            r.errorMessge="NO End Statement";
+            listFile.push_back(r);
 
-    }
+        }
 
     // TODO write last line to intermediate file
     // TODO save (LOCCTR - Starting address) as program length

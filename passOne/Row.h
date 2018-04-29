@@ -11,15 +11,16 @@ class Row{
 
 private: string Address;
     string label;
-    string op_code;
+    string op_code="null";
     string operand;
-    string error;
+    string error="null";
 
 
     // setOperand (string setOperand);
     string comment;
 public:
     string errorMessge;
+    int format=3;
     bool hasError=false;
     bool isComment=false;
     void setLabel(string );

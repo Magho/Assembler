@@ -1,4 +1,4 @@
-# Install script for directory: E:/Assembler/passOne
+# Install script for directory: D:/cDrive/CLionProjects/passOne
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "E:/Assembler/passOne/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/cDrive/CLionProjects/passOne/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

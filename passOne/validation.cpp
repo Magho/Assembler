@@ -21,6 +21,7 @@ list<Row> validation ::getValidationList() {
 void validation ::validate() {
 
 int size = TheParsinglist.size();
+
     for (int i = 0; i < size; i++) {
 
         Row row;
@@ -29,18 +30,73 @@ int size = TheParsinglist.size();
         Line line = TheParsinglist.back();
         TheParsinglist.pop_back();
         // first check if it's a comment line
+
+      // cout<< line.getWord1()<<" "<<line.getWord2()<<" " <<line.getWord3()<<endl;
+
+      /*  int counter =0;
+        if(line.getWord1().length()>0&&line.getWord1().at(0)=='+'){
+            counter ++;
+            std::string temp = line.getWord1().substr(1,line.getWord1().length());
+            if (opT.opTable.find(temp) == opT.opTable.end()){
+                row.errorMessge="un correct format";
+
+            }else{
+                row.format = 4;
+                line.setWord1(temp);
+            }
+
+        }
+        if(line.getWord2().length()>0&&line.getWord2().at(0)=='+'){
+            cout<<line.getWord2();
+            counter ++;
+
+            std::string temp = line.getWord2().substr(1,line.getWord2().length());
+            if (opT.opTable.find(temp) == opT.opTable.end()){
+                row.errorMessge="un correct format";
+
+            }else{
+                row.format = 4;
+                line.setWord2(temp);
+            }
+
+        }
+        if(line.getWord3().length()>0&&line.getWord3().at(0)=='+'){
+            counter ++;
+            std::string temp = line.getWord3().substr(1,line.getWord3().length());
+            if (opT.opTable.find(temp) == opT.opTable.end()){
+                row.errorMessge="un correct format";
+
+            }else{
+                row.format = 4;
+                line.setWord3(temp);
+            }
+
+        }
+*/
         if (line.isComment) {
             row.isComment = true;
 
         }
 
+
+
         else if(line.NumofwORD == 1){
+
 
             if (opT.opTable.find(line.getWord1()) == opT.opTable.end()) {
                 row.errorMessge =" No op_code is exist";
             } else {
                 // found
-                row.setop_code(line.getWord1());
+                if(row.getop_code().compare("null")==0) {
+                    row.setop_code(line.getWord1());
+                    string temp = line.getWord1();
+                    if (opT.opTable.at(temp).at(opT.opTable.at(temp).length() - 1) == '2') {
+                        row.format = 2;
+                    }
+                }else{
+                    row.hasError=true;
+                    row.errorMessge="syntax error : repeated op_code ";
+                }
 
                 if(line.getcomment()!= "null"){
                     row.setcomment(line.getcomment());
@@ -63,7 +119,16 @@ int size = TheParsinglist.size();
                     row.errorMessge =" No op_code is exist";
                 } else {
                     // found
-                    row.setop_code(line.getWord2());
+                    if(row.getop_code().compare("null")==0) {
+                        row.setop_code(line.getWord2());
+                        string temp = line.getWord2();
+                        if (opT.opTable.at(temp).at(opT.opTable.at(temp).length() - 1) == '2') {
+                            row.format = 2;
+                        }
+                    }else{
+                        row.hasError=true;
+                        row.errorMessge="syntax error : repeated op_code ";
+                    }
                     row.setLabel(line.getWord1());
                     if(line.getcomment()!= "null"){
                         row.setcomment(line.getcomment());
@@ -75,7 +140,16 @@ int size = TheParsinglist.size();
                 /* end of the condition */
             } else {
                 // found
-                row.setop_code(line.getWord1());
+                if(row.getop_code().compare("null")==0) {
+                    row.setop_code(line.getWord1());
+                    string temp = line.getWord1();
+                    if (opT.opTable.at(temp).at(opT.opTable.at(temp).length()  - 1) == '2') {
+                        row.format = 2;
+                    }
+                }else{
+                    row.hasError=true;
+                    row.errorMessge="syntax error : repeated op_code ";
+                }
                 row.setOperand(line.getWord2());
                 if(line.getcomment()!= "null"){
                     row.setcomment(line.getcomment());
@@ -90,7 +164,16 @@ int size = TheParsinglist.size();
             } else {
 
                 // found
-                row.setop_code(line.getWord2());
+                if(row.getop_code().compare("null")==0) {
+                    row.setop_code(line.getWord2());
+                    string temp = line.getWord2();
+                    if (opT.opTable.at(temp).at(opT.opTable.at(temp).length() - 1) == '2') {
+                        row.format = 2;
+                    }
+                }else{
+                    row.hasError=true;
+                    row.errorMessge="syntax error : repeated op_code ";
+                }
                 row.setLabel(line.getWord1());
                 row.setOperand(line.getWord3());
                 if(line.getcomment()!= "null"){
