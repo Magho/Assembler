@@ -29,6 +29,8 @@ int size = TheParsinglist.size();
         opT.setTable();
         Line line = TheParsinglist.back();
         TheParsinglist.pop_back();
+       // cout<<line.NumofwORD <<"num"<<endl;
+
         // first check if it's a comment line
 
       // cout<< line.getWord1()<<" "<<line.getWord2()<<" " <<line.getWord3()<<line.NumofwORD<<endl;
@@ -76,6 +78,7 @@ int size = TheParsinglist.size();
 
         }
 
+
         if (line.isComment) {
             row.isComment = true;
             row.setcomment(line.getcomment());
@@ -108,14 +111,13 @@ int size = TheParsinglist.size();
                 if(line.getcomment()!= "null"){
                     row.setcomment(line.getcomment());
                     }
-                validationRows.push_back(row);
 
             }
 
+            validationRows.push_back(row);
 
 
             } else if (line.NumofwORD == 2 ){
-
 
             if (opT.opTable.find(line.getWord1()) == opT.opTable.end()) {
 
@@ -123,6 +125,7 @@ int size = TheParsinglist.size();
                 /* start condition if second word is op_code or error */
 
                 if (opT.opTable.find(line.getWord2()) == opT.opTable.end()) {
+
                     row.errorMessge =" No op_code is exist";
                     row.hasError= true;
 
@@ -137,12 +140,14 @@ int size = TheParsinglist.size();
                     }else{
                         row.hasError=true;
                         row.errorMessge="syntax error : repeated op_code ";
+                     //   validationRows.push_back(row);
+
                     }
                     row.setLabel(line.getWord1());
                     if(line.getcomment()!= "null"){
                         row.setcomment(line.getcomment());
                     }
-                    validationRows.push_back(row);
+                  //  validationRows.push_back(row);
 
                 }
 
@@ -171,13 +176,12 @@ int size = TheParsinglist.size();
                 if(line.getcomment()!= "null"){
                     row.setcomment(line.getcomment());
                 }
-                validationRows.push_back(row);
+                //validationRows.push_back(row);
 
             }
-
+            validationRows.push_back(row);
         }else if (line.NumofwORD == 3){
-            cout<<endl;
-            cout << line.getWord1()<<" "<<"testtesttestets"<<endl;
+
             if (opT.opTable.find(line.getWord2()) == opT.opTable.end()) {
                 row.errorMessge =" No op_code is exist or in a wrong position";
                 row.hasError= true;
@@ -205,9 +209,9 @@ int size = TheParsinglist.size();
                 if(line.getcomment()!= "null"){
                     row.setcomment(line.getcomment());
                 }
-                validationRows.push_back(row);
 
             }
+            validationRows.push_back(row);
 
 
         }

@@ -40,19 +40,23 @@ int main() {
 
 
     opTab.setTable();
-  // list<Line> parsingList=parser.parisngFunction("D:\\cDrive\\CLionProjects\\passOne\\test.txt");
+   list<Line> parsingList=parser.parisngFunction("E:\\Assembler1\\passOne\\test.txt");
+   int size = parsingList.size();
+
+
    //parser.printTheList(parsingList);
 
 ///   parser.printTheList(parsingList);
- validate.setParsinglist(fillLine());
+ validate.setParsinglist(parsingList);
   validate.validate();
   std::list<Row> test = validate.getValidationList();
   //cout << validate.getValidationList().size()<<endl;
   for(int i=0;i<validate.getValidationList().size();i++){
 
-      //cout << test.back().getLabel()<<" " <<test.back().getop_code()<<" "<<test.back().getOperand()<<" "<<test.back().getcomment()<<test.back().format<<" "<<test.back().errorMessge<<endl;
-      listFile.push_back(test.back());
-      test.pop_back();
+    //  cout << test.front().getLabel()<<" " <<test.front().getop_code()<<" "<<test.front().getOperand()<<" "<<test.front().getcomment()<<test.front().format<<" "<<test.front().errorMessge<<endl;
+      listFile.push_back(test.front());
+      test.pop_front();
+      cout<<listFile.at(i).getop_code();
 
   }
 
@@ -280,7 +284,11 @@ void Pass1 () {
         startAdr = LOCCTR;
         index++;
         row = listFile.at(index);
-        listFile.at(index).setAddress(LOCCTR);
+        if(row.getop_code().compare("equ")==0) {
+            listFile.at(index).setAddress(row.getOperand());
+        }else{
+            listFile.at(index).setAddress(LOCCTR);
+        }
     } else {
         LOCCTR = "0";
         listFile.at(index).setAddress("0");
@@ -288,6 +296,7 @@ void Pass1 () {
 
     while ((row.getop_code().compare("end") != 0) && (index < listFile.size() - 1)) {
         //is not a comment line
+        //cout<<row()<<endl;
         if (!row.hasError) {
             if (!row.isComment) {
                 if (row.getLabel().compare("null") != 0) {
@@ -304,7 +313,7 @@ void Pass1 () {
                     // increase location counter by length of the line (assume all 3)
                     stringstream str;
                     str << row.format;
-                    LOCCTR = addHex(LOCCTR, str.str());////////////////
+                    LOCCTR = addHex(LOCCTR, str.str());
                 } else if (row.getop_code().compare("word") == 0) {
                     // increase location counter by length of the word  (3 bytes)
                     LOCCTR = addHex(LOCCTR, "3");
@@ -345,6 +354,7 @@ void Pass1 () {
             index++;
             row = listFile.at(index);
             if (row.getop_code().compare("equ") == 0) {
+               // cout<<"eeeqqqquuuuu"<<endl;
                 string label = row.getOperand();
                 int num = atoi(label.c_str());
                 stringstream str;
@@ -377,6 +387,7 @@ void Pass1 () {
         }else{
             index++;
             row = listFile.at(index);
+            listFile.at(index).setAddress(LOCCTR);
         }
     }
 

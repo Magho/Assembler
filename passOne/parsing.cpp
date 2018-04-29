@@ -29,7 +29,7 @@ list<Line> parsing :: parisngFunction (string path) {
 
             //transfer to string to lower case
             std::transform(str.begin(), str.end(), str.begin(), ::tolower);
-
+            cout << str << "\n";
             //check if comment line
             if (startsWith(str, ".")) {
                 bbbb.isComment = true;
@@ -40,6 +40,11 @@ list<Line> parsing :: parisngFunction (string path) {
             } else {
 
                 split(str, string1, ' ');
+
+               /* for (int i = 0 ; i < string1.size() ; i++) {
+                    cout << string1[i] << "         ";
+                }
+*/
                 for (int i = 0; i < string1.size(); i++) {
                     if (startsWith(string1[i], ".")) {
                         string str123 = "";
@@ -93,7 +98,7 @@ size_t parsing :: split(const std::string &txt, std::vector<std::string> &strs, 
     strs.clear();
     for (int i = 0 ; i < txt.size() ; i++) {
         if (txt[i] != ' ' && txt[i] != '\t') {
-            for (int j = i+1 ; j < txt.size() ; j++ ) {
+            for (int j = i ; j < txt.size() ; j++ ) {
                 if (txt[j] == ' ' || txt[j] == '\t' ||( j == txt.size() -1) ) {
                     if (j == txt.size() -1) {
                         strs.push_back(txt.substr(i, j-i+1));
