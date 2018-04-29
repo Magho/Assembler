@@ -31,14 +31,15 @@ int size = TheParsinglist.size();
         TheParsinglist.pop_back();
         // first check if it's a comment line
 
-      // cout<< line.getWord1()<<" "<<line.getWord2()<<" " <<line.getWord3()<<endl;
+      // cout<< line.getWord1()<<" "<<line.getWord2()<<" " <<line.getWord3()<<line.NumofwORD<<endl;
 
-      /*  int counter =0;
+        int counter =0;
         if(line.getWord1().length()>0&&line.getWord1().at(0)=='+'){
             counter ++;
             std::string temp = line.getWord1().substr(1,line.getWord1().length());
             if (opT.opTable.find(temp) == opT.opTable.end()){
                 row.errorMessge="un correct format";
+                row.hasError= true;
 
             }else{
                 row.format = 4;
@@ -47,12 +48,12 @@ int size = TheParsinglist.size();
 
         }
         if(line.getWord2().length()>0&&line.getWord2().at(0)=='+'){
-            cout<<line.getWord2();
             counter ++;
 
             std::string temp = line.getWord2().substr(1,line.getWord2().length());
             if (opT.opTable.find(temp) == opT.opTable.end()){
                 row.errorMessge="un correct format";
+                row.hasError= true;
 
             }else{
                 row.format = 4;
@@ -65,6 +66,8 @@ int size = TheParsinglist.size();
             std::string temp = line.getWord3().substr(1,line.getWord3().length());
             if (opT.opTable.find(temp) == opT.opTable.end()){
                 row.errorMessge="un correct format";
+                row.hasError= true;
+
 
             }else{
                 row.format = 4;
@@ -72,9 +75,10 @@ int size = TheParsinglist.size();
             }
 
         }
-*/
+
         if (line.isComment) {
             row.isComment = true;
+            row.setcomment(line.getcomment());
 
         }
 
@@ -82,9 +86,10 @@ int size = TheParsinglist.size();
 
         else if(line.NumofwORD == 1){
 
-
             if (opT.opTable.find(line.getWord1()) == opT.opTable.end()) {
                 row.errorMessge =" No op_code is exist";
+                row.hasError= true;
+
             } else {
                 // found
                 if(row.getop_code().compare("null")==0) {
@@ -96,6 +101,8 @@ int size = TheParsinglist.size();
                 }else{
                     row.hasError=true;
                     row.errorMessge="syntax error : repeated op_code ";
+                    row.hasError= true;
+
                 }
 
                 if(line.getcomment()!= "null"){
@@ -117,6 +124,8 @@ int size = TheParsinglist.size();
 
                 if (opT.opTable.find(line.getWord2()) == opT.opTable.end()) {
                     row.errorMessge =" No op_code is exist";
+                    row.hasError= true;
+
                 } else {
                     // found
                     if(row.getop_code().compare("null")==0) {
@@ -150,7 +159,15 @@ int size = TheParsinglist.size();
                     row.hasError=true;
                     row.errorMessge="syntax error : repeated op_code ";
                 }
-                row.setOperand(line.getWord2());
+
+                if (opT.opTable.find(line.getWord2()) == opT.opTable.end()){
+                row.setOperand(line.getWord2());} else{
+
+                    row.errorMessge = "syntax error  repeated opcode";
+                }
+
+
+
                 if(line.getcomment()!= "null"){
                     row.setcomment(line.getcomment());
                 }
@@ -159,8 +176,12 @@ int size = TheParsinglist.size();
             }
 
         }else if (line.NumofwORD == 3){
+            cout<<endl;
+            cout << line.getWord1()<<" "<<"testtesttestets"<<endl;
             if (opT.opTable.find(line.getWord2()) == opT.opTable.end()) {
                 row.errorMessge =" No op_code is exist or in a wrong position";
+                row.hasError= true;
+
             } else {
 
                 // found
@@ -174,7 +195,12 @@ int size = TheParsinglist.size();
                     row.hasError=true;
                     row.errorMessge="syntax error : repeated op_code ";
                 }
+
+
                 row.setLabel(line.getWord1());
+
+
+
                 row.setOperand(line.getWord3());
                 if(line.getcomment()!= "null"){
                     row.setcomment(line.getcomment());

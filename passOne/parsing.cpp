@@ -40,8 +40,6 @@ list<Line> parsing :: parisngFunction (string path) {
             } else {
 
                 split(str, string1, ' ');
-
-
                 for (int i = 0; i < string1.size(); i++) {
                     if (startsWith(string1[i], ".")) {
                         string str123 = "";
@@ -54,10 +52,11 @@ list<Line> parsing :: parisngFunction (string path) {
 
                         break;
                     }
-                     else if (i == 0) {
+                    else if (i == 0) {
                         char x = string1[i][0];
                         if ((int(x) >= 65 && int(x) <= 90 )| (int(x) <= 122 && int(x) >= 97) || x=='+') {
                             bbbb.setWord1(string1[i]);
+                            bbbb.NumofwORD = 1;
                         } else {
                             bbbb.islabelStartWithNoChar = true;
                             break;
@@ -66,10 +65,12 @@ list<Line> parsing :: parisngFunction (string path) {
                     else if (i == 1){
 
                         bbbb.setWord2(string1[i]);
-
+                        bbbb.NumofwORD = 2;
                     }
                     else if (i == 2){
-                        bbbb.setWord3(string1[i]);}
+                        bbbb.setWord3(string1[i]);
+                        bbbb.NumofwORD = 3;
+                    }
                     else {
                         bbbb.isMoreThanFourWords = true;
                         break;
@@ -89,21 +90,23 @@ list<Line> parsing :: parisngFunction (string path) {
 }
 
 size_t parsing :: split(const std::string &txt, std::vector<std::string> &strs, char ch) {
-
-    size_t pos = txt.find( ch );
-    size_t initialPos = 0;
     strs.clear();
-
-    // Decompose statement
-    while( pos != std::string::npos ) {
-        strs.push_back( txt.substr( initialPos, pos - initialPos ) );
-        initialPos = pos + 1;
-
-        pos = txt.find( ch, initialPos );
+    for (int i = 0 ; i < txt.size() ; i++) {
+        if (txt[i] != ' ' && txt[i] != '\t') {
+            for (int j = i+1 ; j < txt.size() ; j++ ) {
+                if (txt[j] == ' ' || txt[j] == '\t' ||( j == txt.size() -1) ) {
+                    if (j == txt.size() -1) {
+                        strs.push_back(txt.substr(i, j-i+1));
+                    }
+                    else {
+                        strs.push_back(txt.substr(i, j - i));
+                    }
+                    i = j;
+                    break;
+                }
+            }
+        }
     }
-
-    // Add the last one
-    strs.push_back( txt.substr( initialPos, std::min( pos, txt.size() ) - initialPos + 1 ) );
 
     return strs.size();
 }
@@ -120,18 +123,14 @@ void parsing :: printTheList (list<Line> aaaaa) {
         bbbb = aaaaa.front();
         aaaaa.pop_front();
 
-        cout << "comment is " + bbbb.getcomment();
+        cout << "comment is " + bbbb.getcomment()<<" ";
         cout << "word1" + bbbb.getWord1()<<" ";
         cout << "word2" + bbbb.getWord2()<<" ";
         cout << "word3" + bbbb.getWord3()<<" ";
 
-        //make it "true or false" rather than "0 or 1"
-        std::cout << std::boolalpha;
-        cout << "is comment" + bbbb.isComment<<" ";
-
-        std::cout << std::boolalpha<<endl;
-        cout << "is more than four words" + bbbb.isMoreThanFourWords;
-
+        printf("is comment: %d  ", bbbb.isComment);
+        printf("number of words: %d  ",bbbb.NumofwORD);
+        printf("is More than: %d\n",bbbb.isMoreThanFourWords);
     }
 
 }

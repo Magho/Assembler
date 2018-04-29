@@ -10,9 +10,9 @@ using namespace std ;
 class Row{
 
 private: string Address;
-    string label;
+    string label="null";
     string op_code="null";
-    string operand;
+    string operand="null";
     string error="null";
 
 

@@ -10,31 +10,31 @@
 using namespace std ;
 
 class Line {
- private:
+private:
 
-        string comment="null";
-        string word1="null";
-        string word2="null";
-        string word3="null";
+    string comment="null";
+    string word1="null";
+    string word2="null";
+    string word3="null";
 
-    public:
+public:
 
-        bool isComment= false;
-        bool isMoreThanFourWords = false;
-        bool isEmptyLine = false;
-        bool islabelStartWithNoChar = false;
-        int NumofwORD=0 ;
-        void setcomment (string );
-        string  getcomment (void);
+    bool isComment= false;
+    bool isMoreThanFourWords = false;
+    bool isEmptyLine = false;
+    bool islabelStartWithNoChar = false;
+    int NumofwORD=0 ;
+    void setcomment (string );
+    string  getcomment (void);
 
-        void setWord1 (string );
-        string  getWord1 (void);
+    void setWord1 (string );
+    string  getWord1 (void);
 
-        void setWord2 (string );
-        string  getWord2 (void);
+    void setWord2 (string );
+    string  getWord2 (void);
 
-        void setWord3 (string );
-        string  getWord3 (void);
+    void setWord3 (string );
+    string  getWord3 (void);
 
 };
 

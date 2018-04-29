@@ -22,6 +22,7 @@ using namespace std ;
 
 void Pass1();
 void fillFileList();
+list<Line> fillLine();
 bool checkIfSymbolDefinedBefore(string symbol);
 bool searchOPTABForOPCODE (string OPCODE);
 string addHex(string hex1,string hex2);
@@ -39,18 +40,83 @@ int main() {
 
 
     opTab.setTable();
-   list<Line> parsingList=parser.parisngFunction("D:\\cDrive\\CLionProjects\\passOne\\test.txt");
-   parser.printTheList(parsingList);
+  // list<Line> parsingList=parser.parisngFunction("D:\\cDrive\\CLionProjects\\passOne\\test.txt");
+   //parser.printTheList(parsingList);
+
 ///   parser.printTheList(parsingList);
- // validate.setParsinglist(parsingList);
- // validate.validate();
+ validate.setParsinglist(fillLine());
+  validate.validate();
   std::list<Row> test = validate.getValidationList();
-  std::list<Line> test1 = parsingList;
+  //cout << validate.getValidationList().size()<<endl;
+  for(int i=0;i<validate.getValidationList().size();i++){
+
+      //cout << test.back().getLabel()<<" " <<test.back().getop_code()<<" "<<test.back().getOperand()<<" "<<test.back().getcomment()<<test.back().format<<" "<<test.back().errorMessge<<endl;
+      listFile.push_back(test.back());
+      test.pop_back();
+
+  }
+
+
+
+ // std::list<Line> test1 = parsingList;
 
 //    fillFileList();
-//    Pass1();
-//    printFileList();
+    Pass1();
+    printFileList();
     return 0;
+}
+list<Line>fillLine(){
+    list<Line> test;
+
+    Line line ;
+    line.setWord1("prog");
+    line.setWord2("start");
+    line.setWord3("1000");
+    line.NumofwORD=3;
+    test.push_back(line);
+
+    line.setWord1("lda");
+    line.setWord2("length");
+    line.setWord3("null");
+    line.NumofwORD=2;
+    test.push_back(line);
+
+    line.setWord1("+add");
+    line.setWord2("length");
+    line.setWord3("null");
+    line.NumofwORD=2;
+    test.push_back(line);
+
+    line.setWord1("loop");
+    line.setWord2("+sta");
+    line.setWord3("null");
+    line.NumofwORD=2;
+    test.push_back(line);
+
+    line.setWord1("lda");
+    line.setWord2("lda");
+    line.setWord3("null");
+    line.NumofwORD=2;
+
+    test.push_back(line);
+
+
+    line.setWord1("addr");
+    line.setWord2("length");
+    line.setWord3("null");
+    line.NumofwORD=2;
+    test.push_back(line);
+
+    line.setWord1("add");
+    line.setWord2("+length");
+    line.setWord3("null");
+    line.setcomment("el comment aho ya ritaaaaa");
+    line.NumofwORD=2;
+
+    test.push_back(line);
+
+    return test;
+
 }
 
 void printFileList() {
@@ -204,14 +270,14 @@ void fillFileList(){
 
 void Pass1 () {
     string LOCCTR;
-    int index=0;
+    int index = 0;
     string startAdr;
     Row row = listFile.at(index);
     if (row.getop_code().compare("start") == 0) {
         LOCCTR = row.getOperand();
         symTab.insert(pair<string, string>(row.getLabel(), LOCCTR));
         listFile.at(index).setAddress(LOCCTR);
-        startAdr=LOCCTR;
+        startAdr = LOCCTR;
         index++;
         row = listFile.at(index);
         listFile.at(index).setAddress(LOCCTR);
@@ -220,107 +286,115 @@ void Pass1 () {
         listFile.at(index).setAddress("0");
     }
 
-    while ((row.getop_code().compare("end") != 0)&&(index<listFile.size()-1) ){
+    while ((row.getop_code().compare("end") != 0) && (index < listFile.size() - 1)) {
         //is not a comment line
-        if (!row.isComment) {
-            if (row.getLabel().compare("null") != 0) {
-                bool found = checkIfSymbolDefinedBefore(row.getLabel());//return true if exist
-                if (found) {
-                    listFile.at(index).hasError=true;
-                    listFile.at(index).errorMessge="The Label already exists";
-                } else {
-                    symTab.insert(pair<string, string>(row.getLabel(), LOCCTR));
-                }
-            }
-            //search OPTAB for OPCODE
-            if (searchOPTABForOPCODE(row.getop_code())) {
-                // increase location counter by length of the line (assume all 3)
-              //  opTab.opTable
-//                LOCCTR = addHex(LOCCTR,"3");////////////////
-            } else if (row.getop_code().compare("word") == 0) {
-                // increase location counter by length of the word  (3 bytes)
-                LOCCTR = addHex(LOCCTR,"3");
-            } else if (row.getop_code().compare("resw") == 0) {
-                // TODO add 3 * #[OPPERAND] to LOCCTR
-                LOCCTR =addHex(LOCCTR,decimalToHex(3*atoi(row.getOperand().c_str())));
-            }else if (row.getop_code().compare("resb") == 0) {
-                // TODO add #[OPERAND] to LOCCTR
-                LOCCTR=addHex(LOCCTR,decimalToHex(atoi( row.getOperand().c_str())));
-            } else if (row.getop_code().compare("byte") == 0){
-                char ch = row.getOperand().at(0);
-                switch (ch){
-                    case 'c': {
-                        stringstream str;
-                        str << row.getOperand().size() - 3;
-                        LOCCTR = addHex(LOCCTR, str.str());
+        if (!row.hasError) {
+            if (!row.isComment) {
+                if (row.getLabel().compare("null") != 0) {
+                    bool found = checkIfSymbolDefinedBefore(row.getLabel());//return true if exist
+                    if (found) {
+                        listFile.at(index).hasError = true;
+                        listFile.at(index).errorMessge = "The Label already exists";
+                    } else {
+                        symTab.insert(pair<string, string>(row.getLabel(), LOCCTR));
                     }
-                        break;
-                    case 'x': {
-                        if (((row.getOperand().size() - 3) % 2) == 0) {
+                }
+                //search OPTAB for OPCODE
+                if (searchOPTABForOPCODE(row.getop_code())) {
+                    // increase location counter by length of the line (assume all 3)
+                    stringstream str;
+                    str << row.format;
+                    LOCCTR = addHex(LOCCTR, str.str());////////////////
+                } else if (row.getop_code().compare("word") == 0) {
+                    // increase location counter by length of the word  (3 bytes)
+                    LOCCTR = addHex(LOCCTR, "3");
+                } else if (row.getop_code().compare("resw") == 0) {
+                    // TODO add 3 * #[OPPERAND] to LOCCTR
+                    LOCCTR = addHex(LOCCTR, decimalToHex(3 * atoi(row.getOperand().c_str())));
+                } else if (row.getop_code().compare("resb") == 0) {
+                    // TODO add #[OPERAND] to LOCCTR
+                    LOCCTR = addHex(LOCCTR, decimalToHex(atoi(row.getOperand().c_str())));
+                } else if (row.getop_code().compare("byte") == 0) {
+                    char ch = row.getOperand().at(0);
+                    switch (ch) {
+                        case 'c': {
                             stringstream str;
-                            str << (row.getOperand().size() - 3) / 2;
+                            str << row.getOperand().size() - 3;
                             LOCCTR = addHex(LOCCTR, str.str());
-                        } else {
-                            listFile.at(index).hasError=true;
-                            listFile.at(index).errorMessge="The hexidecimal value has an odd numbers of digits";
                         }
+                            break;
+                        case 'x': {
+                            if (((row.getOperand().size() - 3) % 2) == 0) {
+                                stringstream str;
+                                str << (row.getOperand().size() - 3) / 2;
+                                LOCCTR = addHex(LOCCTR, str.str());
+                            } else {
+                                listFile.at(index).hasError = true;
+                                listFile.at(index).errorMessge = "The hexidecimal value has an odd numbers of digits";
+                            }
+                        }
+                            break;
                     }
-                        break;
+
+                } else {
+                    listFile.at(index).hasError = true;
+                    listFile.at(index).errorMessge = "Invalid op-code";
                 }
+            }
 
-            }else {
-                listFile.at(index).hasError=true;
-                listFile.at(index).errorMessge="Invalid op-code";
+            index++;
+            row = listFile.at(index);
+            if (row.getop_code().compare("equ") == 0) {
+                string label = row.getOperand();
+                int num = atoi(label.c_str());
+                stringstream str;
+                str << num;
+                if (str.str().size() == label.size()) {
+                    listFile.at(index).setAddress(label);
+                } else if (symTab.count(label)) {
+                    listFile.at(index).setAddress(symTab.at(label));
+                } else {
+                    listFile.at(index).hasError = true;
+                    listFile.at(index).errorMessge = "Not defined label, may be forward ref";
+                }
+            } else if (row.getop_code().compare("org") == 0) {
+                string label = row.getOperand();
+                int num = atoi(label.c_str());
+                stringstream str;
+                str << num;
+                if (str.str().size() == label.size()) {
+                    LOCCTR = row.getOperand();
+                } else if (symTab.count(label)) {
+                    LOCCTR = symTab.at(label);
+                } else {
+                    listFile.at(index).hasError = true;
+                    listFile.at(index).errorMessge = "Not defined label, may be forward ref";
+                }
+            } else {
+                listFile.at(index).setAddress(LOCCTR);
             }
-        }
-        index++;
-        row = listFile.at(index);
-        if(row.getop_code().compare("equ") == 0){
-            string label =row.getOperand();
-            int num=atoi( label.c_str());
-            stringstream str;
-            str << num;
-            if(str.str().size()==label.size()){
-                listFile.at(index).setAddress(label);
-            }else if(symTab.count(label)) {
-                listFile.at(index).setAddress(symTab.at(label));
-            }else{
-                listFile.at(index).hasError=true;
-                listFile.at(index).errorMessge="Not defined label, may be forward ref";
-            }
-        }else if(row.getop_code().compare("org") == 0){
-            string label =row.getOperand();
-            int num=atoi( label.c_str());
-            stringstream str;
-            str << num;
-            if(str.str().size()==label.size()){
-                LOCCTR=row.getOperand();
-            }else if(symTab.count(label)) {
-                LOCCTR=symTab.at(label);
-            }else{
-                listFile.at(index).hasError=true;
-                listFile.at(index).errorMessge="Not defined label, may be forward ref";
-            }
-        }else {
-            listFile.at(index).setAddress(LOCCTR);
-        }
 
+        }else{
+            index++;
+            row = listFile.at(index);
+        }
     }
 
-cout<<index<<endl<<listFile.size();
-        if(index>(listFile.size()-1)){
+        cout << index << endl << listFile.size();
+        if (index > (listFile.size() - 1)) {
             Row r;
-            r.hasError=true;
-            r.errorMessge="NO End Statement";
+            r.hasError = true;
+            r.errorMessge = "NO End Statement";
             listFile.push_back(r);
 
         }
 
-    // TODO write last line to intermediate file
-    // TODO save (LOCCTR - Starting address) as program length
-    stringstream s;
-    s<<-1*atoi( startAdr.c_str());
-    string progLength = addHex(LOCCTR,s.str());
+        // TODO write last line to intermediate file
+        // TODO save (LOCCTR - Starting address) as program length
+        stringstream s;
+        s << -1 * atoi(startAdr.c_str());
+        string progLength = addHex(LOCCTR, s.str());
+
 }
 
 bool checkIfSymbolDefinedBefore(string symbol) {

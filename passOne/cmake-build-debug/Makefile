@@ -38,19 +38,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "D:\cDrive\CLion 2018.1.1\bin\cmake\bin\cmake.exe"
+CMAKE_COMMAND = "E:\clion\CLion 2018.1.1\bin\cmake\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "D:\cDrive\CLion 2018.1.1\bin\cmake\bin\cmake.exe" -E remove -f
+RM = "E:\clion\CLion 2018.1.1\bin\cmake\bin\cmake.exe" -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\cDrive\CLionProjects\passOne
+CMAKE_SOURCE_DIR = E:\Assembler1\passOne
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\cDrive\CLionProjects\passOne\cmake-build-debug
+CMAKE_BINARY_DIR = E:\Assembler1\passOne\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -58,7 +58,7 @@ CMAKE_BINARY_DIR = D:\cDrive\CLionProjects\passOne\cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"D:\cDrive\CLion 2018.1.1\bin\cmake\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"E:\clion\CLion 2018.1.1\bin\cmake\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -69,7 +69,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"D:\cDrive\CLion 2018.1.1\bin\cmake\bin\cmake.exe" -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"E:\clion\CLion 2018.1.1\bin\cmake\bin\cmake.exe" -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -79,9 +79,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\cDrive\CLionProjects\passOne\cmake-build-debug\CMakeFiles D:\cDrive\CLionProjects\passOne\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\Assembler1\passOne\cmake-build-debug\CMakeFiles E:\Assembler1\passOne\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\cDrive\CLionProjects\passOne\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\Assembler1\passOne\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target

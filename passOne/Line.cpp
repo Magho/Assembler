@@ -16,7 +16,7 @@ string Line :: getcomment (void){
 void Line :: setWord1 (string t){
     word1 = t;
 
-    NumofwORD ++;
+   // NumofwORD ++;
 }
 string Line :: getWord1 (void){
     return word1;
@@ -25,7 +25,7 @@ string Line :: getWord1 (void){
 
 void Line :: setWord2 (string t){
     word2 = t;
-    NumofwORD ++;
+    //NumofwORD ++;
 }
 string Line :: getWord2 (void){
     return word2;
@@ -34,7 +34,7 @@ string Line :: getWord2 (void){
 
 void Line :: setWord3 (string t){
     word3 = t;
-    NumofwORD ++;
+    //NumofwORD ++;
 }
 string Line :: getWord3 (void){
     return word3;
