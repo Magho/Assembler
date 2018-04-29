@@ -132,20 +132,38 @@ void printFileList() {
         }else{
             printf("%-9s","");
         }
-        printf("%-8s",r.getop_code().c_str());
-        printf("%-10s",r.getOperand().c_str());
-        printf("%s  ",r.getcomment().c_str());
+        if(r.getop_code() != "null")
+            printf("%-8s",r.getop_code().c_str());
+        else
+            printf("%-8s","");
+        if(r.getOperand() != "null")
+            printf("%-10s",r.getOperand().c_str());
+        else
+            printf("%-10s","");
+        if(r.getcomment() != "null")
+            printf("%s  ",r.getcomment().c_str());
         if(r.errorMessge!="") {
                 printf("\n");
                 printf("%20s%s","****Error:",r.errorMessge.c_str());
         }
         printf("\n");
-        //cout <<r.getAddress()<<"  "<<r.getLabel()<<"  "<<r.getop_code()<<"  "<<r.getOperand()<<"  "<<r.getcomment()<<"  " <<r.errorMessge<<endl;
     }
-      for ( std::map< string, string >::const_iterator iter = symTab.begin();
-            iter != symTab.end(); ++iter )
-          cout << iter->first << '\t' << iter->second << '\n';
-      cout << endl;
+    printf("\n\n");
+    printf("--------------------------------\n");
+    printf("|%10s%s%8s|","","symbol Table","");
+    printf("\n");
+    printf("--------------------------------\n");
+    printf("|%-16s|","Label");
+    printf("%10s%4s","Address","|");
+    printf("\n");
+    printf("--------------------------------\n");
+    for ( std::map< string, string >::const_iterator iter = symTab.begin();
+            iter != symTab.end(); ++iter ){
+        printf("|%-16s|",iter->first.c_str());
+        printf("%10s%4s",iter->second.c_str(),"|");
+        printf("\n");
+        printf("--------------------------------\n");
+    }
 }
 
 void fillFileList(){
