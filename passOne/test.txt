@@ -2,10 +2,9 @@
 prog   start 1000
 addr a,s
 loop    div #10
-add add
-+sta length
+addr 50
++org 50
 sub max
-cloop equ 1066
 length resb 256
 max resw 3
 end

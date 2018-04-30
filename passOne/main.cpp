@@ -424,7 +424,8 @@ void Pass1 () {
     h:        index++;
             row = listFile.at(index);
             if (row.getop_code().compare("equ") == 0) {
-                LOCCTR=addHex(LOCCTR,"-3");
+                if(row.format!=4){
+                LOCCTR = addHex(LOCCTR, "-3");
                 string label = row.getOperand();
                 int num = atoi(label.c_str());
                 stringstream str;
@@ -437,7 +438,13 @@ void Pass1 () {
                     listFile.at(index).hasError = true;
                     listFile.at(index).errorMessge = "Not defined label, may be forward ref";
                 }
+            }else {
+                    listFile.at(index).hasError=true;
+                    listFile.at(index).errorMessge="+ before equ";
+                    LOCCTR = addHex(LOCCTR, "-4");
+            }
             } else if (row.getop_code().compare("org") == 0) {
+                if(row.format!=4){
                 string label = row.getOperand();
                 int num = atoi(label.c_str());
                 stringstream str;
@@ -446,14 +453,22 @@ void Pass1 () {
                     LOCCTR = row.getOperand();
                     index++;
                     listFile.at(index).setAddress(LOCCTR);
+                    row = listFile.at(index);
+
                 } else if (symTab.count(label)) {
                     LOCCTR = symTab.at(label);
                     index++;
                     listFile.at(index).setAddress(LOCCTR);
+                    row = listFile.at(index);
                 } else {
                     LOCCTR=addHex(LOCCTR,"-3");
                     listFile.at(index).hasError = true;
                     listFile.at(index).errorMessge = "Not defined label, may be forward ref";
+                }
+                }else {
+                    listFile.at(index).hasError=true;
+                    listFile.at(index).errorMessge="+ before org";
+                    LOCCTR = addHex(LOCCTR, "-4");
                 }
             } else {
                 listFile.at(index).setAddress(LOCCTR);
