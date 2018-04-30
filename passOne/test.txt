@@ -1,12 +1,11 @@
 .1234567890123456789
 prog   start 1000
+addr a,s
+loop    div #10
 add add
- lop   sub pop  .sdsd
-loop      add 3
-+sub 3
-org output
-loo      add 3
-org input
-input  resb 4096
-input2 resb  6
-       end   
++sta length
+sub max
+cloop equ 1066
+length resb 256
+max resw 3
+end

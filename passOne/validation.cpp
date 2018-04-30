@@ -108,7 +108,7 @@ int size = TheParsinglist.size();
                 }else{
                     row.hasError=true;
                     row.errorMessge="syntax error : repeated op_code ";
-                    row.hasError= true;
+
 
                 }
 
