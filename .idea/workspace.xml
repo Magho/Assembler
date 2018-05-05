@@ -16,6 +16,7 @@
       <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/passOne.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/passOne.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/passOne.exe" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/passOne.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passOne/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passOne/parsing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/parsing.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passOne/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passOne/validation.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/validation.cpp" afterDir="false" />
     </list>
@@ -33,8 +34,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/passOne/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5004">
-              <caret line="357" column="36" selection-start-line="357" selection-start-column="36" selection-end-line="357" selection-end-column="36" />
+            <state relative-caret-position="374">
+              <caret line="82" column="21" lean-forward="true" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#169#185#0" expanded="true" />
@@ -43,47 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/passOne/test.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="validation.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/passOne/validation.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="optable.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/passOne/optable.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1935">
-              <caret line="129" column="56" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Line.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/passOne/Line.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parsing.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/passOne/parsing.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1185">
-              <caret line="79" column="56" selection-start-line="79" selection-start-column="56" selection-end-line="79" selection-end-column="56" />
+            <state relative-caret-position="253">
+              <caret line="162" column="30" lean-forward="true" selection-start-line="162" selection-start-column="30" selection-end-line="162" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -109,6 +74,7 @@
       <find>format</find>
       <find>opcode in</find>
       <find>this op code should have operand</find>
+      <find>not  the right format</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -129,9 +95,9 @@
         <option value="$PROJECT_DIR$/passOne/Line.h" />
         <option value="$PROJECT_DIR$/passOne/parsing.h" />
         <option value="$PROJECT_DIR$/passOne/parsing.cpp" />
+        <option value="$PROJECT_DIR$/passOne/test.txt" />
         <option value="$PROJECT_DIR$/passOne/main.cpp" />
         <option value="$PROJECT_DIR$/passOne/validation.cpp" />
-        <option value="$PROJECT_DIR$/passOne/test.txt" />
       </list>
     </option>
   </component>
@@ -155,7 +121,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -163,10 +128,16 @@
               <item name="passOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="Assembler1" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="passOne" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Assembler1" type="462c0819:PsiDirectoryNode" />
+              <item name="passOne" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -219,7 +190,9 @@
       <workItem from="1525001568291" duration="13004000" />
       <workItem from="1525024605857" duration="9968000" />
       <workItem from="1525066012075" duration="8397000" />
-      <workItem from="1525079868201" duration="237000" />
+      <workItem from="1525079868201" duration="5966000" />
+      <workItem from="1525087217660" duration="1447000" />
+      <workItem from="1525093338282" duration="418000" />
     </task>
     <task id="LOCAL-00001" summary="after fixing alot of errors">
       <created>1525008592697</created>
@@ -277,11 +250,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525032486980</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="just commit">
+      <created>1525080452749</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1525080452749</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49195000" />
+    <option name="totallyTimeSpent" value="56789000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -294,14 +274,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.23529412" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.23529412" />
       <window_info anchor="bottom" id="TODO" order="11" weight="0.32913387" />
+      <window_info active="true" anchor="bottom" id="Messages" order="0" sideWeight="0.48382354" visible="true" weight="0.20900321" />
       <window_info anchor="bottom" id="CMake" order="4" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5176471" side_tool="true" weight="0.40996784" />
       <window_info anchor="bottom" id="Version Control" order="3" sideWeight="0.49779412" weight="0.329582" />
-      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.48235294" weight="0.21864952" />
+      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.48235294" weight="0.40032154" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -313,7 +293,6 @@
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="6" />
-      <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.48382354" weight="0.42604503" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +307,13 @@
     <MESSAGE value="a5r 7aga" />
     <MESSAGE value="fix adding error of more than 4 words" />
     <MESSAGE value="edit main" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit main" />
+    <MESSAGE value="just commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="just commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/passOne/parsing.cpp">
@@ -636,13 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/passOne/parsing.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="2" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/passOne/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -650,45 +628,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/passOne/parsing.cpp">
+    <entry file="file://$PROJECT_DIR$/passOne/test.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="79" column="56" selection-start-line="79" selection-start-column="56" selection-end-line="79" selection-end-column="56" />
+        <state relative-caret-position="45">
+          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/passOne/Line.h">
+    <entry file="file://$PROJECT_DIR$/passOne/parsing.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+        <state relative-caret-position="195">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/passOne/optable.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1935">
+        <state relative-caret-position="143">
           <caret line="129" column="56" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/passOne/test.txt">
+    <entry file="file://$PROJECT_DIR$/passOne/Line.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+        <state relative-caret-position="90">
+          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/passOne/parsing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="85" column="47" selection-start-line="85" selection-start-column="47" selection-end-line="85" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/passOne/validation.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="253">
+          <caret line="162" column="30" lean-forward="true" selection-start-line="162" selection-start-column="30" selection-end-line="162" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/passOne/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5004">
-          <caret line="357" column="36" selection-start-line="357" selection-start-column="36" selection-end-line="357" selection-end-column="36" />
+        <state relative-caret-position="374">
+          <caret line="82" column="21" lean-forward="true" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#169#185#0" expanded="true" />

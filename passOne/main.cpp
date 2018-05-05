@@ -35,31 +35,32 @@ optable opTab;
 parsing parser;
 validation validate;
 
-int main() {
+int main(int arg,char* argc[]) {
 
 
     opTab.setTable();
-   list<Line> parsingList=parser.parisngFunction("E:\\Assembler1\\passOne\\test.txt");
-   int size = parsingList.size();
+    list<Line> parsingList=parser.parisngFunction(argc[1]);
+
+    int size = parsingList.size();
 
 
-   //parser.printTheList(parsingList);
+    //parser.printTheList(parsingList);
 
-///   parser.printTheList(parsingList);`
- validate.setParsinglist(parsingList);
-  validate.validate();
-  std::list<Row> test = validate.getValidationList();
-  //cout << validate.getValidationList().size()<<endl;
-  for(int i=0;i<validate.getValidationList().size();i++){
-    //  cout << test.front().getLabel()<<" " <<test.front().getop_code()<<" "<<test.front().getOperand()<<" "<<test.front().getcomment()<<test.front().format<<" "<<test.front().errorMessge<<endl;
-      listFile.push_back(test.front());
-      test.pop_front();
-     // cout<<listFile.at(i).getop_code();
-  }
+///   parser.printTheList(parsingList);
+    validate.setParsinglist(parsingList);
+    validate.validate();
+    std::list<Row> test = validate.getValidationList();
+    //cout << validate.getValidationList().size()<<endl;
+    for(int i=0;i<validate.getValidationList().size();i++){
+        //  cout << test.front().getLabel()<<" " <<test.front().getop_code()<<" "<<test.front().getOperand()<<" "<<test.front().getcomment()<<test.front().format<<" "<<test.front().errorMessge<<endl;
+        listFile.push_back(test.front());
+        test.pop_front();
+        // cout<<listFile.at(i).getop_code();
+    }
 
 
 
- // std::list<Line> test1 = parsingList;
+    // std::list<Line> test1 = parsingList;
 
 //    fillFileList();
     Pass1();
@@ -122,30 +123,85 @@ list<Line>fillLine(){
 
 void printFileList() {
     cout<<"\n\n"<<endl;
+    FILE *ptr;
+    ptr = fopen("pass1_Output.txt","w");
+    fprintf(ptr,"%3s%10s%10s%10s%10s%10s\n","line","Address","Label","Opcode","Operands","Comment");
+
     printf("%3s%10s%10s%10s%10s%10s\n","line","Address","Label","Opcode","Operands","Comment");
     for(int i=0;i<listFile.size();i++) {
         Row r=listFile.at(i);
         printf("%-7d",i);
+        fprintf(ptr,"%-7d",i);
+
         printf("%-12s",r.getAddress().c_str());
+        fprintf(ptr,"%-12s",r.getAddress().c_str());
+
         if(r.getLabel() != "null" ){
             printf("%-9s",r.getLabel().c_str());
+            fprintf(ptr,"%-9s",r.getLabel().c_str());
         }else{
             printf("%-9s","");
+            fprintf(ptr,"%-9s","");
         }
-        printf("%-8s",r.getop_code().c_str());
-        printf("%-10s",r.getOperand().c_str());
-        printf("%s  ",r.getcomment().c_str());
+
+        if(r.getop_code() != "null"){
+            printf("%-8s",r.getop_code().c_str());
+            fprintf(ptr,"%-8s",r.getop_code().c_str());
+        }else{
+            printf("%-8s","");
+            fprintf(ptr,"%-8s","");
+        }
+        if(r.getOperand() != "null"){
+            printf("%-10s",r.getOperand().c_str());
+            fprintf(ptr,"%-10s",r.getOperand().c_str());
+        }else{
+            printf("%-10s","");
+            fprintf(ptr,"%-10s","");
+        }
+        if(r.getcomment() != "null"){
+            printf("%s  ",r.getcomment().c_str());
+            fprintf(ptr,"%s  ",r.getcomment().c_str());
+        }
         if(r.errorMessge!="") {
-                printf("\n");
-                printf("%20s%s","****Error:",r.errorMessge.c_str());
+            printf("\n");
+            printf("%20s%s","****Error:",r.errorMessge.c_str());
+            fprintf(ptr,"\n%20s%s","****Error:",r.errorMessge.c_str());
         }
         printf("\n");
-        //cout <<r.getAddress()<<"  "<<r.getLabel()<<"  "<<r.getop_code()<<"  "<<r.getOperand()<<"  "<<r.getcomment()<<"  " <<r.errorMessge<<endl;
+        fprintf(ptr,"\n");
     }
-      for ( std::map< string, string >::const_iterator iter = symTab.begin();
-            iter != symTab.end(); ++iter )
-          cout << iter->first << '\t' << iter->second << '\n';
-      cout << endl;
+    printf("\n\n");
+    printf("--------------------------------\n");
+    fprintf(ptr,"\n\n--------------------------------\n");
+
+    printf("|%10s%s%8s|","","symbol Table","");
+    fprintf(ptr,"|%10s%s%8s|","","symbol Table","");
+
+    printf("\n");
+    printf("--------------------------------\n");
+    fprintf(ptr,"\n--------------------------------\n");
+
+    printf("|%-16s|","Label");
+    fprintf(ptr,"|%-16s|","Label");
+    printf("%10s%4s","Address","|");
+    fprintf(ptr,"%10s%4s","Address","|");
+
+    printf("\n");
+    printf("--------------------------------\n");
+    fprintf(ptr,"\n--------------------------------\n");
+    for ( std::map< string, string >::const_iterator iter = symTab.begin();
+          iter != symTab.end(); ++iter ){
+        printf("|%-16s|",iter->first.c_str());
+        fprintf(ptr,"|%-16s|",iter->first.c_str());
+
+        printf("%10s%4s",iter->second.c_str(),"|");
+        fprintf(ptr,"%10s%4s",iter->second.c_str(),"|");
+
+        printf("\n");
+        printf("--------------------------------\n");
+        fprintf(ptr,"\n--------------------------------\n");
+    }
+    fclose(ptr);
 }
 
 void fillFileList(){
@@ -298,12 +354,12 @@ void Pass1 () {
             if (!row.isComment) {
                 if (row.getLabel().compare("null") != 0) {
                     bool found = checkIfSymbolDefinedBefore(row.getLabel());//return true if exist
-                    if (found) {
+                    if (found|| row.getop_code().compare("org")==0) {
                         listFile.at(index).hasError = true;
                         listFile.at(index).errorMessge = "The Label already exists";
                         goto h;
                     } else {
-                        if(row.getop_code().compare("equ")==0){
+                        if((row.getop_code().compare("equ")==0)){
                             string label = row.getOperand();
                             int num = atoi(label.c_str());
                             stringstream str;
@@ -366,40 +422,63 @@ void Pass1 () {
                 }
             }
 
-    h:        index++;
+            h:        index++;
             row = listFile.at(index);
             if (row.getop_code().compare("equ") == 0) {
-                LOCCTR=addHex(LOCCTR,"-3");
-                string label = row.getOperand();
-                int num = atoi(label.c_str());
-                stringstream str;
-                str << num;
-                if (str.str().size() == label.size()) {
-                    listFile.at(index).setAddress(label);
-                } else if (symTab.count(label)) {
-                    listFile.at(index).setAddress(symTab.at(label));
-                } else {
-                    listFile.at(index).hasError = true;
-                    listFile.at(index).errorMessge = "Not defined label, may be forward ref";
+                if(row.format!=4){
+                    LOCCTR = addHex(LOCCTR, "-3");
+                    string label = row.getOperand();
+                    int num = atoi(label.c_str());
+                    stringstream str;
+                    str << num;
+                    if (str.str().size() == label.size()) {
+                        listFile.at(index).setAddress(label);
+                    } else if (symTab.count(label)) {
+                        listFile.at(index).setAddress(symTab.at(label));
+                    } else {
+                        listFile.at(index).hasError = true;
+                        listFile.at(index).errorMessge = "Not defined label, may be forward ref";
+                    }
+                }else {
+                    listFile.at(index).hasError=true;
+                    listFile.at(index).errorMessge="+ before equ";
+                    LOCCTR = addHex(LOCCTR, "-4");
                 }
             } else if (row.getop_code().compare("org") == 0) {
-                string label = row.getOperand();
-                int num = atoi(label.c_str());
-                stringstream str;
-                str << num;
-                if (str.str().size() == label.size()) {
-                    LOCCTR = row.getOperand();
-                    index++;
-                    listFile.at(index).setAddress(LOCCTR);
-                } else if (symTab.count(label)) {
-                    LOCCTR = symTab.at(label);
-                    index++;
-                    listFile.at(index).setAddress(LOCCTR);
-                } else {
-                    LOCCTR=addHex(LOCCTR,"-3");
-                    listFile.at(index).hasError = true;
-                    listFile.at(index).errorMessge = "Not defined label, may be forward ref";
-                }
+
+                if (row.getLabel().compare("null")==0){
+
+                    if (row.format != 4) {
+                        string label = row.getOperand();
+                        int num = atoi(label.c_str());
+                        stringstream str;
+                        str << num;
+                        if (str.str().size() == label.size()) {
+                            LOCCTR = row.getOperand();
+                            index++;
+                            listFile.at(index).setAddress(LOCCTR);
+                            row = listFile.at(index);
+
+
+                        } else if (symTab.count(label)) {
+                            LOCCTR = symTab.at(label);
+                            index++;
+                            listFile.at(index).setAddress(LOCCTR);
+                            row = listFile.at(index);
+                        } else {
+                            LOCCTR = addHex(LOCCTR, "-3");
+                            listFile.at(index).hasError = true;
+                            listFile.at(index).errorMessge = "Not defined label, may be forward ref";
+                        }
+                    } else {
+                        listFile.at(index).hasError = true;
+                        listFile.at(index).errorMessge = "+ before org";
+                        LOCCTR = addHex(LOCCTR, "-4");
+                    }
+            }else {
+                listFile.at(index).hasError = true;
+                listFile.at(index).errorMessge = "There is a label before org";
+            }
             } else {
                 listFile.at(index).setAddress(LOCCTR);
             }
@@ -412,19 +491,19 @@ void Pass1 () {
     }
 
 
-        if (listFile.at(listFile.size()-1).getop_code().compare("end")!=0) {
-            Row r;
-            r.hasError = true;
-            r.errorMessge = "NO End Statement";
-            listFile.push_back(r);
+    if (listFile.at(listFile.size()-1).getop_code().compare("end")!=0) {
+        Row r;
+        r.hasError = true;
+        r.errorMessge = "NO End Statement";
+        listFile.push_back(r);
 
-        }
+    }
 
-        // TODO write last line to intermediate file
-        // TODO save (LOCCTR - Starting address) as program length
-        stringstream s;
-        s << -1 * atoi(startAdr.c_str());
-        string progLength = addHex(LOCCTR, s.str());
+    // TODO write last line to intermediate file
+    // TODO save (LOCCTR - Starting address) as program length
+    stringstream s;
+    s << -1 * atoi(startAdr.c_str());
+    string progLength = addHex(LOCCTR, s.str());
 
 }
 

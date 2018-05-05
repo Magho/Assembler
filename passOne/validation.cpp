@@ -33,6 +33,17 @@ int size = TheParsinglist.size();
             row.errorMessge = " more than the availaple words";
             row.hasError = true;
         }
+        if(    bool isEmptyLine = false){
+
+            row.errorMessge = " empty line";
+            row.hasError = true;
+        }
+        if(line.islabelStartWithNoChar){
+            row.errorMessge = "labelStartWithNoChar";
+            row.hasError = true;
+
+        }
+
        // cout<<line.NumofwORD <<"num"<<endl;
 
         // first check if it's a comment line
@@ -105,6 +116,14 @@ int size = TheParsinglist.size();
                     if (opT.opTable.at(temp).at(opT.opTable.at(temp).length() - 1) == '2') {
                         row.format = 2;
                     }
+                    if (opT.opTable.at(line.getWord1()).at(opT.opTable.at(line.getWord1()).length() - 1) == '1') {
+                        row.format = 1;
+                        row.setop_code(line.getWord1());
+                    } else if ( line.getWord1()!= "end"){
+                        row.hasError=true;
+                        row.errorMessge="syntax error : this op code should have operand";
+                    }
+
                 }else{
                     row.hasError=true;
                     row.errorMessge="syntax error : repeated op_code ";
@@ -138,9 +157,17 @@ int size = TheParsinglist.size();
                     if(row.getop_code().compare("null")==0) {
                         row.setop_code(line.getWord2());
                         string temp = line.getWord2();
-                        if (opT.opTable.at(temp).at(opT.opTable.at(temp).length() - 1) == '2') {
-                            row.format = 2;
+                        if (opT.opTable.at(temp).at(opT.opTable.at(temp).length() - 1) == '1' || line.getWord2()=="end") {
+                            row.format = 1;
+
+                        }else{
+
+                            row.hasError=true;
+                            row.errorMessge="syntax error : this opcode should have operand it's not format 1 ";
                         }
+
+
+
                     }else{
                         row.hasError=true;
                         row.errorMessge="syntax error : repeated op_code ";
@@ -157,19 +184,110 @@ int size = TheParsinglist.size();
 
                 /* end of the condition */
             } else {
+
                 // found
                 if(row.getop_code().compare("null")==0) {
                     row.setop_code(line.getWord1());
                     string temp = line.getWord1();
                     if (opT.opTable.at(temp).at(opT.opTable.at(temp).length()  - 1) == '2') {
                         row.format = 2;
+
+                        if (temp == "tixr" || temp == "clear"){
+
+                            if(line.getWord2().length()>1 ){
+                                row.hasError=true;
+                                row.errorMessge="syntax error : this opcode should has a register as operand";
+
+
+                            }else{
+
+                                if(line.getWord2()!="a" && line.getWord2()!="x" &&
+                                   line.getWord2()!="b" && line.getWord2()!="l" &&
+                                   line.getWord2()!="s" &&line.getWord2()!="t" &&
+                                   line.getWord2()!="f" ){
+
+                                    row.hasError=true;
+                                    row.errorMessge="syntax error : this opcode should has a register as operand";
+
+                                }
+
+                            }
+
+                        }
+
+
+
+
                     }
+
+
+                    if(line.getWord1()=="resw"  || line.getWord1()=="resb" || line.getWord1()=="word"){
+                        bool flag = false;
+                        for(int i=0; i<line.getWord2().length();i++){
+                        if(isalpha(line.getWord2().at(0))){
+                            flag = true ;
+                            break;
+                        }}
+                        if(flag){
+                            row.errorMessge = "after this opcode there should be integer";
+                            row.hasError= true;
+                        }
+                    }
+
+                    if(line.getWord1()=="byte"){
+
+                        if(line.getWord2().length()<4 &&(line.getWord2().at(0)!='c' || line.getWord2().at(0)!='x') ||line.getWord2().at(line.getWord2().length()-1)!='\'' ||line.getWord2().at(1)!='\'' ){
+                            row.errorMessge="syntax error  not  the right format c'sds'";
+                            row.hasError=true;
+                        }
+                    }
+
+
+
+
+
                 }else{
                     row.hasError=true;
                     row.errorMessge="syntax error : repeated op_code ";
                 }
 
                 if (opT.opTable.find(line.getWord2()) == opT.opTable.end()){
+
+                    if(line.getWord1()=="addr" || line.getWord1()=="compr" ||
+                       line.getWord1()=="divr" ||line.getWord1()=="mulr"||
+                       line.getWord1()=="rmo"|| line.getWord1()=="shiftl" ||
+                       line.getWord1()=="shiftr"|| line.getWord1()=="subr" ) {
+
+                        if (line.getWord2().find(',') == std::string::npos) {
+                            row.hasError= true;
+                            row.errorMessge = "syntax error  un correct way to type operand in that position";
+                        }else{
+                            if(line.getWord2().length() >3){
+                                row.hasError= true;
+                                row.errorMessge = "syntax error  this should be two registers in the way r1,r2";
+                            } else{
+                                if(line.getWord2().at(0)!='a' && line.getWord2().at(0)!='x' &&
+                                   line.getWord2().at(0)!='b' && line.getWord2().at(0)!='l' &&
+                                   line.getWord2().at(0)!='s' &&line.getWord2().at(0)!='t' &&
+                                   line.getWord2().at(0)!='f' ){
+                                    row.hasError= true;
+                                    row.errorMessge = "syntax error  this should be two registers in the way r1,r2";
+                                } else if(line.getWord2().at(2)!='a' && line.getWord2().at(2)!='x' &&
+                                         line.getWord2().at(2)!='b' && line.getWord2().at(2)!='l' &&
+                                         line.getWord2().at(2)!='s' &&line.getWord2().at(2)!='t' &&
+                                         line.getWord2().at(2)!='f' ){
+                                    row.hasError= true;
+                                    row.errorMessge = "syntax error  this should be two registers in the way r1,r2";
+                                }
+
+                            }
+                            row.setOperand(line.getWord2());
+                        }
+                    } else{
+                        row.setOperand(line.getWord2());
+                    }
+
+
                 row.setOperand(line.getWord2());} else{
                     row.hasError= true;
                     row.errorMessge = "syntax error  repeated opcode";
@@ -198,6 +316,30 @@ int size = TheParsinglist.size();
                     string temp = line.getWord2();
                     if (opT.opTable.at(temp).at(opT.opTable.at(temp).length() - 1) == '2') {
                         row.format = 2;
+
+                        if (temp == "tixr" || temp == "clear"){
+
+                            if(line.getWord3().length()>1 ){
+                                row.hasError=true;
+                                row.errorMessge="syntax error : this opcode should has a register as operand";
+
+
+                            }else{
+
+                                if(line.getWord3()!="a" && line.getWord3()!="x" &&
+                                   line.getWord3()!="b" && line.getWord3()!="l" &&
+                                   line.getWord3()!="s" &&line.getWord3()!="t" &&
+                                   line.getWord3()!="f" ){
+
+                                    row.hasError=true;
+                                    row.errorMessge="syntax error : this opcode should has a register as operand";
+
+                                }
+
+                            }
+
+                        }
+
                     }
                 }else{
                     row.hasError=true;
@@ -205,16 +347,88 @@ int size = TheParsinglist.size();
                 }
 
 
+                if (opT.opTable.find(line.getWord3()) == opT.opTable.end() && opT.opTable.find(line.getWord1()) == opT.opTable.end() ){
+
+                    if(line.getWord2()=="addr" || line.getWord2()=="compr" ||
+                       line.getWord2()=="divr" ||line.getWord2()=="mulr"||
+                       line.getWord2()=="rmo"|| line.getWord2()=="shiftl" ||
+                       line.getWord2()=="shiftr"|| line.getWord2()=="subr" ) {
+
+                        if (line.getWord3().find(',') == std::string::npos) {
+                            row.hasError= true;
+                            row.errorMessge = "syntax error  un correct way to type operand in that position";
+                        }else{
+
+                            if(line.getWord3().length() >3){
+                                row.hasError= true;
+                                row.errorMessge = "syntax error  this should be two registers in the way r1,r2";
+                            } else{
+                                if(line.getWord3().at(0)!='a' && line.getWord3().at(0)!='x' &&
+                                   line.getWord3().at(0)!='b' && line.getWord3().at(0)!='l' &&
+                                   line.getWord3().at(0)!='s' &&line.getWord3().at(0)!='t' &&
+                                   line.getWord3().at(0)!='f' ){
+                                    row.hasError= true;
+                                    row.errorMessge = "syntax error  this should be two registers in the way r1,r2";
+                                } else if(line.getWord3().at(2)!='a' && line.getWord3().at(2)!='x' &&
+                                          line.getWord3().at(2)!='b' && line.getWord3().at(2)!='l' &&
+                                          line.getWord3().at(2)!='s' &&line.getWord3().at(2)!='t' &&
+                                          line.getWord3().at(2)!='f' ){
+                                    row.hasError= true;
+                                    row.errorMessge = "syntax error  this should be two registers in the way r1,r2";
+                                }
+
+                            }
+
+
+
+
+                            //////////////////////////////////////
+                            row.setOperand(line.getWord3());
+                        }
+                    } else{
+                        row.setOperand(line.getWord3());
+                    }
+
+
                 row.setLabel(line.getWord1());
-
-
-
-                row.setOperand(line.getWord3());
                 if(line.getcomment()!= "null"){
                     row.setcomment(line.getcomment());
                 }
 
+            } else{
+                    row.hasError= true;
+                    row.setOperand(line.getWord3());
+                    row.setLabel(line.getWord1());
+
+                    row.errorMessge = "syntax error  opcode in false position";
+                }
             }
+
+            if(line.getWord2()=="resw"  || line.getWord2()=="resb" || line.getWord2()=="word"){
+                bool flag = false;
+                for(int i=0; i<line.getWord3().length();i++){
+                    if(isalpha(line.getWord3().at(0))){
+                        flag = true ;
+                        break;
+                    }}
+                if(flag){
+                    row.errorMessge = "after this opcode there should be integer";
+                    row.hasError= true;
+                }
+            }
+
+            if(line.getWord2()=="byte"){
+
+                if(line.getWord3().length()<4 &&(line.getWord3().at(0)!='c' || line.getWord3().at(0)!='x') ||line.getWord3().at(line.getWord3().length()-1)!='\'' ||line.getWord3().at(1)!='\'' ){
+                    row.errorMessge="syntax error  not  the right format c'sds'";
+                    row.hasError=true;
+                }
+            }
+
+
+
+
+
             validationRows.push_back(row);
 
 

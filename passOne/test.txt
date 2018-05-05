@@ -1,11 +1,12 @@
-.1234567890123456789
-prog   start 1000
-addr a,s
-loop    div #10
-add add
-+sta length
-sub max
-cloop equ 1066
-length resb 256
-max resw 3
-end
+.adding numbers
+PROB1    START   1000
+         LDX    #0
+         LDT    #48
+         LDS    #2
+LOOP     LDCH    BETA,X            dddddddddddddd kkkkk   kkkkk
+         SUBR    T,A
+         TIXRS
+ lop     org     10
+         JLT     LOOP
+BETA     BYTE    C'45      '
+         END     PROB1

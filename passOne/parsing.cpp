@@ -77,7 +77,14 @@ list<Line> parsing :: parisngFunction (string path) {
                         bbbb.NumofwORD = 3;
                     }
                     else {
-                        bbbb.isMoreThanFourWords = true;
+                        string str123 = "";
+                        for (int j = i; j < string1.size(); j++) {
+                            str123 = str123 + string1[j] + " ";
+                        }
+                        //remove the extra space at the end
+                        str123 = str123.substr(0,str123.size()-1);
+                        bbbb.setcomment(str123);
+
                         break;
                     }
                 }
@@ -95,9 +102,31 @@ list<Line> parsing :: parisngFunction (string path) {
 }
 
 size_t parsing :: split(const std::string &txt, std::vector<std::string> &strs, char ch) {
+
     strs.clear();
+
     for (int i = 0 ; i < txt.size() ; i++) {
         if (txt[i] != ' ' && txt[i] != '\t') {
+            if (txt.find("byte") != std::string::npos) {
+                if (txt[i] == 'c' && txt[i+1] == '\'') {
+                    int k  = i;
+                    i = i+2;
+                    while (txt[i] != '\'') {
+                        i++;
+                    }
+                    strs.push_back(txt.substr(k, i));
+                    break;
+                }
+                if (txt[i+1] == 'c' && txt[i+2] == '\'' && txt[i] == '.') {
+                    int k  = i;
+                    i = i+3;
+                    while (txt[i] != '\'') {
+                        i++;
+                    }
+                    strs.push_back(txt.substr(k, i));
+                    break;
+                }
+            }
             for (int j = i ; j < txt.size() ; j++ ) {
                 if (txt[j] == ' ' || txt[j] == '\t' ||( j == txt.size() -1) ) {
                     if (j == txt.size() -1) {
