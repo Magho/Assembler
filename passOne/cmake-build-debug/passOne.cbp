@@ -8,121 +8,131 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="E:/Assembler1/passOne/cmake-build-debug"/>
+				<Option working_dir="/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="passOne">
-				<Option output="E:/Assembler1/passOne/cmake-build-debug/passOne.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/Assembler1/passOne/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/include/c++"/>
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/include/c++/mingw32"/>
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/include/c++/backward"/>
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/include"/>
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/../../../../include"/>
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/include-fixed"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 passOne"/>
-					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="passOne/fast">
-				<Option output="E:/Assembler1/passOne/cmake-build-debug/passOne.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/Assembler1/passOne/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/include/c++"/>
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/include/c++/mingw32"/>
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/include/c++/backward"/>
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/include"/>
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/../../../../include"/>
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin/../lib/gcc/mingw32/4.9.2/include-fixed"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 passOne/fast"/>
-					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="E:/Assembler1/passOne/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="E:/Assembler1/passOne/cmake-build-debug"/>
+				<Option working_dir="/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/CODEBL~1/MinGW/bin/mingw32-make.exe -f &quot;E:/Assembler1/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="passOne">
+				<Option output="/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/passOne" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 passOne"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="passOne/fast">
+				<Option output="/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/passOne" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 passOne/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="E:/Assembler1/passOne/Line.cpp">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/Line.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/Line.h">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/Line.h">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/Row.cpp">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/Pass2.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/Row.h">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/Pass2.h">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/cmake-build-debug/Row.cpp">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/Row.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/main.cpp">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/Row.h">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/optable.cpp">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Row.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/optable.h">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/main.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/parsing.cpp">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/optable.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/parsing.h">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/optable.h">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/parsing_map.cpp">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/parsing.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/parsing_map.h">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/parsing.h">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/validation.cpp">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/parsing_map.cpp">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/validation.h">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/parsing_map.h">
 			<Option target="passOne"/>
 		</Unit>
-		<Unit filename="E:/Assembler1/passOne/CMakeLists.txt">
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/validation.cpp">
+			<Option target="passOne"/>
+		</Unit>
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/validation.h">
+			<Option target="passOne"/>
+		</Unit>
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
