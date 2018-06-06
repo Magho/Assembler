@@ -9,6 +9,7 @@
 
 using namespace std ;
 #include "Row.h"
+#include "litLine.h"
 #include "optable.h"
 #include "Line.h"
 #include "parsing.h"
@@ -31,6 +32,7 @@ int hexToDecimal(string hexa);
 void printFileList();
 static vector <Row> listFile ;
 map<string,string> symTab;
+vector<litLine> litTab;
 optable opTab;
 parsing parser;
 validation validate;
@@ -39,7 +41,7 @@ int main() {
 
 
     opTab.setTable();
-   list<Line> parsingList=parser.parisngFunction("/home/magho/workspaceC++/Assembler/passOne/test.txt");
+   list<Line> parsingList=parser.parisngFunction("D:\\pass_2\\passOne\\test.txt");
    int size = parsingList.size();
 
 
@@ -63,7 +65,7 @@ int main() {
 
 //    fillFileList();
     Pass1();
-    printFileList();
+   // printFileList();
     return 0;
 }
 list<Line>fillLine(){
@@ -418,6 +420,32 @@ void Pass1 () {
                 } else {
                     listFile.at(index).hasError = true;
                     listFile.at(index).errorMessge = "Invalid op-code";
+                }
+                if(listFile.at(index).getOperand().at(0)=='='){
+                    litLine line ;
+                    line.setLiteral(listFile.at(index).getOperand());
+                    //set Length and value of literal
+                    if(listFile.at(index).getOperand().at(1)=='c'){
+                        line.setLength(decimalToHex(listFile.at(index).getOperand().size()-4));
+                        string str=listFile.at(index).getOperand();
+                        string hexStr="";
+                        for(std::string::size_type i = 3; i < str.size()-1; ++i) {
+                            hexStr+=decimalToHex(int(str[i]));
+                        }
+                        line.setValue(hexStr);
+                    }else if (listFile.at(index).getOperand().at(1)=='x'){
+                        if(((listFile.at(index).getOperand().size() - 4) % 2) == 0) {
+                            line.setLength(decimalToHex((listFile.at(index).getOperand().size()-4)/2));
+                            string str = listFile.at(index).getOperand().substr(3,hexToDecimal(line.getLength())*2);
+                            line.setValue(str);
+                        } else{
+                            listFile.at(index).hasError = true;
+                            listFile.at(index).errorMessge = "The hexidecimal value has an odd numbers of digits";
+                        }
+                    }
+                    litTab.push_back(line);
+
+                    cout<<"literalssss"<<line.getLength()<<line.getLiteral()<<line.getValue();
                 }
             }
 

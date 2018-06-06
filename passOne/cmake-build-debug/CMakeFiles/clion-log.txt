@@ -1,5 +1,5 @@
-/home/magho/Programs/clion-2018.1.1/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/magho/workspaceC++/Assembler/passOne
+D:\cDrive\CLion\bin\cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" D:\pass_2\passOne
 -- Configuring done
-Warning: Source file "/home/magho/workspaceC++/Assembler/passOne/Row.cpp" is listed multiple times for target "passOne".
+Warning: Source file "D:/pass_2/passOne/Row.cpp" is listed multiple times for target "passOne".
 -- Generating done
--- Build files have been written to: /home/magho/workspaceC++/Assembler/passOne/cmake-build-debug
+-- Build files have been written to: D:/pass_2/passOne/cmake-build-debug

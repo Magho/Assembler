@@ -1,7 +1,7 @@
 .adding numbers
 PROB1    START   1000
          LDX    #0
-         LDT    #48
+         LDT    =c'rita'
          LDS    #2
 LOOP     LDCH    BETA,X            dddddddddddddd kkkkk   kkkkk
          SUBR    T,A
@@ -9,4 +9,4 @@ LOOP     LDCH    BETA,X            dddddddddddddd kkkkk   kkkkk
  lop     org     10
          JLT     LOOP
 BETA     BYTE    C'45      '
-         END     PROB1
+         end     PROB1

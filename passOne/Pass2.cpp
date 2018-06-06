@@ -34,17 +34,17 @@ void Pass2::pass2Algoritm(vector<Row> listFile) {
             startAddressAtEndStatment = 0;
 
             if (listFile[i].getOperand() != "null") {
-                startAddressAtEndStatment = std::stoi(listFile[i].getOperand());
+               // startAddressAtEndStatment = std::stoi(listFile[i].getOperand());
             }
 
             nameOfProg = listFile[i].getLabel();
 
         }else if (startsWith(listFile[i].getop_code(), "end")) {
             if (listFile[i].getOperand() != "null") {
-                startAddressAtEndStatment = std::stoi(listFile[i].getOperand());
+             //   startAddressAtEndStatment = std::stoi(listFile[i].getOperand());
             }
 
-            lengthOfProg = std::stoi(listFile[i].getAddress()) - startAddressAtEndStatment;
+         //   lengthOfProg = std::stoi(listFile[i].getAddress()) - startAddressAtEndStatment;
         }
 
         else if (startsWith(listFile[i].getop_code(), "base")) {
@@ -68,9 +68,9 @@ void Pass2::pass2Algoritm(vector<Row> listFile) {
 
 
 
-        int currentAddress = std::stoi(listFile[i].getAddress());
+        //int currentAddress = std::stoi(listFile[i].getAddress());
         format = formatType(listFile[i].getop_code());
-        pc = calcPC(currentAddress, format);
+        //pc = calcPC(currentAddress, format);
 
 
 
