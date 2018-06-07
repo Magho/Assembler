@@ -2,10 +2,11 @@
 PROB1    START   1000
          LDX    #0
          LDT    =c'rita'
+         lda    =x'05'
          LDS    #2
+         ltorg
 LOOP     LDCH    BETA,X            dddddddddddddd kkkkk   kkkkk
          SUBR    T,A
-         TIXRS
  lop     org     10
          JLT     LOOP
 BETA     BYTE    C'45      '

@@ -25,6 +25,7 @@ void Pass1();
 void fillFileList();
 list<Line> fillLine();
 bool checkIfSymbolDefinedBefore(string symbol);
+bool checkIfLiteralDefinedBefore(string litValue);
 bool searchOPTABForOPCODE (string OPCODE);
 string addHex(string hex1,string hex2);
 string decimalToHex(int decimal);
@@ -65,7 +66,7 @@ int main() {
 
 //    fillFileList();
     Pass1();
-   // printFileList();
+    printFileList();
     return 0;
 }
 list<Line>fillLine(){
@@ -360,7 +361,7 @@ void Pass1 () {
                         listFile.at(index).errorMessge = "The Label already exists";
                         goto h;
                     } else {
-                        if(row.getop_code().compare("equ")==0){
+                        if (row.getop_code().compare("equ") == 0) {
                             string label = row.getOperand();
                             int num = atoi(label.c_str());
                             stringstream str;
@@ -375,7 +376,7 @@ void Pass1 () {
                             }
 
 
-                        }else {
+                        } else {
                             symTab.insert(pair<string, string>(row.getLabel(), LOCCTR));
                         }
                     }
@@ -417,10 +418,24 @@ void Pass1 () {
                             break;
                     }
 
-                } else {
+                } else if (row.getop_code().compare("ltorg")==0){
+
+                    for(int i=0;i<litTab.size();i++){
+                        litTab.at(i).setAddress(LOCCTR);
+                        Row row;
+                        row.setAddress(LOCCTR);
+                        row.setop_code(litTab.at(i).getLiteral());
+                        row.setOperand(litTab.at(i).getValue());
+                        listFile.insert(listFile.begin() + (index+1), row);
+                        LOCCTR=addHex(LOCCTR,litTab.at(i).getLength());
+                        index++;
+                    }
+
+                }else {
                     listFile.at(index).hasError = true;
                     listFile.at(index).errorMessge = "Invalid op-code";
                 }
+                //literals
                 if(listFile.at(index).getOperand().at(0)=='='){
                     litLine line ;
                     line.setLiteral(listFile.at(index).getOperand());
@@ -443,9 +458,10 @@ void Pass1 () {
                             listFile.at(index).errorMessge = "The hexidecimal value has an odd numbers of digits";
                         }
                     }
-                    litTab.push_back(line);
-
-                    cout<<"literalssss"<<line.getLength()<<line.getLiteral()<<line.getValue();
+                    if(!checkIfLiteralDefinedBefore(line.getValue())){
+                        litTab.push_back(line);
+                        cout<<"literalssss"<<litTab.at(0).getLength();
+                    }
                 }
             }
 
@@ -516,6 +532,20 @@ void Pass1 () {
             r.errorMessge = "NO End Statement";
             listFile.push_back(r);
 
+        }else {
+
+            for(int i=0;i<litTab.size();i++){
+                if(litTab.at(i).getAddress().compare("null")==0){
+                    litTab.at(i).setAddress(LOCCTR);
+                    Row row;
+                    row.setAddress(LOCCTR);
+                    row.setop_code(litTab.at(i).getLiteral());
+                    row.setOperand(litTab.at(i).getValue());
+                    listFile.push_back(row);
+                    LOCCTR=addHex(LOCCTR,litTab.at(i).getLength());
+                }
+            }
+
         }
 
         // TODO write last line to intermediate file
@@ -528,6 +558,14 @@ void Pass1 () {
 
 bool checkIfSymbolDefinedBefore(string symbol) {
     return symTab.count(symbol);
+}
+bool checkIfLiteralDefinedBefore(string litValue) {
+    for(int i=0;i<litTab.size();i++){
+        if(litTab.at(i).getValue().compare(litValue)==0){
+            return true;
+        }
+    }
+    return false;
 }
 
 bool searchOPTABForOPCODE(string OPCODE) {
