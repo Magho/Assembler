@@ -13,6 +13,7 @@ using namespace std ;
 #include "Line.h"
 #include "parsing.h"
 #include "validation.h"
+#include "Pass2.h"
 
 
 //
@@ -34,6 +35,7 @@ map<string,string> symTab;
 optable opTab;
 parsing parser;
 validation validate;
+Pass2 pass2;
 
 int main() {
 
@@ -64,6 +66,10 @@ int main() {
 //    fillFileList();
     Pass1();
     printFileList();
+
+    // test pass2
+    pass2.test(listFile);
+
     return 0;
 }
 list<Line>fillLine(){
