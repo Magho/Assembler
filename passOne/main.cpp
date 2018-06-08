@@ -71,7 +71,8 @@ int main() {
 
 
      //test pass2
-     pass2.pass2Algoritm(listFile, symTab);
+     //pass2.test(listFile);
+     //pass2.pass2Algoritm(listFile, symTab);
 
     return 0;
 }

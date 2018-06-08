@@ -122,7 +122,7 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable) {
 
                 } else {
                     //direct
-                    string opr = listFile[i].getOperand().substr(1);
+                    string opr = listFile[i].getOperand().substr(0);
                     int operation = std::stoi(optable1.getOptable(listFile[i].getop_code()), nullptr, 16);
                     operation = operation | (1 << 1); // set n's bit
                     operation = operation | (1 << 0); // set i's bit
@@ -130,6 +130,7 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable) {
                     obj <<= 4;
                     if (format == 4) obj |= 1;//set e's bit
                     if (endWith(listFile[i].getOperand(), ",x")) {
+                        opr = opr.substr(0,opr.size()-2);
                         obj |= (1 << 3);//seting x's bit
                     }
                     int addr = std::stoi(symTable[opr], nullptr, 16);
@@ -288,8 +289,8 @@ void Pass2:: test(vector <Row> listFile){
 
     int sss ;
 
-    string ss = "12'";
-    cout<< word_operand(ss);
+    string ss = "beta,x";
+    cout<< ss.substr(0, ss.size()-2);
 
 
     cout << "***********************************************\n";

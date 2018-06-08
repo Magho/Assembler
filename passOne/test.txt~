@@ -1,9 +1,7 @@
-TERMPROJ START 3A0
-.THIS IS A COMMENT LINE
-LBL1 BYTE C'ABCDEF' .dasdasdasd sa saas assa assa
-LBL2 RESB 4  sa  sa
-LBL2 RESW 1
-TOP LDA ZERO
-LDX #INDEX
-
-
+.adding numbers
+PROB1    START   1000
+LOOP     LDCH    BETA,X            dddddddddddddd kkkkk   kkkkk
+ lop     org     10
+         JLT     LOOP
+BETA     BYTE    C'45      '
+         end     PROB1
