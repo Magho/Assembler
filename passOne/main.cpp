@@ -68,11 +68,11 @@ int main() {
 //    fillFileList();
     Pass1();
 
+
     printFileList();
 
     // test pass2
     pass2.test(listFile);
-
 
     return 0;
 }
