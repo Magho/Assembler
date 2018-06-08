@@ -4,18 +4,21 @@
 
 #include "Pass2.h"
 #include "parsing.h"
+#include "optable.h"
 #include <bits/stdc++.h>
 
-void Pass2::pass2Algoritm(vector<Row> listFile) {
+void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,map<string,string> litTable) {
 
     vector<string> objectcodes;
     int pc ;
+    int base = -1;
     int format ;
     int n,i,x,b,p,e;
     string nameOfProg;
     int lengthOfProg;
     int startAddressAtEndStatment;
     int startAddressAtStartStatment;
+
 
     for (int i = 0; i < listFile.size(); ++i) {
 
@@ -42,6 +45,10 @@ void Pass2::pass2Algoritm(vector<Row> listFile) {
                 //TODO need to know that base is avaliable
                 object_code = base_operand(listFile[i]);
 
+        
+
+        
+
             } else if (startsWith(listFile[i].getop_code(), "ltorg")) {
                 object_code = ltorg_operand(listFile[i]);
 
@@ -60,39 +67,81 @@ void Pass2::pass2Algoritm(vector<Row> listFile) {
                 object_code = resb_operand(listFile[i]);
 
             } else {
+                    int currentAddress = std::stoi(listFile[i].getAddress());
+                    format = formatType(listFile[i].getop_code());
+                    pc = calcPC(currentAddress, format);
 
+
+        // determine addressing mode
+                    if (startsWith(listFile[i].getOperand(), "#")) {
+            //immediate
+                        string opr = listFile[i].getOperand().substr(1);
+                        int operation = std::stoi(listFile[i].getop_code(),nullptr,16);
+                        operation = opertion | (1);
+                        operation = operation && ~(1 << 1)
+                        int obj = operation;
+                        obj <<=1*4;
+                        if(format == 4) obj |= 1;
+                        obj <<=4*3;
+                        if(!isdigit(opr.c_str()[0])){
+                            int addr = std::stoi(symTable[opr],nullptr,16);
+                            obj |= (addr&((1<<12)-1));
+                        }else{
+                            obj |= (std::stoi(opr) & ((1<<12)-1));
+                        }
+            //itoa(obj,string,16)
+                    } else if (startsWith(listFile[i].getOperand(), "@")) {
+            //indirect
+                    string opr = listFile[i].getOperand().substr(1);
+                    int operation = std::stoi(listFile[i].getop_code(),nullptr,16);
+                    operation = operation | (1 << 1); // set n's bit
+                    operation = operation & ~(1);//clear i's bit
+                    int obj = operation;
+                    obj <<= 4;
+                    if(format == 4) obj |= 1;
+                    if (endWith(listFile[i].getOperand(), ",x")) {
+                        obj |= (1<<3);
+                    }
+
+                    int addr = std::stoi(symTable[opr],nullptr,16);
+                    int disp = addr - pc;
+                    if(!(disp<1024&&disp>=-1024)&& base != -1){
+                        //using base
+                        disp = addr - base;
+                        obj |= (1<<2);
+                    }else{
+                        obj |= (1<<1);
+                    }
+                    obj <<=4*3;
+                    obj |= (disp &((1<<12)-1));
+
+                    } else {
+                        //direct
+                        string opr = listFile[i].getOperand().substr(1);
+                        int operation = std::stoi(listFile[i].getop_code(),nullptr,16);
+                        operation = operation | (1 << 1); // set n's bit
+                        operation = operation | (1 << 0); // set i's bit
+                        int obj = operation;
+                        obj <<= 4;
+                        if(format == 4) obj |= 1;//set e's bit
+                        if (endWith(listFile[i].getOperand(), ",x")) {
+                            obj |= (1<<3);//seting x's bit
+                        }
+                        int addr = std::stoi(symTable[opr],nullptr,16);
+                        int disp = addr - pc;
+                        if(!(disp<1024&&disp>=-1024)&& base != -1){
+                            //using base
+                            disp = addr - base;
+                            obj |= (1<<2);
+                        }else{
+                            obj |= (1<<1);
+                        }
+                        obj <<=4*3;
+                        obj |= (disp &((1<<12)-1));
+                    }
+
+                }       
             }
-
-            int currentAddress = std::stoi(listFile[i].getAddress());
-            format = formatType(listFile[i].getop_code());
-            pc = calcPC(currentAddress, format);
-
-
-
-            // determine addressing mode
-            if (startsWith(listFile[i].getOperand(), "#")) {
-                //immediate
-                n = 0;
-                i = 1;
-                x = 0;
-            } else if (startsWith(listFile[i].getOperand(), "@")) {
-                //indirect
-                n = 1;
-                i = 0;
-                x = 0;
-            } else {
-                //direct
-                n = 1;
-                i = 1;
-                if (endWith(listFile[i].getOperand(), ",x")) {
-                    //indexed
-                    x = 1;
-                }
-            }
-
-
-        }
-
     }
 }
 
@@ -134,6 +183,7 @@ int Pass2 :: calcPC (int currentAddress, int format) {
     }
     return pc;
 }
+
 
 string Pass2:: string_to_hex(const std::string& input) {
     static const char* const lut = "0123456789ABCDEF";
@@ -239,4 +289,3 @@ void Pass2:: test(vector <Row> listFile){
     cout << "***********************************************\n";
 
 }
-
