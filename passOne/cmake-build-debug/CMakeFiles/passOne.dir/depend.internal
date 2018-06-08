@@ -9,14 +9,19 @@ CMakeFiles/passOne.dir/Pass2.cpp.o
  /home/magho/workspaceC++/Assembler/passOne/Pass2.cpp
  /home/magho/workspaceC++/Assembler/passOne/Pass2.h
  /home/magho/workspaceC++/Assembler/passOne/Row.h
+ /home/magho/workspaceC++/Assembler/passOne/optable.h
  /home/magho/workspaceC++/Assembler/passOne/parsing.h
 CMakeFiles/passOne.dir/Row.cpp.o
  /home/magho/workspaceC++/Assembler/passOne/Row.h
  /home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Row.cpp
+CMakeFiles/passOne.dir/litLine.cpp.o
+ /home/magho/workspaceC++/Assembler/passOne/litLine.cpp
+ /home/magho/workspaceC++/Assembler/passOne/litLine.h
 CMakeFiles/passOne.dir/main.cpp.o
  /home/magho/workspaceC++/Assembler/passOne/Line.h
  /home/magho/workspaceC++/Assembler/passOne/Pass2.h
  /home/magho/workspaceC++/Assembler/passOne/Row.h
+ /home/magho/workspaceC++/Assembler/passOne/litLine.h
  /home/magho/workspaceC++/Assembler/passOne/main.cpp
  /home/magho/workspaceC++/Assembler/passOne/optable.h
  /home/magho/workspaceC++/Assembler/passOne/parsing.h

@@ -8,6 +8,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 #include "Row.h"
 
 using namespace std ;
@@ -18,7 +19,7 @@ private:
 
 public:
 
-    void pass2Algoritm(vector <Row> listFile);
+    void pass2Algoritm(vector<Row> listFile,map<string,string> symTable);
     bool startsWith (string line, string charsStartWith);
     bool endWith (string line, string charsStartWith);
     int formatType (string opcode);
@@ -32,7 +33,7 @@ public:
     string word_operand(string operand);
     string start_operand(int& startAddressAtStartStatment,string& nameOfProg , Row entry);
     string end_operand(int& startAddressAtStartStatment,int& startAddressAtEndStatment, int& lengthOfProg , Row entry);
-    string base_operand(Row entry);
+    string base_operand(Row entry, int& base, map<string, string> symTable);
     string ltorg_operand(Row entry);
     string equ_operand(Row entry);
     string org_operand(Row entry);

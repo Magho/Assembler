@@ -1,18 +1,20 @@
 line   Address     Label    Opcode  Operands   Comment
 0      1000       prob1    start   1000       
 1      1000                ldx     #0         
-2      1003                 ldt     #48        
-3      1006                 lds     #2         
-4      1009        loop     ldch    beta,x    dddddddddddddd kkkkk kkkkk  
-5      100c                 subr    t,a        
-          ****Error:syntax error  this should be two registers in the way r1,r2
-6      100c                                     
+2      1003                 ldt     =c'rita'   
+3      1006                 lda     =x'05'     
+          ****Error:The hexidecimal value has an odd numbers of digits
+4      1009                 lds     #2         
+5      100c                                     
           ****Error: No op_code is exist
-7      100c        lop      org     10         
-8      100f                 jlt     loop       
-9      1012        beta     byte    c'45      '  
+6      100c        loop     ldch    beta,x    dddddddddddddd kkkkk kkkkk  
+7      100f                 subr    t,a        
+          ****Error:syntax error  this should be two registers in the way r1,r2
+8      100f        lop      org     10         
+9      1012                 jlt     loop       
+10     1015        beta     byte    c'45      '  
           ****Error:syntax error  not  the right format c'sds'
-10     1012                 end     prob1       
+11     1015                 end     prob1       
 
 
 --------------------------------
@@ -20,9 +22,9 @@ line   Address     Label    Opcode  Operands   Comment
 --------------------------------
 |Label           |   Address   |
 --------------------------------
-|loop            |      1009   |
+|loop            |      100c   |
 --------------------------------
-|lop             |      100c   |
+|lop             |      100f   |
 --------------------------------
 |prob1           |     1000   |
 --------------------------------

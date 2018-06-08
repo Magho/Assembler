@@ -9,29 +9,29 @@ void optable :: setTable (void){
 
     opTable.insert(pair<string, string>("addf", "58"));
 
-    opTable.insert(pair<string, string>("addr", "90/2"));
+    opTable.insert(pair<string, string>("addr", "90"));
 
     opTable.insert(pair<string, string>("and", "40"));
 
-    opTable.insert(pair<string, string>("clear","B4/2"));
+    opTable.insert(pair<string, string>("clear","B4"));
 
     opTable.insert(pair<string, string>("comp", "28"));
 
     opTable.insert(pair<string, string>("compf", "88"));
 
-    opTable.insert(pair<string, string>("compr", "a0/2"));
+    opTable.insert(pair<string, string>("compr", "a0"));
 
     opTable.insert(pair<string, string>("div", "24"));
 
     opTable.insert(pair<string, string>("divf", "64"));
 
-    opTable.insert(pair<string, string>("divr", "9c/2"));
+    opTable.insert(pair<string, string>("divr", "9c"));
 
-    opTable.insert(pair<string, string>("fix", "c4/1"));
+    opTable.insert(pair<string, string>("fix", "c4"));
 
-    opTable.insert(pair<string, string>("float", "c0/1"));
+    opTable.insert(pair<string, string>("float", "c0"));
 
-    opTable.insert(pair<string, string>("hio", "f4/1"));
+    opTable.insert(pair<string, string>("hio", "f4"));
 
     opTable.insert(pair<string, string>("j", "3c"));
 
@@ -65,23 +65,23 @@ void optable :: setTable (void){
 
     opTable.insert(pair<string, string>("mulf", "60"));
 
-    opTable.insert(pair<string, string>("mulr", "98/2"));
+    opTable.insert(pair<string, string>("mulr", "98"));
 
-    opTable.insert(pair<string, string>("norm", "c8/1"));
+    opTable.insert(pair<string, string>("norm", "c8"));
 
     opTable.insert(pair<string, string>("or", "44"));
 
     opTable.insert(pair<string, string>("rd", "d8"));
 
-    opTable.insert(pair<string, string>("rmo", "ac/2"));
+    opTable.insert(pair<string, string>("rmo", "ac"));
 
     opTable.insert(pair<string, string>("rsub", "4c"));
 
-    opTable.insert(pair<string, string>("shiftl", "a4/2"));
+    opTable.insert(pair<string, string>("shiftl", "a4"));
 
-    opTable.insert(pair<string, string>("shiftr", "a8/2"));
+    opTable.insert(pair<string, string>("shiftr", "a8"));
 
-    opTable.insert(pair<string, string>("sio", "f0/1"));
+    opTable.insert(pair<string, string>("sio", "f0"));
 
     opTable.insert(pair<string, string>("ssk", "ec"));
 
@@ -109,17 +109,17 @@ void optable :: setTable (void){
 
     opTable.insert(pair<string, string>("subf", "5c"));
 
-    opTable.insert(pair<string, string>("subr", "94/2"));
+    opTable.insert(pair<string, string>("subr", "94"));
 
-    opTable.insert(pair<string, string>("svc", "b0/2"));
+    opTable.insert(pair<string, string>("svc", "b0"));
 
     opTable.insert(pair<string, string>("td", "e0"));
 
-    opTable.insert(pair<string, string>("tio", "f8/1"));
+    opTable.insert(pair<string, string>("tio", "f8"));
 
     opTable.insert(pair<string, string>("tix", "2c"));
 
-    opTable.insert(pair<string, string>("tixr", "b8/2"));
+    opTable.insert(pair<string, string>("tixr", "b8"));
 
     opTable.insert(pair<string, string>("wd", "dc"));
 
@@ -133,8 +133,6 @@ void optable :: setTable (void){
     opTable.insert(pair<string, string>("org", "nothing"));
 }
 
-string optable::getOptable(String str){
+string optable::getOptable(string str){
     return opTable[str];
 }
-
-

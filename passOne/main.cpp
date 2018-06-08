@@ -43,7 +43,7 @@ int main() {
 
 
    opTab.setTable();
-   list<Line> parsingList=parser.parisngFunction("test.txt");
+   list<Line> parsingList=parser.parisngFunction("/home/magho/workspaceC++/Assembler/passOne/test.txt");
    int size = parsingList.size();
 
 
@@ -67,12 +67,11 @@ int main() {
 
 //    fillFileList();
     Pass1();
-
-
     printFileList();
 
-    // test pass2
-    pass2.test(listFile);
+
+     //test pass2
+     pass2.pass2Algoritm(listFile, symTab);
 
     return 0;
 }

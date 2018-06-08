@@ -21,13 +21,23 @@ Pass2.h
 /home/magho/workspaceC++/Assembler/passOne/Pass2.h
 parsing.h
 /home/magho/workspaceC++/Assembler/passOne/parsing.h
+optable.h
+/home/magho/workspaceC++/Assembler/passOne/optable.h
 bits/stdc++.h
+/home/magho/workspaceC++/Assembler/passOne/bits/stdc++.h
+optable.h
+/home/magho/workspaceC++/Assembler/passOne/optable.h
+string
+-
+iostream
 -
 
 /home/magho/workspaceC++/Assembler/passOne/Pass2.h
 string
 -
 vector
+-
+map
 -
 Row.h
 /home/magho/workspaceC++/Assembler/passOne/Row.h
@@ -39,6 +49,16 @@ string
 /home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Row.cpp
 ../Row.h
 /home/magho/workspaceC++/Assembler/passOne/Row.h
+
+/home/magho/workspaceC++/Assembler/passOne/litLine.cpp
+litLine.h
+/home/magho/workspaceC++/Assembler/passOne/litLine.h
+
+/home/magho/workspaceC++/Assembler/passOne/litLine.h
+cstring
+-
+string
+-
 
 /home/magho/workspaceC++/Assembler/passOne/main.cpp
 iostream
@@ -59,6 +79,8 @@ cstdio
 -
 Row.h
 /home/magho/workspaceC++/Assembler/passOne/Row.h
+litLine.h
+/home/magho/workspaceC++/Assembler/passOne/litLine.h
 optable.h
 /home/magho/workspaceC++/Assembler/passOne/optable.h
 Line.h
