@@ -105,6 +105,12 @@
 		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Row.cpp">
 			<Option target="passOne"/>
 		</Unit>
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/litLine.cpp">
+			<Option target="passOne"/>
+		</Unit>
+		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/litLine.h">
+			<Option target="passOne"/>
+		</Unit>
 		<Unit filename="/home/magho/workspaceC++/Assembler/passOne/main.cpp">
 			<Option target="passOne"/>
 		</Unit>

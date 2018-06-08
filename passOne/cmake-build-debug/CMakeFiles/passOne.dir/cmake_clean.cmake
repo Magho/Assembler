@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/passOne.dir/Line.cpp.o"
   "CMakeFiles/passOne.dir/parsing.cpp.o"
   "CMakeFiles/passOne.dir/Pass2.cpp.o"
+  "CMakeFiles/passOne.dir/litLine.cpp.o"
   "passOne.pdb"
   "passOne"
 )

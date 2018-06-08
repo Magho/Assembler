@@ -131,6 +131,7 @@ void optable :: setTable (void){
     opTable.insert(pair<string, string>("start", "null"));
     opTable.insert(pair<string, string>("equ", "nothing"));
     opTable.insert(pair<string, string>("org", "nothing"));
+    opTable.insert(pair<string, string>("ltorg", "null"));
 
 
 

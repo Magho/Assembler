@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/magho/workspaceC++/Assembler/passOne/Line.cpp" "/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/CMakeFiles/passOne.dir/Line.cpp.o"
   "/home/magho/workspaceC++/Assembler/passOne/Pass2.cpp" "/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/CMakeFiles/passOne.dir/Pass2.cpp.o"
   "/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Row.cpp" "/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/CMakeFiles/passOne.dir/Row.cpp.o"
+  "/home/magho/workspaceC++/Assembler/passOne/litLine.cpp" "/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/CMakeFiles/passOne.dir/litLine.cpp.o"
   "/home/magho/workspaceC++/Assembler/passOne/main.cpp" "/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/CMakeFiles/passOne.dir/main.cpp.o"
   "/home/magho/workspaceC++/Assembler/passOne/optable.cpp" "/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/CMakeFiles/passOne.dir/optable.cpp.o"
   "/home/magho/workspaceC++/Assembler/passOne/parsing.cpp" "/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/CMakeFiles/passOne.dir/parsing.cpp.o"

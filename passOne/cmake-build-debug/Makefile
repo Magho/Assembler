@@ -207,6 +207,33 @@ Row.cpp.s:
 	$(MAKE) -f CMakeFiles/passOne.dir/build.make CMakeFiles/passOne.dir/Row.cpp.s
 .PHONY : Row.cpp.s
 
+litLine.o: litLine.cpp.o
+
+.PHONY : litLine.o
+
+# target to build an object file
+litLine.cpp.o:
+	$(MAKE) -f CMakeFiles/passOne.dir/build.make CMakeFiles/passOne.dir/litLine.cpp.o
+.PHONY : litLine.cpp.o
+
+litLine.i: litLine.cpp.i
+
+.PHONY : litLine.i
+
+# target to preprocess a source file
+litLine.cpp.i:
+	$(MAKE) -f CMakeFiles/passOne.dir/build.make CMakeFiles/passOne.dir/litLine.cpp.i
+.PHONY : litLine.cpp.i
+
+litLine.s: litLine.cpp.s
+
+.PHONY : litLine.s
+
+# target to generate assembly for a file
+litLine.cpp.s:
+	$(MAKE) -f CMakeFiles/passOne.dir/build.make CMakeFiles/passOne.dir/litLine.cpp.s
+.PHONY : litLine.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -360,6 +387,9 @@ help:
 	@echo "... Row.o"
 	@echo "... Row.i"
 	@echo "... Row.s"
+	@echo "... litLine.o"
+	@echo "... litLine.i"
+	@echo "... litLine.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

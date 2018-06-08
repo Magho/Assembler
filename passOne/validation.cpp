@@ -116,7 +116,7 @@ int size = TheParsinglist.size();
                     if (opT.opTable.at(temp).at(opT.opTable.at(temp).length() - 1) == '2') {
                         row.format = 2;
                     }
-                    if (opT.opTable.at(line.getWord1()).at(opT.opTable.at(line.getWord1()).length() - 1) == '1') {
+                    if (opT.opTable.at(line.getWord1()).at(opT.opTable.at(line.getWord1()).length() - 1) == '1'||row.getop_code()=="ltorg") {
                         row.format = 1;
                         row.setop_code(line.getWord1());
                     } else if ( line.getWord1()!= "end"){

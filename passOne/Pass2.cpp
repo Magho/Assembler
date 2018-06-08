@@ -37,6 +37,7 @@ void Pass2::pass2Algoritm(vector<Row> listFile) {
                 object_code = end_operand(startAddressAtStartStatment,startAddressAtEndStatment,
                                           lengthOfProg ,listFile[i]);
 
+
             } else if (startsWith(listFile[i].getop_code(), "base")) {
                 //TODO need to know that base is avaliable
                 object_code = base_operand(listFile[i]);
@@ -62,17 +63,9 @@ void Pass2::pass2Algoritm(vector<Row> listFile) {
 
             }
 
-
-
-
             int currentAddress = std::stoi(listFile[i].getAddress());
             format = formatType(listFile[i].getop_code());
             pc = calcPC(currentAddress, format);
-
-
-
-
-
 
 
 
