@@ -23,6 +23,7 @@ public:
     int format=3;
     bool hasError=false;
     bool isComment=false;
+    bool isExpression= false;
     void setLabel(string );
     string getLabel ();
     void setOperand (string);

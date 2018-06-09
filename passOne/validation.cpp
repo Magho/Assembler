@@ -20,7 +20,7 @@ list<Row> validation ::getValidationList() {
 
 void validation ::validate() {
 
-int size = TheParsinglist.size();
+    int size = TheParsinglist.size();
 
     for (int i = 0; i < size; i++) {
 
@@ -44,11 +44,11 @@ int size = TheParsinglist.size();
 
         }
 
-       // cout<<line.NumofwORD <<"num"<<endl;
+        // cout<<line.NumofwORD <<"num"<<endl;
 
         // first check if it's a comment line
 
-      // cout<< line.getWord1()<<" "<<line.getWord2()<<" " <<line.getWord3()<<line.NumofwORD<<endl;
+        // cout<< line.getWord1()<<" "<<line.getWord2()<<" " <<line.getWord3()<<line.NumofwORD<<endl;
 
         int counter =0;
         if(line.getWord1().length()>0&&line.getWord1().at(0)=='+'){
@@ -116,12 +116,11 @@ int size = TheParsinglist.size();
                     if (opT.opTable.at(temp).at(opT.opTable.at(temp).length() - 1) == '2') {
                         row.format = 2;
                     }
-                    if (opT.opTable.at(line.getWord1()).at(opT.opTable.at(line.getWord1()).length() - 1) == '1'||row.getop_code()=="ltorg"||row.getop_code()=="rsub") {
-                    	if(row.getop_code()=="rsub"){
-                    	    row.format = 3;
-                    	}else {
-                    	    row.format = 1;
-                    	}
+                    if (opT.opTable.at(line.getWord1()).at(opT.opTable.at(line.getWord1()).length() - 1) == '1'||row.getop_code()=="ltorg" ||row.getop_code()=="rsub"  ) {
+                        if(row.getop_code()=="rsub"){
+                            row.format=3;
+                        }else{
+                            row.format = 1;}
                         row.setop_code(line.getWord1());
                     } else if ( line.getWord1()!= "end"){
                         row.hasError=true;
@@ -137,14 +136,14 @@ int size = TheParsinglist.size();
 
                 if(line.getcomment()!= "null"){
                     row.setcomment(line.getcomment());
-                    }
+                }
 
             }
 
             validationRows.push_back(row);
 
 
-            } else if (line.NumofwORD == 2 ){
+        } else if (line.NumofwORD == 2 ){
 
             if (opT.opTable.find(line.getWord1()) == opT.opTable.end()) {
 
@@ -175,14 +174,14 @@ int size = TheParsinglist.size();
                     }else{
                         row.hasError=true;
                         row.errorMessge="syntax error : repeated op_code ";
-                     //   validationRows.push_back(row);
+                        //   validationRows.push_back(row);
 
                     }
                     row.setLabel(line.getWord1());
                     if(line.getcomment()!= "null"){
                         row.setcomment(line.getcomment());
                     }
-                  //  validationRows.push_back(row);
+                    //  validationRows.push_back(row);
 
                 }
 
@@ -228,10 +227,10 @@ int size = TheParsinglist.size();
                     if(line.getWord1()=="resw"  || line.getWord1()=="resb" || line.getWord1()=="word"){
                         bool flag = false;
                         for(int i=0; i<line.getWord2().length();i++){
-                        if(isalpha(line.getWord2().at(0))){
-                            flag = true ;
-                            break;
-                        }}
+                            if(isalpha(line.getWord2().at(0))){
+                                flag = true ;
+                                break;
+                            }}
                         if(flag){
                             row.errorMessge = "after this opcode there should be integer";
                             row.hasError= true;
@@ -277,9 +276,9 @@ int size = TheParsinglist.size();
                                     row.hasError= true;
                                     row.errorMessge = "syntax error  this should be two registers in the way r1,r2";
                                 } else if(line.getWord2().at(2)!='a' && line.getWord2().at(2)!='x' &&
-                                         line.getWord2().at(2)!='b' && line.getWord2().at(2)!='l' &&
-                                         line.getWord2().at(2)!='s' &&line.getWord2().at(2)!='t' &&
-                                         line.getWord2().at(2)!='f' ){
+                                          line.getWord2().at(2)!='b' && line.getWord2().at(2)!='l' &&
+                                          line.getWord2().at(2)!='s' &&line.getWord2().at(2)!='t' &&
+                                          line.getWord2().at(2)!='f' ){
                                     row.hasError= true;
                                     row.errorMessge = "syntax error  this should be two registers in the way r1,r2";
                                 }
@@ -292,7 +291,7 @@ int size = TheParsinglist.size();
                     }
 
 
-                row.setOperand(line.getWord2());} else{
+                    row.setOperand(line.getWord2());} else{
                     row.hasError= true;
                     row.errorMessge = "syntax error  repeated opcode";
                 }
@@ -394,12 +393,12 @@ int size = TheParsinglist.size();
                     }
 
 
-                row.setLabel(line.getWord1());
-                if(line.getcomment()!= "null"){
-                    row.setcomment(line.getcomment());
-                }
+                    row.setLabel(line.getWord1());
+                    if(line.getcomment()!= "null"){
+                        row.setcomment(line.getcomment());
+                    }
 
-            } else{
+                } else{
                     row.hasError= true;
                     row.setOperand(line.getWord3());
                     row.setLabel(line.getWord1());
@@ -437,107 +436,124 @@ int size = TheParsinglist.size();
 
 
         }
+        if (row.getOperand().at(0) == '='){
+
+            if(row.getOperand().at(2) != '\'' ||row.getOperand().at(row.getOperand().size()-1)!= '\'' ||(row.getOperand().at(1) != 'x' && row.getOperand().at(1) != 'c' ) ){
+
+                row.hasError=true;
+                row.errorMessge = "syntax error in literal";
+                validationRows.pop_back();
+                validationRows.push_back(row);
+            }
+
+
+        }
+        if(row.getOperand().find('+') ||row.getOperand().find('-') || row.getOperand().find('*')||row.getOperand().find('/')){
+            row.isExpression = true;
+            validationRows.back().isExpression=true;
+
+        }
 
 
     }
-            // second  check if there is only one word so if it's not an op_code there is an error here
-       /* else if (temp.size() == 1) {
+    // second  check if there is only one word so if it's not an op_code there is an error here
+    /* else if (temp.size() == 1) {
 
-            if (opT.opTable.find(temp.at("word1")) == opT.opTable.end()) {
-                // not found
+         if (opT.opTable.find(temp.at("word1")) == opT.opTable.end()) {
+             // not found
 //                row.setErrorMessage(" No op_code is exist");
-            } else {
-                // found
-                row.setop_code(temp.at("word1"));
-                validationRows.push_back(row);
+         } else {
+             // found
+             row.setop_code(temp.at("word1"));
+             validationRows.push_back(row);
 
-            }
+         }
 
 
 
 //third check if size is 2 so if not one of them is op_code there is error
 //so it will be on of three (label,op),(op,operand),(operand,comment) and the last one is an error
 
-        } else if (temp.size() == 2) {
+     } else if (temp.size() == 2) {
 
-            // first(third) check is op is the firsr word
+         // first(third) check is op is the firsr word
 
-            if (opT.opTable.find(temp.at("word1")) != opT.opTable.end()) {
-                // found
-                row.setop_code(temp.at("word1"));
+         if (opT.opTable.find(temp.at("word1")) != opT.opTable.end()) {
+             // found
+             row.setop_code(temp.at("word1"));
 
-                if (temp.find("word2") != temp.end()) {
-                    row.setOperand(temp.at("word2"));
-                }else{   row.setcomment(temp.at("comment")); }
-
-
-            }
- // second(third) check if op_code is the second word
-        else if (opT.opTable.find(temp.at("word2")) != opT.opTable.end()){
-
-                // found
-                row.setLabel(temp.at("word1"));
-                row.setop_code(temp.at("word2"));
+             if (temp.find("word2") != temp.end()) {
+                 row.setOperand(temp.at("word2"));
+             }else{   row.setcomment(temp.at("comment")); }
 
 
-        }
-        // if not case of the above then there is error
-        else {
+         }
+// second(third) check if op_code is the second word
+     else if (opT.opTable.find(temp.at("word2")) != opT.opTable.end()){
+
+             // found
+             row.setLabel(temp.at("word1"));
+             row.setop_code(temp.at("word2"));
+
+
+     }
+     // if not case of the above then there is error
+     else {
 
 //                row.setErrorMessage("undefined op_code field");
 
-            }
+         }
 
-            // Fourth if size = 3 so there is 2 possible cases
-            // (label,op,operand)
-            } else if(temp.size() == 3){
+         // Fourth if size = 3 so there is 2 possible cases
+         // (label,op,operand)
+         } else if(temp.size() == 3){
 
-            if (opT.opTable.find(temp.at("word1")) != opT.opTable.end()) {
-                // found
-                row.setop_code(temp.at("word1"));
-                row.setOperand(temp.at("word2"));
-                row.setcomment(temp.at("comment"));
+         if (opT.opTable.find(temp.at("word1")) != opT.opTable.end()) {
+             // found
+             row.setop_code(temp.at("word1"));
+             row.setOperand(temp.at("word2"));
+             row.setcomment(temp.at("comment"));
 
-            }
-                // second(Fourth) check if op_code is the second word
-            else if (opT.opTable.find(temp.at("word2")) != opT.opTable.end()){
+         }
+             // second(Fourth) check if op_code is the second word
+         else if (opT.opTable.find(temp.at("word2")) != opT.opTable.end()){
 
-                // found
-                row.setLabel(temp.at("word1"));
-                row.setop_code(temp.at("word2"));
-                if (temp.find("word3") != temp.end()){
-                    row.setOperand(temp.at("word3"));
+             // found
+             row.setLabel(temp.at("word1"));
+             row.setop_code(temp.at("word2"));
+             if (temp.find("word3") != temp.end()){
+                 row.setOperand(temp.at("word3"));
 
-                } else {row.setcomment(temp.at("comment"));}
+             } else {row.setcomment(temp.at("comment"));}
 
-            }
-
-
-
-
-        } else if (temp.size() ==4){
-
-            if (opT.opTable.find(temp.at("word2")) != opT.opTable.end()){
-
-                row.setLabel(temp.at("word1"));
-                row.setop_code(temp.at("word2"));
-                row.setOperand(temp.at("word3"));
-                row.setcomment(temp.at("comment"));
+         }
 
 
 
-            }else{
+
+     } else if (temp.size() ==4){
+
+         if (opT.opTable.find(temp.at("word2")) != opT.opTable.end()){
+
+             row.setLabel(temp.at("word1"));
+             row.setop_code(temp.at("word2"));
+             row.setOperand(temp.at("word3"));
+             row.setcomment(temp.at("comment"));
+
+
+
+         }else{
 
 //                row.setErrorMessage("undefined op_code");
-            }
+         }
 
 
 
-        }
-        validationRows.push_back(row);
+     }
+     validationRows.push_back(row);
 
 
-    }
+ }
 
 */    }
 
