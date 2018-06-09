@@ -40,7 +40,7 @@ public:
     string org_operand(Row entry);
     string resb_operand(Row entry);
     string resw_operand(Row entry);
-    string toHex(int i);
+    string toHex(int i,int format);
 
 };
 

@@ -36,7 +36,8 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
 
             if (startsWith(listFile[i].getop_code(), "byte")) {
                 object_code = byte_operand(listFile[i].getOperand());
-
+                cout<< object_code<<endl;
+                continue;
             } else if  (startsWith(listFile[i].getLabel(), "*")) {
                 /// literals
                 object_code = byte_operand(listFile[i].getop_code());
@@ -98,8 +99,8 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
             		obj |= 1;
             		obj <<= 4*5;
             		obj |= addr;
-            		object_code = toHex(obj);
-            		cout<< object_code<<endl;
+            		object_code = toHex(obj,4);
+            		cout<< std::setfill('0') << std::setw(8)<<object_code<<endl;
             		continue;
      			}
             	int disp = addr - pc;
@@ -114,7 +115,7 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
             	}
             	obj <<= 4 * 3;
             	obj |= (disp & ((1 << 12) - 1));
-            	object_code = toHex(obj);
+            	object_code = toHex(obj,3);
             } else {
 
                 int currentAddress = std::stoi(listFile[i].getAddress(), nullptr, 16);
@@ -137,8 +138,8 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
                 		obj |= std::stoi(firstOperand);
                 		obj <<= 4;
                 	}
-                	object_code = toHex(obj);
-                	cout<< object_code<<endl;
+                	object_code = toHex(obj,2);
+                	cout<< std::setfill('0') << std::setw(4)<<object_code<<endl;
                 	continue;
                 }
 
@@ -170,7 +171,7 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
                     	    obj |= (std::stoi(opr, nullptr,10) & ((1 << 12) - 1));
                     	}
                     }
-                    object_code = toHex(obj);
+                    object_code = toHex(obj,format);
                 } else if (startsWith(listFile[i].getOperand(), "@")) {
                     //indirect
                     string opr = listFile[i].getOperand().substr(1);
@@ -188,8 +189,8 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
                          obj |= 1;
                          obj <<= 4*5;
                          obj |= addr;
-                         object_code = toHex(obj);
-                         cout<< object_code<<endl;
+                         object_code = toHex(obj,4);
+                         cout<< std::setfill('0') << std::setw(8)<<object_code<<endl;
                          continue;
                     }
                     int disp = addr - pc;
@@ -204,7 +205,7 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
                     }
                     obj <<= 4 * 3;
                     obj |= (disp & ((1 << 12) - 1));
-                    object_code = toHex(obj);
+                    object_code = toHex(obj,3);
                 } else {
                     //direct
                 	if(listFile[i].getop_code().compare("rsub") == 0){
@@ -226,8 +227,8 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
 							obj |= 1;
 							obj <<= 4*5;
 							obj |= addr;
-							object_code = toHex(obj);
-							cout<< object_code<<endl;
+							object_code = toHex(obj,4);
+							cout<< std::setfill('0') << std::setw(8)<<object_code<<endl;
 							continue;
 						}
 
@@ -243,13 +244,12 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
 						}
 						obj <<= 4 * 3;
 						obj |= (disp & ((1 << 12) - 1));
-						object_code = toHex(obj);
+						object_code = toHex(obj,3);
                 	}
                 }
             }
         }
-        if(object_code.size() < 6 && object_code.compare("null") != 0 ) cout<<0;
-        	cout<<object_code<<endl;
+        cout<<std::setfill('0') << std::setw(6)<<object_code<<endl;
     	}catch(exception& e){
     	}
     }
@@ -311,7 +311,7 @@ string Pass2:: string_to_hex(const std::string& input) {
 
 string Pass2:: decimalToHex(int decimal){
     stringstream ss;
-    ss<<hex << decimal;
+    ss<<std::setfill('0') << std::setw(6)<<hex << decimal;
     string res ( ss.str() );
 
     return res.c_str();
@@ -322,11 +322,11 @@ string Pass2:: byte_operand(string operand){
     string object_code;
     if (startsWith(operand, "c")) {
         //skip c="...."
-        string operand_value = operand.substr(3, operand.size()-4);
+        string operand_value = operand.substr(2, operand.size()-3);
         object_code = string_to_hex(operand_value);
     } else {
         //start with x
-        string operand_value = operand.substr(3, operand.size()-4);
+        string operand_value = operand.substr(2, operand.size()-3);
         object_code = operand_value;
     }
     return object_code;
@@ -401,10 +401,10 @@ void Pass2:: test(vector <Row> listFile){
 
 }
 
-string Pass2::toHex(int i){
+string Pass2::toHex(int i,int format){
 	std::string result;
 	    std::stringstream ss;
-	    ss << std::hex <<i;
+	    ss << std::setfill('0') << std::setw(2*format) <<std::hex <<i;
 	    ss >> result;
 	    return result;
 }
