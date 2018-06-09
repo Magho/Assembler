@@ -44,7 +44,7 @@ int main() {
 
 
     opTab.setTable();
-   list<Line> parsingList=parser.parisngFunction("D:\\pass_2\\passOne\\test.txt");
+   list<Line> parsingList=parser.parisngFunction("D:\\Assembler\\passOne\\test.txt");
    int size = parsingList.size();
 
 

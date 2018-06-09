@@ -8,6 +8,7 @@ PROB1    START   1000
          ltorg
 LOOP     LDCH    BETA,X            dddddddddddddd kkkkk   kkkkk
          SUBR    T,A
+         rsub
  lop     org     10
          JLT     LOOP
 BETA     BYTE    C'45      '
