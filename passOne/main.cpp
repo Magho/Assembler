@@ -51,7 +51,7 @@ int main() {
 
 
     opTab.setTable();
-    list<Line> parsingList=parser.parisngFunction("E:\\Assembler3\\passOne\\test.txt");
+    list<Line> parsingList=parser.parisngFunction("test.txt");
     int size = parsingList.size();
 
 
@@ -76,7 +76,7 @@ int main() {
     //    fillFileList();
     Pass1();
     printFileList();
-    // pass2.pass2Algoritm(listFile, symTab);
+    pass2.pass2Algoritm(listFile, symTab,litTab);
     return 0;
 }
 list<Line>fillLine(){
