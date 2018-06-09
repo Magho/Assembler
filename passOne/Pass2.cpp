@@ -1,3 +1,4 @@
+/*
 //
 // Created by magho on 05/06/18.
 //
@@ -409,3 +410,4 @@ string Pass2::toHex(int i){
 }
 
 
+*/

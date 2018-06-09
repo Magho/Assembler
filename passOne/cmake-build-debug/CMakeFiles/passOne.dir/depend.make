@@ -8,6 +8,8 @@ CMakeFiles/passOne.dir/Pass2.cpp.obj: ../Line.h
 CMakeFiles/passOne.dir/Pass2.cpp.obj: ../Pass2.cpp
 CMakeFiles/passOne.dir/Pass2.cpp.obj: ../Pass2.h
 CMakeFiles/passOne.dir/Pass2.cpp.obj: ../Row.h
+CMakeFiles/passOne.dir/Pass2.cpp.obj: ../litLine.h
+CMakeFiles/passOne.dir/Pass2.cpp.obj: ../optable.h
 CMakeFiles/passOne.dir/Pass2.cpp.obj: ../parsing.h
 
 CMakeFiles/passOne.dir/Row.cpp.obj: ../Row.h

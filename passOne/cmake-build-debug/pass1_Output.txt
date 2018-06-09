@@ -4,16 +4,16 @@ line   Address     Label    Opcode  Operands   Comment
 2      1003                 ldt     =c'rita'    
 3      1006                 lda     =x'05'      
 4      1009                 lds     #2          
-5      100c                 rsub                
-6      100f                 add     #4          
-7      1012                 ltorg               
-8      1012                 =c'rita'72697461    
-9      1016                 =x'05'  05          
-10     1017        loop     ldch    beta,x    dddddddddddddd kkkkk kkkkk  
-11     101a                 subr    t,a         
-12     101c                 jlt     loop        
-13     101f        beta     byte    c'45      '  
-14     1027                 end     prob1       
+5      100c                 ltorg               
+6      100c                 =c'rita'72697461    
+7      1010                 =x'05'  05          
+8      1011        loop     ldch    beta,x    dddddddddddddd kkkkk kkkkk  
+9      1014                 subr    t,a         
+10                 lop      org     10          
+11     2011        bomb     equ     loop+1000   
+12     10                   jlt     loop        
+13     13          beta     byte    c'45'       
+14     15                   end     prob1       
 
 
 --------------------------------
@@ -21,9 +21,11 @@ line   Address     Label    Opcode  Operands   Comment
 --------------------------------
 |Label           |   Address   |
 --------------------------------
-|beta            |      101f   |
+|beta            |        13   |
 --------------------------------
-|loop            |      1017   |
+|bomb            |      2011   |
+--------------------------------
+|loop            |      1011   |
 --------------------------------
 |prob1           |      1000   |
 --------------------------------
