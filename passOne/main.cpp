@@ -392,6 +392,8 @@ void Pass1 () {
                     // increase location counter by length of the line (assume all 3)
                     stringstream str;
                     str << row.format;
+                    if(row.getop_code()=="rsub")
+                        cout<<"rsubbbb  "<<row.format;
                     LOCCTR = addHex(LOCCTR, str.str());
                 } else if (row.getop_code().compare("word") == 0) {
                     // increase location counter by length of the word  (3 bytes)

@@ -4,12 +4,11 @@ PROB1    START   1000
          LDT    =c'rita'
          lda    =x'05'
          LDS    #2
+         rsub
          add    #4
          ltorg
 LOOP     LDCH    BETA,X            dddddddddddddd kkkkk   kkkkk
          SUBR    T,A
-         rsub
- lop     org     10
          JLT     LOOP
 BETA     BYTE    C'45      '
          end     PROB1
