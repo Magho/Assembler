@@ -16,7 +16,6 @@ using namespace std ;
 #include "validation.h"
 #include "Pass2.h"
 
-
 //
 // Created by HP on 23-Apr-18.
 //
@@ -38,13 +37,12 @@ vector<litLine> litTab;
 optable opTab;
 parsing parser;
 validation validate;
-Pass2 pass2;
 
 int main() {
 
 
     opTab.setTable();
-   list<Line> parsingList=parser.parisngFunction("D:\\Assembler\\passOne\\test.txt");
+   list<Line> parsingList=parser.parisngFunction("test.txt");
    int size = parsingList.size();
 
 
@@ -69,10 +67,8 @@ int main() {
 //    fillFileList();
     Pass1();
     printFileList();
-
-    // test pass2
-    pass2.test(listFile);
-
+    Pass2 p;
+    p.pass2Algoritm(listFile,symTab,litTab);
     return 0;
 }
 list<Line>fillLine(){
@@ -392,8 +388,6 @@ void Pass1 () {
                     // increase location counter by length of the line (assume all 3)
                     stringstream str;
                     str << row.format;
-                    if(row.getop_code()=="rsub")
-                        cout<<"rsubbbb  "<<row.format;
                     LOCCTR = addHex(LOCCTR, str.str());
                 } else if (row.getop_code().compare("word") == 0) {
                     // increase location counter by length of the word  (3 bytes)
@@ -425,10 +419,8 @@ void Pass1 () {
                         }
                             break;
                     }
-
                 }else if (row.getop_code().compare("base")==0){
-                    goto h;
-
+                			goto h;
                 } else if (row.getop_code().compare("ltorg")==0){
 
                     for(int i=0;i<litTab.size();i++){

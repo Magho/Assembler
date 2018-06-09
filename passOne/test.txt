@@ -1,14 +1,48 @@
-.adding numbers
-PROB1    START   1000
-         LDX    #0
-         LDT    =c'rita'
-         lda    =x'05'
-         LDS    #2
-         rsub
-         add    #4
-         ltorg
-LOOP     LDCH    BETA,X            dddddddddddddd kkkkk   kkkkk
-         SUBR    T,A
-         JLT     LOOP
-BETA     BYTE    C'45      '
-         end     PROB1
+copy	start	0
+first	stl		retadr
+		ldb     length
+		base	length
+cloop	+jsub	redrec
+		lda		length
+		comp	#0
+		jeq		endfil
+		+jsub	wrec
+		j		cloop
+endfil	lda		eof
+		sta		buffer
+		lda		#3
+		sta		length
+		+jsub	wrec
+		j		@retadr
+eof		byte 	c'eof'
+retadr	resw	1
+length	resw	1
+buffer	resb	4096
+redrec	clear	x
+		clear	a
+		clear	s
+		+ldt	#4096
+rloop	td		input
+		jeq		rloop
+		rd 		input
+		compr	a,s
+		jeq		exit
+		stch	buffer,x
+		tixr	t
+		jlt		rloop
+exit	stx		length
+		rsub
+input	byte 	x'f1'
+wrec	clear 	x
+		ldt		length
+wloop	td		output
+		jeq		wloop
+		ldch	buffer,x
+		wd		output
+		tixr	t
+		jlt		wloop
+		rsub
+output	byte	x'05'
+		lda     =x'14'
+		end		first
+

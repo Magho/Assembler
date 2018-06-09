@@ -15,6 +15,7 @@ class optable {
 public:
     map<string,string> opTable;
     void setTable();
+    string getOptable(string str);
 
 
 };

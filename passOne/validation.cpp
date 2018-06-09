@@ -117,11 +117,11 @@ int size = TheParsinglist.size();
                         row.format = 2;
                     }
                     if (opT.opTable.at(line.getWord1()).at(opT.opTable.at(line.getWord1()).length() - 1) == '1'||row.getop_code()=="ltorg"||row.getop_code()=="rsub") {
-                        if(row.getop_code()=="rsub"){
-                            row.format = 3;
-                        }else {
-                            row.format = 1;
-                        }
+                    	if(row.getop_code()=="rsub"){
+                    	    row.format = 3;
+                    	}else {
+                    	    row.format = 1;
+                    	}
                         row.setop_code(line.getWord1());
                     } else if ( line.getWord1()!= "end"){
                         row.hasError=true;

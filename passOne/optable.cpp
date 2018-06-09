@@ -134,16 +134,30 @@ void optable :: setTable (void){
     opTable.insert(pair<string, string>("ltorg", "null"));
     opTable.insert(pair<string, string>("base", "null"));
 
-
-
-
-
-
-
-
-
-
-
 }
 
+string optable::getOptable(string str){
+	if(str.compare("a") == 0){
+		return "0";
+	}
+	if(str.compare("x") == 0){
+			return "1";
+	}
+	if(str.compare("l") == 0){
+			return "2";
+	}
+	if(str.compare("b") == 0){
+			return "3";
+	}
+	if(str.compare("s") == 0){
+		return "4";
+	}
+	if(str.compare("t") == 0){
+		return "5";
+	}
+	if(str.compare("f") == 0){
+			return "6";
+	}
 
+    return opTable[str];
+}
