@@ -63,9 +63,9 @@ void Pass2::pass2Algoritm(vector<Row> listFile) {
 
             }
 
-            int currentAddress = std::stoi(listFile[i].getAddress());
+//            int currentAddress = std::stoi(listFile[i].getAddress());
             format = formatType(listFile[i].getop_code());
-            pc = calcPC(currentAddress, format);
+ //           pc = calcPC(currentAddress, format);
 
 
 
@@ -174,15 +174,15 @@ string Pass2:: byte_operand(string operand){
 }
 
 string Pass2 :: word_operand(string operand) {
-    string object_code = decimalToHex(std::stoi(operand));
-    return object_code;
+//    string object_code = decimalToHex(std::stoi(operand));
+//    return object_code;
 }
 
 string Pass2 :: start_operand(int& startAddressAtStartStatment,string& nameOfProg , Row entry) {
 
     startAddressAtStartStatment = 0;
     if (entry.getOperand() != "null") {
-        startAddressAtStartStatment = std::stoi(entry.getOperand());
+//        startAddressAtStartStatment = std::stoi(entry.getOperand());
     }
     nameOfProg = entry.getLabel();
 
@@ -193,9 +193,9 @@ string Pass2 ::end_operand(int& startAddressAtStartStatment,int& startAddressAtE
                            int& lengthOfProg , Row entry) {
 
     if (entry.getOperand() != "null") {
-        startAddressAtEndStatment = std::stoi(entry.getOperand());
+     //   startAddressAtEndStatment = std::stoi(entry.getOperand());
     }
-    lengthOfProg = std::stoi(entry.getAddress()) - startAddressAtStartStatment;
+   // lengthOfProg = std::stoi(entry.getAddress()) - startAddressAtStartStatment;
 
     return "null";
 }

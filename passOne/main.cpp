@@ -424,6 +424,9 @@ void Pass1 () {
                             break;
                     }
 
+                }else if (row.getop_code().compare("base")==0){
+                    goto h;
+
                 } else if (row.getop_code().compare("ltorg")==0){
 
                     for(int i=0;i<litTab.size();i++){

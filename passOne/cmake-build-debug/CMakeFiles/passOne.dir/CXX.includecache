@@ -6,41 +6,51 @@
 
 #IncludeRegexTransform: 
 
-/home/magho/workspaceC++/Assembler/passOne/Line.cpp
+D:/Assembler/passOne/Line.cpp
 Line.h
-/home/magho/workspaceC++/Assembler/passOne/Line.h
+D:/Assembler/passOne/Line.h
 
-/home/magho/workspaceC++/Assembler/passOne/Line.h
+D:/Assembler/passOne/Line.h
 string
 -
 cstring
 -
 
-/home/magho/workspaceC++/Assembler/passOne/Pass2.cpp
+D:/Assembler/passOne/Pass2.cpp
 Pass2.h
-/home/magho/workspaceC++/Assembler/passOne/Pass2.h
+D:/Assembler/passOne/Pass2.h
 parsing.h
-/home/magho/workspaceC++/Assembler/passOne/parsing.h
+D:/Assembler/passOne/parsing.h
 bits/stdc++.h
 -
 
-/home/magho/workspaceC++/Assembler/passOne/Pass2.h
+D:/Assembler/passOne/Pass2.h
 string
 -
 vector
 -
 Row.h
-/home/magho/workspaceC++/Assembler/passOne/Row.h
+D:/Assembler/passOne/Row.h
 
-/home/magho/workspaceC++/Assembler/passOne/Row.h
+D:/Assembler/passOne/Row.h
 string
 -
 
-/home/magho/workspaceC++/Assembler/passOne/cmake-build-debug/Row.cpp
+D:/Assembler/passOne/cmake-build-debug/Row.cpp
 ../Row.h
-/home/magho/workspaceC++/Assembler/passOne/Row.h
+D:/Assembler/passOne/Row.h
 
-/home/magho/workspaceC++/Assembler/passOne/main.cpp
+D:/Assembler/passOne/litLine.cpp
+litLine.h
+D:/Assembler/passOne/litLine.h
+
+D:/Assembler/passOne/litLine.h
+cstring
+-
+string
+-
+
+D:/Assembler/passOne/main.cpp
 iostream
 -
 cstring
@@ -58,31 +68,33 @@ sstream
 cstdio
 -
 Row.h
-/home/magho/workspaceC++/Assembler/passOne/Row.h
+D:/Assembler/passOne/Row.h
+litLine.h
+D:/Assembler/passOne/litLine.h
 optable.h
-/home/magho/workspaceC++/Assembler/passOne/optable.h
+D:/Assembler/passOne/optable.h
 Line.h
-/home/magho/workspaceC++/Assembler/passOne/Line.h
+D:/Assembler/passOne/Line.h
 parsing.h
-/home/magho/workspaceC++/Assembler/passOne/parsing.h
+D:/Assembler/passOne/parsing.h
 validation.h
-/home/magho/workspaceC++/Assembler/passOne/validation.h
+D:/Assembler/passOne/validation.h
 Pass2.h
-/home/magho/workspaceC++/Assembler/passOne/Pass2.h
+D:/Assembler/passOne/Pass2.h
 
-/home/magho/workspaceC++/Assembler/passOne/optable.cpp
+D:/Assembler/passOne/optable.cpp
 optable.h
-/home/magho/workspaceC++/Assembler/passOne/optable.h
+D:/Assembler/passOne/optable.h
 
-/home/magho/workspaceC++/Assembler/passOne/optable.h
+D:/Assembler/passOne/optable.h
 map
 -
 cstring
 -
 
-/home/magho/workspaceC++/Assembler/passOne/parsing.cpp
+D:/Assembler/passOne/parsing.cpp
 parsing.h
-/home/magho/workspaceC++/Assembler/passOne/parsing.h
+D:/Assembler/passOne/parsing.h
 fstream
 -
 iostream
@@ -96,9 +108,9 @@ vector
 algorithm
 -
 Line.h
-/home/magho/workspaceC++/Assembler/passOne/Line.h
+D:/Assembler/passOne/Line.h
 
-/home/magho/workspaceC++/Assembler/passOne/parsing.h
+D:/Assembler/passOne/parsing.h
 cstring
 -
 string
@@ -108,11 +120,11 @@ vector
 list
 -
 Line.h
-/home/magho/workspaceC++/Assembler/passOne/Line.h
+D:/Assembler/passOne/Line.h
 
-/home/magho/workspaceC++/Assembler/passOne/parsing_map.cpp
+D:/Assembler/passOne/parsing_map.cpp
 parsing_map.h
-/home/magho/workspaceC++/Assembler/passOne/parsing_map.h
+D:/Assembler/passOne/parsing_map.h
 fstream
 -
 iostream
@@ -126,7 +138,7 @@ vector
 algorithm
 -
 
-/home/magho/workspaceC++/Assembler/passOne/parsing_map.h
+D:/Assembler/passOne/parsing_map.h
 cstring
 -
 string
@@ -138,17 +150,17 @@ list
 map
 -
 
-/home/magho/workspaceC++/Assembler/passOne/validation.cpp
+D:/Assembler/passOne/validation.cpp
 iostream
 -
 validation.h
-/home/magho/workspaceC++/Assembler/passOne/validation.h
+D:/Assembler/passOne/validation.h
 Row.h
-/home/magho/workspaceC++/Assembler/passOne/Row.h
+D:/Assembler/passOne/Row.h
 optable.h
-/home/magho/workspaceC++/Assembler/passOne/optable.h
+D:/Assembler/passOne/optable.h
 
-/home/magho/workspaceC++/Assembler/passOne/validation.h
+D:/Assembler/passOne/validation.h
 cstring
 -
 string
@@ -160,7 +172,7 @@ list
 vector
 -
 Row.h
-/home/magho/workspaceC++/Assembler/passOne/Row.h
+D:/Assembler/passOne/Row.h
 Line.h
-/home/magho/workspaceC++/Assembler/passOne/Line.h
+D:/Assembler/passOne/Line.h
 
