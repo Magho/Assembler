@@ -41,6 +41,7 @@ public:
     string resb_operand(Row entry);
     string resw_operand(Row entry);
     string toHex(int i,int format);
+    void printing(vector<string> objects,vector<string> modificationRecords );
 
 };
 
