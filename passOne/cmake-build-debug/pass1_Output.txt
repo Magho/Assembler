@@ -3,59 +3,60 @@ line   Address     Label    Opcode  Operands   Comment
 1      0           first    stl     retadr      
 2      3                    ldb     length      
 3      6                    base    length      
-4      6           cloop    jsub    redrec      
-5      a                    lda     length      
-6      d                    comp    #0          
-7      10                   jeq     endfil      
-8      13                   jsub    wrec        
-9      17                   j       cloop       
-10     1a          endfil   lda     eof         
-11     1d                   sta     buffer      
-12                 label1   equ     cloop+300   
-          ****Error:Not defined label, may be forward ref
-13     20                   sta     length      
-14     23                   jsub    wrec        
-15                 ahmed    equ     300-200     
-          ****Error:Not defined label, may be forward ref
-16     27                   j       @retadr     
-17     2a          eof      byte    c'eof'      
-18     2d          retadr   resw    1           
-19     30          length   resw    1           
-20     33          buffer   resb    4096        
-21     1033        redrec   clear   x           
-22     1035                 clear   a           
-23     1037                 clear   s           
-24     1039                 ldt     #4096       
-25     103d        rloop    td      input       
-26     1040                 jeq     rloop       
-27     1043                 rd      input       
-28     1046                 compr   a,s         
-29     1048                 jeq     exit        
-30     104b                 stch    buffer,x    
-31     104e                 tixr    t           
-32     1050                 jlt     rloop       
-33     1053        exit     stx     length      
-34     1056                 rsub                
-35     1059        input    byte    x'f1'       
-36     105a        wrec     clear   x           
-37     105c                 ldt     length      
-38     105f        wloop    td      output      
-39     1062                 jeq     wloop       
-40     1065                 ldch    buffer,x    
-41     1068                 wd      output      
-42     106b                 tixr    t           
-43     106d                 jlt     wloop       
-44     1070                 rsub                
-45     1073        output   byte    x'05'       
-46     1074                 lda     =x'14'      
-47     1077                 end     first       
-48     1077                 =x'14'  14          
+4      12c         label1   equ     300         
+5      6           cloop    jsub    redrec      
+6      a                    lda     length      
+7      d                    comp    #0          
+8      16          ahmed    equ     22          
+9      10                   jeq     endfil      
+10     13                   jsub    wrec        
+11     26          rita     equ     38          
+12     17                   j       cloop       
+13     1a          endfil   lda     eof         
+14     1d                   sta     buffer      
+15     20                   sta     length      
+16     23                   jsub    wrec        
+17     27                   j       @retadr     
+18     2a          eof      byte    c'eof'      
+19     2d          retadr   resw    1           
+20     30          length   resw    1           
+21     33          buffer   resb    4096        
+22     1033        redrec   clear   x           
+23     1035                 clear   a           
+24     1037                 clear   s           
+25     1039                 ldt     #4096       
+26     103d        rloop    td      input       
+27     1040                 jeq     rloop       
+28     1043                 rd      input       
+29     1046                 compr   a,s         
+30     1048                 jeq     exit        
+31     104b                 stch    buffer,x    
+32     104e                 tixr    t           
+33     1050                 jlt     rloop       
+34     1053        exit     stx     length      
+35     1056                 rsub                
+36     1059        input    byte    x'f1'       
+37     105a        wrec     clear   x           
+38     105c                 ldt     length      
+39     105f        wloop    td      output      
+40     1062                 jeq     wloop       
+41     1065                 ldch    buffer,x    
+42     1068                 wd      output      
+43     106b                 tixr    t           
+44     106d                 jlt     wloop       
+45     1070                 rsub                
+46     1073        output   byte    x'05'       
+47     1074                 lda     =x'14'      
+48     1077                 end     first       
+49     1077                 =x'14'  14          
 
 
 --------------------------------
 |          symbol Table        |
 --------------------------------
 |Label           |   Address   |
+--------------------------------
+|ahmed           |        16   |
 --------------------------------
 |buffer          |        33   |
 --------------------------------
@@ -73,6 +74,8 @@ line   Address     Label    Opcode  Operands   Comment
 --------------------------------
 |input           |      1059   |
 --------------------------------
+|label1          |       12c   |
+--------------------------------
 |length          |        30   |
 --------------------------------
 |output          |      1073   |
@@ -80,6 +83,8 @@ line   Address     Label    Opcode  Operands   Comment
 |redrec          |      1033   |
 --------------------------------
 |retadr          |        2d   |
+--------------------------------
+|rita            |        26   |
 --------------------------------
 |rloop           |      103d   |
 --------------------------------

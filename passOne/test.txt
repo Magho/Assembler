@@ -2,18 +2,20 @@ copy	start	0
 first	stl		retadr
 		ldb     length
 		base	length
+label1	equ 	300
 cloop	+jsub	redrec
 		lda		length
 		comp	#0
+ahmed 	equ 	label1+100
 		jeq		endfil
 		+jsub	wrec
+rita    equ     ahmed-cloop-12*4
+
 		j		cloop
 endfil	lda		eof
 		sta		buffer
-label1	equ 	cloop+300
 		sta		length
 		+jsub	wrec
-ahmed 	equ 	300-200
 		j		@retadr
 eof		byte 	c'eof'
 retadr	resw	1
