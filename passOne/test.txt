@@ -10,9 +10,10 @@ cloop	+jsub	redrec
 		j		cloop
 endfil	lda		eof
 		sta		buffer
-		lda		#3
+label1	equ 	cloop+300
 		sta		length
 		+jsub	wrec
+ahmed 	equ 	300-200
 		j		@retadr
 eof		byte 	c'eof'
 retadr	resw	1

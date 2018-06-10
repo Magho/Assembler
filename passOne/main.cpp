@@ -51,7 +51,7 @@ int main() {
 
 
     opTab.setTable();
-    list<Line> parsingList=parser.parisngFunction("test.txt");
+    list<Line> parsingList=parser.parisngFunction("D:\\Assemble\\passOne\\test.txt");
     int size = parsingList.size();
 
 
@@ -76,9 +76,10 @@ int main() {
     //    fillFileList();
     Pass1();
     printFileList();
-    pass2.pass2Algoritm(listFile, symTab,litTab);
+//    pass2.pass2Algoritm(listFile, symTab,litTab);
     return 0;
 }
+
 list<Line>fillLine(){
     list<Line> test;
 
@@ -352,7 +353,6 @@ void Pass1 () {
         row = listFile.at(index);
         if(row.getop_code().compare("equ")==0) {
             if(row.isExpression){
-
                 calculateExpression(row);
             } else{
 
@@ -374,20 +374,26 @@ void Pass1 () {
             if (!row.isComment) {
                 if (row.getLabel().compare("null") != 0) {
                     bool found = checkIfSymbolDefinedBefore(row.getLabel());//return true if exist
-                    if (found) {
-                        listFile.at(index).hasError = true;
+                    if (found&&(row.getop_code()!="equ") ) {
+                       listFile.at(index).hasError = true;
                         listFile.at(index).errorMessge = "The Label already exists";
                         goto h;
                     } else {
                         if (row.getop_code().compare("equ") == 0) {
                             if(row.isExpression){
-                                row=calculateExpression(row);
 
-                                listFile.at(index).hasError = true;
-                                listFile.at(index).errorMessge = row.errorMessge;
-                                listFile.at(index).setAddress(row.getAddress());
-                                goto h;
-
+                                bool found = checkIfSymbolDefinedBefore(row.getLabel());//return true if exist
+                                if(found){
+                                    listFile.at(index).hasError = true;
+                                    listFile.at(index).errorMessge = "The Label already exists";
+                                    goto h;
+                                }else {
+                                    row = calculateExpression(row);
+                                    listFile.at(index).hasError = row.hasError;
+                                    listFile.at(index).errorMessge = row.errorMessge;
+                                    listFile.at(index).setAddress(row.getAddress());
+                                    goto h;
+                                }
                             } else {
 
 
@@ -405,7 +411,7 @@ void Pass1 () {
 
                                 } else if (symTab.count(label)) {
                                     symTab.insert(pair<string, string>(row.getLabel(), symTab.at(label)));
-                                    TypeTable.insert(pair<string, string>(row.getLabel(), "r"));
+
 
                                 } else {
                                     listFile.at(index).hasError = true;
@@ -415,6 +421,7 @@ void Pass1 () {
 
                             } } else {
                             symTab.insert(pair<string, string>(row.getLabel(), LOCCTR));
+                            TypeTable.insert(pair<string, string>(row.getLabel(), "r"));
                             TypeTable.insert(pair<string, string>(row.getLabel(), "r"));
 
                         }}
@@ -502,7 +509,6 @@ void Pass1 () {
                     }
                     if(!checkIfLiteralDefinedBefore(line.getValue())){
                         litTab.push_back(line);
-                        cout<<"literalssss"<<litTab.at(0).getLength();
                     }
                 }
             }
@@ -530,9 +536,6 @@ void Pass1 () {
                     LOCCTR = addHex(LOCCTR, "-4");
                 }
 
-                if(row.isExpression){
-                    row = calculateExpression(row);
-                }
             } else if (row.getop_code().compare("org") == 0) {
                 if(row.format!=4){
                     string label = row.getOperand();
@@ -648,7 +651,6 @@ Row calculateExpression(Row row) {
         }
         counter++;
         if(counter == expression.length()){
-            cout << endl;
             partOfExpression = expression.substr(substringStart, counter-substringStart);
             if (symTab.find(partOfExpression) == symTab.end()) {
                 bool flag = false;
@@ -746,8 +748,14 @@ Row calculateExpression(Row row) {
 
             if(expressionList.size()==1){
                 row.setAddress(expressionList.at(0));
+                string type = "";
+                if(TypeTable.at(expressionList.at(0))=="Na"){
+                    type = "a";
+                } else{
+                    type = "r";
+                }
                 symTab.insert(pair<string, string>(row.getLabel(),expressionList.at(0) ));
-                TypeTable.insert(pair<string, string>(row.getLabel(),TypeTable.at(expressionList.at(0))));
+                TypeTable.insert(pair<string, string>(row.getLabel(),type));
                 //TypeTable.at(row.getLabel())=TypeTable.at(expressionList.at(0));
                 return row;
 
@@ -790,7 +798,6 @@ Row calculateExpression(Row row) {
                         num2 = symTab.at(expressionList.at(i+1));
 
                     }
-
 
                     if(TypeTable.at(expressionList.at(i-1)).find('r') ||TypeTable.at(expressionList.at(i+1)).find('r') ){
 
@@ -853,7 +860,6 @@ Row calculateExpression(Row row) {
                        (TypeTable.at(expressionList.at(i-1))=="r" && TypeTable.at(expressionList.at(i+1))=="Nr" )||
                        (TypeTable.at(expressionList.at(i-1))=="Nr" && TypeTable.at(expressionList.at(i+1))=="Nr" )){
 
-                        cout << TypeTable.at(expressionList.at(i+1))<< TypeTable.at(expressionList.at(i-1)) <<endl;
                         expressionList.at(i-1)=subHex(num1,num2);
                         TypeTable.insert(pair<string, string>(expressionList.at(i-1), "Na"));
 
@@ -891,8 +897,14 @@ Row calculateExpression(Row row) {
 
     if(expressionList.size()==1){
         row.setAddress(expressionList.at(0));
+        string type = "";
+if(TypeTable.at(expressionList.at(0))=="Na"){
+    type = "a";
+} else{
+    type = "r";
+}
         symTab.insert(pair<string, string>(row.getLabel(),expressionList.at(0) ));
-        TypeTable.insert(pair<string, string>(row.getLabel(),TypeTable.at(expressionList.at(0))));
+        TypeTable.insert(pair<string, string>(row.getLabel(),type));
         //TypeTable.at(row.getLabel())=TypeTable.at(expressionList.at(0));
 
 

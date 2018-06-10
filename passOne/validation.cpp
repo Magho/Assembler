@@ -448,7 +448,7 @@ void validation ::validate() {
 
 
         }
-        if(row.getOperand().find('+') ||row.getOperand().find('-') || row.getOperand().find('*')||row.getOperand().find('/')){
+        if( row.getOperand().find("+") != std::string::npos   || row.getOperand().find("-") != std::string::npos || row.getOperand().find("*") != std::string::npos || row.getOperand().find("/") != std::string::npos){
             row.isExpression = true;
             validationRows.back().isExpression=true;
 
