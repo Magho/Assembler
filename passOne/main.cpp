@@ -440,7 +440,7 @@ void Pass1 () {
                         case 'c': {
                             stringstream str;
                             str << row.getOperand().size() - 3;
-                            LOCCTR = addHex(LOCCTR, str.str());
+                            LOCCTR = addHex(LOCCTR, decimalToHex(atoi(str.str().c_str())));
                         }
                             break;
                         case 'x': {
