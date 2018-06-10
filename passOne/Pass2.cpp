@@ -18,6 +18,7 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
     optable1.setTable();
 
     vector<string> objectcodes;
+    vector<string> modificationRecords;
     int pc;
     int base = -1;
     int format;
@@ -36,6 +37,15 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
 
             if (startsWith(listFile[i].getop_code(), "byte")) {
                 object_code = byte_operand(listFile[i].getOperand());
+                string str = object_code;
+            	if(objectcodes[objectcodes.size()-1].size()+str.size()-6 <=60){
+                    objectcodes[objectcodes.size()-1] += str;
+                }else{
+                    string strx = listFile[i].getAddress();
+                    for(;6>strx.size();) strx = "0" + strx;
+                    objectcodes.push_back(strx);
+                    objectcodes[objectcodes.size()-1] += str;
+                }
                 cout<< object_code<<endl;
                 continue;
             } else if  (startsWith(listFile[i].getLabel(), "*")) {
@@ -44,13 +54,53 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
 
             } else if (startsWith(listFile[i].getop_code(), "word")) {
                 object_code = word_operand(listFile[i].getOperand());
+                string str = object_code;
+            	if(objectcodes[objectcodes.size()-1].size()+str.size()-6 <=60){
+                    objectcodes[objectcodes.size()-1] += str;
+                }else{
+                    string strx = listFile[i].getAddress();
+                    for(;6>strx.size();) strx = "0" + strx;
+                    objectcodes.push_back(strx);
+                    objectcodes[objectcodes.size()-1] += str;
+                }
 
             } else if (startsWith(listFile[i].getop_code(), "start")) {
                 object_code = start_operand(startAddressAtStartStatment, nameOfProg, listFile[i]);
-
+                std::string result;
+                std::stringstream ss;
+                ss <<std::hex <<startAddressAtStartStatment;
+                ss >> result;
+                if(result.size() < 6){
+                    for(;6>result.size();) result = "0" + result;
+                }
+                objectcodes.push_back("");
+                objectcodes.push_back(result);
             } else if (startsWith(listFile[i].getop_code(), "end")) {
+                string start = "H"+ nameOfProg;
+                for(;7>start.size();) start+=" ";
+                std::string result;
+                std::stringstream ss;
+                ss <<std::hex <<startAddressAtStartStatment;
+                ss >> result;
+                if(result.size() < 6){
+                    for(;6>result.size();) result = "0" + result;
+                }
+                start += result;
                 object_code = end_operand(startAddressAtStartStatment, startAddressAtEndStatment,
                                           lengthOfProg, listFile[i],symTable);
+
+                result = toHex(lengthOfProg,2);
+                if(result.size() < 6){
+                    for(;6>result.size();) result = "0" + result;
+                }
+                start += result;
+                result = toHex(startAddressAtEndStatment,4);
+                if(result.size() < 6){
+                    for(;6>result.size();) result = "0" + result;
+                }
+                string ending = "E"+ result;
+                objectcodes[0] = start;
+                objectcodes.push_back(ending);
 
             } else if (startsWith(listFile[i].getop_code(), "base")) {
                 object_code = base_operand(listFile[i], base, symTable);
@@ -68,10 +118,17 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
             } else if (startsWith(listFile[i].getop_code(), "resw")) {
                 // TODO need to know that its a resw or resb to escape while writing in file
                 object_code = resw_operand(listFile[i]);
+                string str = objectcodes[objectcodes.size()-1];
+                for(;67>str.size();) str += "#";
+                objectcodes[objectcodes.size()-1] = str;
 
             } else if (startsWith(listFile[i].getop_code(), "resb")) {
                 // TODO need to know that its a resw or resb to escape while writing in file
                 object_code = resb_operand(listFile[i]);
+                string str = objectcodes[objectcodes.size()-1];
+                for(;67>str.size();) str += "#";
+                objectcodes[objectcodes.size()-1] = str;
+
             }else if(startsWith(listFile[i].getop_code(),"=")){
             	string opr = listFile[i].getop_code();
             	litLine li;
@@ -81,6 +138,15 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
             	     }
             	}
             	object_code = li.getValue();
+            	string str = object_code;
+            	if(objectcodes[objectcodes.size()-1].size()+str.size()-6 <=60){
+                    objectcodes[objectcodes.size()-1] += str;
+                }else{
+                    string strx = listFile[i].getAddress();
+                    for(;6>strx.size();) strx = "0" + strx;
+                    objectcodes.push_back(strx);
+                    objectcodes[objectcodes.size()-1] += str;
+                }
         	}else if(startsWith(listFile[i].getOperand(),"=")){
             	string opr = listFile[i].getOperand().substr(0);
             	int operation = std::stoi(optable1.getOptable(listFile[i].getop_code()), nullptr, 16);
@@ -100,6 +166,21 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
             		obj <<= 4*5;
             		obj |= addr;
             		object_code = toHex(obj,4);
+            		for(;object_code.size()<8;) object_code = "0"+object_code;
+            		string str = object_code;
+            		if(objectcodes[objectcodes.size()-1].size()+str.size()-6 <=60){
+                        objectcodes[objectcodes.size()-1] += str;
+            		}else{
+            		    string strx = listFile[i].getAddress();
+            		    for(;6>strx.size();) strx = "0" + strx;
+                        objectcodes.push_back(strx);
+                        objectcodes[objectcodes.size()-1] += str;
+            		}
+            		string strx = listFile[i].getAddress();
+                    for(;6>strx.size();) strx = "0" + strx;
+                    string strr = "M" + strx + "05";
+                    modificationRecords.push_back(strr);
+
             		cout<< std::setfill('0') << std::setw(8)<<object_code<<endl;
             		continue;
      			}
@@ -116,6 +197,16 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
             	obj <<= 4 * 3;
             	obj |= (disp & ((1 << 12) - 1));
             	object_code = toHex(obj,3);
+            	for(;object_code.size()<6;) object_code = "0"+object_code;
+            	string str = object_code;
+            	if(objectcodes[objectcodes.size()-1].size()+str.size()-6 <=60){
+                    objectcodes[objectcodes.size()-1] += str;
+                }else{
+                    string strx = listFile[i].getAddress();
+                    for(;6>strx.size();) strx = "0" + strx;
+                    objectcodes.push_back(strx);
+                    objectcodes[objectcodes.size()-1] += str;
+                }
             } else {
 
                 int currentAddress = std::stoi(listFile[i].getAddress(), nullptr, 16);
@@ -139,6 +230,17 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
                 		obj <<= 4;
                 	}
                 	object_code = toHex(obj,2);
+
+                	for(;object_code.size()<4;) object_code = "0"+object_code;
+                    string str = object_code;
+                    if(objectcodes[objectcodes.size()-1].size()+str.size()-6 <= 60){
+                        objectcodes[objectcodes.size()-1] += str;
+                    }else{
+                        string strx = listFile[i].getAddress();
+                        for(;6>strx.size();) strx = "0" + strx;
+                        objectcodes.push_back(strx);
+                        objectcodes[objectcodes.size()-1] += str;
+                    }
                 	cout<< std::setfill('0') << std::setw(4)<<object_code<<endl;
                 	continue;
                 }
@@ -172,6 +274,18 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
                     	}
                     }
                     object_code = toHex(obj,format);
+                    for(;object_code.size()<format*2;) object_code = "0"+object_code;
+                        string str = object_code;
+                    if(objectcodes[objectcodes.size()-1].size()+str.size()-6 <=60){
+                        objectcodes[objectcodes.size()-1] += str;
+                    }else{
+                        string strx = listFile[i].getAddress();
+                        for(;6>strx.size();) strx = "0" + strx;
+                        objectcodes.push_back(strx);
+                        objectcodes[objectcodes.size()-1] += str;
+                    }
+
+
                 } else if (startsWith(listFile[i].getOperand(), "@")) {
                     //indirect
                     string opr = listFile[i].getOperand().substr(1);
@@ -190,8 +304,24 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
                          obj <<= 4*5;
                          obj |= addr;
                          object_code = toHex(obj,4);
-                         cout<< std::setfill('0') << std::setw(8)<<object_code<<endl;
-                         continue;
+                         for(;object_code.size()<8;) object_code = "0"+object_code;
+                        string str = object_code;
+                        if(objectcodes[objectcodes.size()-1].size()+str.size()-6 <=60){
+                            objectcodes[objectcodes.size()-1] += str;
+                        }else{
+                            string strx = listFile[i].getAddress();
+                            for(;6>strx.size();) strx = "0" + strx;
+                            objectcodes.push_back(strx);
+                            objectcodes[objectcodes.size()-1] += str;
+                        }
+
+                        string strx = listFile[i].getAddress();
+                        for(;6>strx.size();) strx = "0" + strx;
+                        string strr = "M" + strx + "05";
+                        modificationRecords.push_back(strr);
+
+                        cout<< std::setfill('0') << std::setw(8)<<object_code<<endl;
+                        continue;
                     }
                     int disp = addr - pc;
                     if (!(disp < 2024 && disp >= -2024) && base != -1) {
@@ -206,10 +336,30 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
                     obj <<= 4 * 3;
                     obj |= (disp & ((1 << 12) - 1));
                     object_code = toHex(obj,3);
+                    for(;object_code.size()<6;) object_code = "0"+object_code;
+                    string str = object_code;
+                    if(objectcodes[objectcodes.size()-1].size()+str.size()-6 <=60){
+                        objectcodes[objectcodes.size()-1] += str;
+                    }else{
+                        string strx = listFile[i].getAddress();
+                        for(;6>strx.size();) strx = "0" + strx;
+                        objectcodes.push_back(strx);
+                        objectcodes[objectcodes.size()-1] += str;
+                    }
                 } else {
                     //direct
                 	if(listFile[i].getop_code().compare("rsub") == 0){
                 		object_code = "4f0000";
+                		for(;object_code.size()<6;) object_code = "0"+object_code;
+                        string str = object_code;
+                        if(objectcodes[objectcodes.size()-1].size()+str.size()-6 <= 60){
+                            objectcodes[objectcodes.size()-1] += str;
+                        }else{
+                            string strx = listFile[i].getAddress();
+                            for(;6>strx.size();) strx = "0" + strx;
+                            objectcodes.push_back(strx);
+                            objectcodes[objectcodes.size()-1] += str;
+                        }
                 	}else{
 						string opr = listFile[i].getOperand().substr(0);
 						int operation = std::stoi(optable1.getOptable(listFile[i].getop_code()), nullptr, 16);
@@ -228,6 +378,22 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
 							obj <<= 4*5;
 							obj |= addr;
 							object_code = toHex(obj,4);
+							for(;object_code.size()<8;) object_code = "0"+object_code;
+                            string str = object_code;
+                            if(objectcodes[objectcodes.size()-1].size()+str.size()-6 <=60){
+                                objectcodes[objectcodes.size()-1] += str;
+                            }else{
+                                string strx = listFile[i].getAddress();
+                                for(;6>strx.size();) strx = "0" + strx;
+                                objectcodes.push_back(strx);
+                                objectcodes[objectcodes.size()-1] += str;
+                            }
+
+                            string strx = listFile[i].getAddress();
+                            for(;6>strx.size();) strx = "0" + strx;
+                            string strr = "M" + strx + "05";
+                            modificationRecords.push_back(strr);
+
 							cout<< std::setfill('0') << std::setw(8)<<object_code<<endl;
 							continue;
 						}
@@ -245,6 +411,16 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
 						obj <<= 4 * 3;
 						obj |= (disp & ((1 << 12) - 1));
 						object_code = toHex(obj,3);
+						for(;object_code.size()<6;) object_code = "0"+object_code;
+                        string str = object_code;
+                        if(objectcodes[objectcodes.size()-1].size()+str.size()-6 <=60){
+                            objectcodes[objectcodes.size()-1] += str;
+                        }else{
+                            string strx = listFile[i].getAddress();
+                            for(;6>strx.size();) strx = "0" + strx;
+                            objectcodes.push_back(strx);
+                            objectcodes[objectcodes.size()-1] += str;
+                        }
                 	}
                 }
             }
@@ -253,7 +429,54 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
     	}catch(exception& e){
     	}
     }
+    printing(objectcodes,modificationRecords);
+
 }
+
+void Pass2::printing(vector<string> objects,vector<string> modificationRecords ){
+    FILE *fp;
+    fp = fopen("objectCode.txt","w");
+    fprintf(fp,"%s\n",objects[0].c_str());
+    for(int i = 1;i<objects.size()-1;i++){
+        fprintf(fp,"T");
+        string addr = objects[i].substr(0,6);
+        fprintf(fp,"%s",addr.c_str());
+        int length = 0;
+        for(int j = 6;j<objects[i].size();j++){
+            if(objects[i].at(j) == '#'){
+                break;
+            }else{
+                length++;
+            }
+        }
+        string lengthHex = toHex(length/2,3);
+        for(;lengthHex.size()<2;) lengthHex = "0"+lengthHex;
+        fprintf(fp,"%s",lengthHex.c_str());
+        for(int j = 6;j<objects[i].size();j++){
+            if(objects[i].at(j) == '#'){
+                break;
+            }else{
+                fprintf(fp,"%c",objects[i].at(j));
+            }
+        }
+        fprintf(fp,"\n");
+    }
+    for (int i = 0 ; i < modificationRecords.size();i++ ) {
+        string x = modificationRecords[i].substr(1,modificationRecords[i].size()-3);
+
+        int l = std::stoi(x,nullptr,16) +1;
+        x = toHex(l,2);
+        for(;x.size()<6;) x = "0" + x;
+        x = "M" +x+"05";
+        fprintf(fp,"%s",x.c_str());
+        fprintf(fp,"\n");
+    }
+    fprintf(fp,"%s",objects[objects.size()-1].c_str());
+}
+
+
+
+
 
 bool Pass2 :: startsWith (string line, string charsStartWith) {
     if(line.length() < charsStartWith.length())
@@ -352,11 +575,12 @@ string Pass2 :: end_operand(int& startAddressAtStartStatment,
 		int& startAddressAtEndStatment,
 		int& lengthOfProg , Row entry,map<string,string> sym) {
 
-    if (entry.getOperand() != "null") {
+    if (entry.getOperand() != "null" && !isdigit(entry.getOperand().at(0))) {
         startAddressAtEndStatment = std::stoi(sym[entry.getOperand()], nullptr, 16);
+    }else if(isdigit(entry.getOperand().at(0))){
+        startAddressAtEndStatment = std::stoi(entry.getOperand(),nullptr,16);
     }
     lengthOfProg = std::stoi(entry.getAddress(), nullptr, 16) - startAddressAtStartStatment;
-
     return "null";
 }
 
@@ -404,7 +628,7 @@ void Pass2:: test(vector <Row> listFile){
 string Pass2::toHex(int i,int format){
 	std::string result;
 	    std::stringstream ss;
-	    ss << std::setfill('0') << std::setw(2*format) <<std::hex <<i;
+	    ss <<std::hex <<i;
 	    ss >> result;
 	    return result;
 }
