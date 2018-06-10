@@ -4,7 +4,7 @@ FIRST	LDT	    #11
 MOVECH  LDCH	STR1,X
         TIXR	T
 rita    equ     10*100/5+7
-bo7lo2   org     1000
+bo7lo2   org     rita+movech
 	    STCH	STR2,X
 	    JLT	    MOVECH
 test    equ     100
