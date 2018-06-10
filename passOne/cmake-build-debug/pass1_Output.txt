@@ -3,13 +3,15 @@ line   Address     Label    Opcode  Operands   Comment
 1      1000        first    ldt     #11         
 2      1003                 ldx     #0          
 3      1006        movech   ldch    str1,x      
-4      1009        rita     equ     4105        
-5      1009                 stch    str2,x      
-6      100c                 tixr    t           
-7      100e                 jlt     movech      
-8      1011        str1     byte    c'test string'  
-9      101c        str2     resb    11          
-10     1027                 end     first       
+4      1009                 tixr    t           
+5      cf          rita     equ     207         
+6                  bo7lo2   org     1000        
+7      3e8                  stch    str2,x      
+8      3eb                  jlt     movech      
+9      64          test     equ     100         
+10     3ee         str1     byte    c'test string'  
+11     3f9         str2     resb    11          
+12     404                  end     first       
 
 
 --------------------------------
@@ -17,15 +19,19 @@ line   Address     Label    Opcode  Operands   Comment
 --------------------------------
 |Label           |   Address   |
 --------------------------------
+|bo7lo2          |      1000   |
+--------------------------------
 |first           |      1000   |
 --------------------------------
 |movech          |      1006   |
 --------------------------------
-|rita            |      1009   |
+|rita            |        cf   |
 --------------------------------
-|str1            |      1011   |
+|str1            |       3ee   |
 --------------------------------
-|str2            |      101c   |
+|str2            |       3f9   |
 --------------------------------
 |strcp2          |      1000   |
+--------------------------------
+|test            |        64   |
 --------------------------------

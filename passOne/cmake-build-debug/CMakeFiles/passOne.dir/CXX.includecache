@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-D:/Assemble/passOne/Line.cpp
+E:/Assembler7/passOne/Line.cpp
 Line.h
-D:/Assemble/passOne/Line.h
+E:/Assembler7/passOne/Line.h
 
-D:/Assemble/passOne/Line.h
+E:/Assembler7/passOne/Line.h
 string
 -
 cstring
 -
 
-D:/Assemble/passOne/Pass2.cpp
+E:/Assembler7/passOne/Pass2.cpp
 
-D:/Assemble/passOne/Pass2.h
+E:/Assembler7/passOne/Pass2.h
 string
 -
 vector
@@ -26,29 +26,29 @@ vector
 map
 -
 Row.h
-D:/Assemble/passOne/Row.h
+E:/Assembler7/passOne/Row.h
 litLine.h
-D:/Assemble/passOne/litLine.h
+E:/Assembler7/passOne/litLine.h
 
-D:/Assemble/passOne/Row.h
+E:/Assembler7/passOne/Row.h
 string
 -
 
-D:/Assemble/passOne/cmake-build-debug/Row.cpp
+E:/Assembler7/passOne/cmake-build-debug/Row.cpp
 ../Row.h
-D:/Assemble/passOne/Row.h
+E:/Assembler7/passOne/Row.h
 
-D:/Assemble/passOne/litLine.cpp
+E:/Assembler7/passOne/litLine.cpp
 litLine.h
-D:/Assemble/passOne/litLine.h
+E:/Assembler7/passOne/litLine.h
 
-D:/Assemble/passOne/litLine.h
+E:/Assembler7/passOne/litLine.h
 cstring
 -
 string
 -
 
-D:/Assemble/passOne/main.cpp
+E:/Assembler7/passOne/main.cpp
 iostream
 -
 cstring
@@ -66,33 +66,33 @@ sstream
 cstdio
 -
 Row.h
-D:/Assemble/passOne/Row.h
+E:/Assembler7/passOne/Row.h
 litLine.h
-D:/Assemble/passOne/litLine.h
+E:/Assembler7/passOne/litLine.h
 optable.h
-D:/Assemble/passOne/optable.h
+E:/Assembler7/passOne/optable.h
 Line.h
-D:/Assemble/passOne/Line.h
+E:/Assembler7/passOne/Line.h
 parsing.h
-D:/Assemble/passOne/parsing.h
+E:/Assembler7/passOne/parsing.h
 validation.h
-D:/Assemble/passOne/validation.h
+E:/Assembler7/passOne/validation.h
 Pass2.h
-D:/Assemble/passOne/Pass2.h
+E:/Assembler7/passOne/Pass2.h
 
-D:/Assemble/passOne/optable.cpp
+E:/Assembler7/passOne/optable.cpp
 optable.h
-D:/Assemble/passOne/optable.h
+E:/Assembler7/passOne/optable.h
 
-D:/Assemble/passOne/optable.h
+E:/Assembler7/passOne/optable.h
 map
 -
 cstring
 -
 
-D:/Assemble/passOne/parsing.cpp
+E:/Assembler7/passOne/parsing.cpp
 parsing.h
-D:/Assemble/passOne/parsing.h
+E:/Assembler7/passOne/parsing.h
 fstream
 -
 iostream
@@ -106,9 +106,9 @@ vector
 algorithm
 -
 Line.h
-D:/Assemble/passOne/Line.h
+E:/Assembler7/passOne/Line.h
 
-D:/Assemble/passOne/parsing.h
+E:/Assembler7/passOne/parsing.h
 cstring
 -
 string
@@ -118,11 +118,11 @@ vector
 list
 -
 Line.h
-D:/Assemble/passOne/Line.h
+E:/Assembler7/passOne/Line.h
 
-D:/Assemble/passOne/parsing_map.cpp
+E:/Assembler7/passOne/parsing_map.cpp
 parsing_map.h
-D:/Assemble/passOne/parsing_map.h
+E:/Assembler7/passOne/parsing_map.h
 fstream
 -
 iostream
@@ -136,7 +136,7 @@ vector
 algorithm
 -
 
-D:/Assemble/passOne/parsing_map.h
+E:/Assembler7/passOne/parsing_map.h
 cstring
 -
 string
@@ -148,17 +148,17 @@ list
 map
 -
 
-D:/Assemble/passOne/validation.cpp
+E:/Assembler7/passOne/validation.cpp
 iostream
 -
 validation.h
-D:/Assemble/passOne/validation.h
+E:/Assembler7/passOne/validation.h
 Row.h
-D:/Assemble/passOne/Row.h
+E:/Assembler7/passOne/Row.h
 optable.h
-D:/Assemble/passOne/optable.h
+E:/Assembler7/passOne/optable.h
 
-D:/Assemble/passOne/validation.h
+E:/Assembler7/passOne/validation.h
 cstring
 -
 string
@@ -170,7 +170,7 @@ list
 vector
 -
 Row.h
-D:/Assemble/passOne/Row.h
+E:/Assembler7/passOne/Row.h
 Line.h
-D:/Assemble/passOne/Line.h
+E:/Assembler7/passOne/Line.h
 

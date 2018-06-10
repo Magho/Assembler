@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstring>
 #include <string>
@@ -51,7 +50,7 @@ int main() {
 
 
     opTab.setTable();
-    list<Line> parsingList=parser.parisngFunction("D:\\Assemble\\passOne\\test.txt");
+    list<Line> parsingList=parser.parisngFunction("E:\\Assembler7\\passOne\\test.txt");
     int size = parsingList.size();
 
 
@@ -78,7 +77,7 @@ int main() {
     printFileList();
 
     // test pass2
-  //  pass2.test(listFile);
+    //  pass2.test(listFile);
 
     return 0;
 }
@@ -359,7 +358,7 @@ void Pass1 () {
                 listFile.at(index).errorMessge=row.errorMessge;
                 goto h;
             }
-             listFile.at(index).setAddress(row.getOperand());
+            listFile.at(index).setAddress(row.getOperand());
 
         }else{
             listFile.at(index).setAddress(LOCCTR);
@@ -371,15 +370,19 @@ void Pass1 () {
 
     while ((row.getop_code().compare("end") != 0) && (index < listFile.size()-1)) {
         //is not a comment line
+
         if (!row.hasError) {
+
             if (!row.isComment) {
                 if (row.getLabel().compare("null") != 0) {
                     bool found = checkIfSymbolDefinedBefore(row.getLabel());//return true if exist
                     if (found) {
+
                         listFile.at(index).hasError = true;
                         listFile.at(index).errorMessge = "The Label already exists";
                         goto h;
                     } else {
+
                         if (row.getop_code().compare("equ") == 0) {
                             if(row.hasError){
                                 listFile.at(index).hasError=true;
@@ -405,6 +408,7 @@ void Pass1 () {
 
 
                         } else {
+                            cout << row.getLabel()<<"   anaaa"<<endl;
                             symTab.insert(pair<string, string>(row.getLabel(), LOCCTR));
                             TypeTable.insert(pair<string, string>(row.getLabel(), "r"));
 
@@ -531,6 +535,7 @@ void Pass1 () {
                     LOCCTR = addHex(LOCCTR, "-4");
                 }
             } else if (row.getop_code().compare("org") == 0) {
+
                 if(row.format!=4){
                     if(row.isExpression){
                         row=calculateExpression(row);
@@ -539,6 +544,7 @@ void Pass1 () {
                         listFile.at(index).setOperand(str.str());
                         row=listFile.at(index);
                     }
+
                     string label = row.getOperand();
                     int num = atoi(label.c_str());
                     stringstream str;
@@ -548,12 +554,22 @@ void Pass1 () {
                         index++;
                         listFile.at(index).setAddress(LOCCTR);
                         row = listFile.at(index);
+                        string str;          //The string
+                        ostringstream temp;  //temp as in temporary
+                        temp<<num;
+                        str=temp.str();
+                        Row lastRow = listFile.at(index-1);
+                        symTab.insert(pair<string, string>(lastRow.getLabel(),str));
+                        TypeTable.insert(pair<string, string>(lastRow.getLabel(), "a"));
 
                     } else if (symTab.count(label)) {
                         LOCCTR = symTab.at(label);
                         index++;
                         listFile.at(index).setAddress(LOCCTR);
                         row = listFile.at(index);
+                        Row lastRow = listFile.at(index-1);
+                        symTab.insert(pair<string, string>(lastRow.getLabel(),LOCCTR));
+                        TypeTable.insert(pair<string, string>(lastRow.getLabel(), "r"));
                     } else {
                         LOCCTR=addHex(LOCCTR,"-3");
                         listFile.at(index).hasError = true;
@@ -672,11 +688,17 @@ Row calculateExpression(Row row) {
                     row.errorMessge = "expression has un defined label ";
                     return row;
 
-                    } else{
-                   expressionList.push_back(partOfExpression);
+                } else{
+
+                    cout << partOfExpression<<"  part"<<endl;
+                    int num = atoi( partOfExpression.c_str());
+                    string hexNum = decimalToHex(num);
+                    cout << hexNum << endl;
+                    expressionList.push_back(hexNum);
+
                     expressionList.push_back(expression.substr(counter,1));
 
-                    TypeTable.insert(pair<string, string>(expression.substr(substringStart,counter-substringStart), "Na"));
+                    TypeTable.insert(pair<string, string>(hexNum, "Na"));
                     substringStart = counter + 1;
 
                 }
@@ -706,11 +728,12 @@ Row calculateExpression(Row row) {
                     row.errorMessge = "expression has un defined label ";
                     return row;
                     break;} else{
+                    int num = atoi( expression.substr(substringStart, counter-substringStart).c_str());
+                    string hexNum = decimalToHex(num);
+                    cout << hexNum << endl;
+                    expressionList.push_back(hexNum);
 
-                    expressionList.push_back(expression.substr(substringStart, counter-substringStart));
-
-                    TypeTable.insert(pair<string, string>(expression.substr(substringStart,counter-substringStart), "Na"));
-
+                    TypeTable.insert(pair<string, string>(hexNum, "Na"));
 
                 }
             } else {
@@ -724,7 +747,7 @@ Row calculateExpression(Row row) {
 
     if(expressionList.size()<3){
         for(int ii=0;ii<expressionList.size();ii++){
-           cout<< expressionList.at(ii)<<" ";
+            cout<< expressionList.at(ii)<<" ";
         }
         row.hasError = true;
         row.errorMessge = "expression has un defined label ";
@@ -751,6 +774,7 @@ Row calculateExpression(Row row) {
                     string num2 = "";
                     if(TypeTable.at(expressionList.at(i-1))=="Na"){
                         num1 =expressionList.at(i-1);
+
                     } else {
                         num1 = symTab.at(expressionList.at(i-1));
 
@@ -763,6 +787,7 @@ Row calculateExpression(Row row) {
                     }
 
                     if(expressionList.at(i)=="*"){
+
 
                         expressionList.at(i-1)=mulHex(num1,num2);
                         TypeTable.insert(pair<string, string>(expressionList.at(i-1), "Na"));
@@ -796,7 +821,7 @@ Row calculateExpression(Row row) {
                 } else{
                     type = "r";
                 }
-       //         symTab.insert(pair<string, string>(row.getLabel(),expressionList.at(0) ));
+                //         symTab.insert(pair<string, string>(row.getLabel(),expressionList.at(0) ));
                 TypeTable.insert(pair<string, string>(row.getLabel(),type));
                 row.setOperand(expressionList.at(0));
                 //TypeTable.at(row.getLabel())=TypeTable.at(expressionList.at(0));
@@ -941,11 +966,11 @@ Row calculateExpression(Row row) {
     if(expressionList.size()==1){
         row.setAddress(expressionList.at(0));
         string type = "";
-if(TypeTable.at(expressionList.at(0))=="Na"){
-    type = "a";
-} else{
-    type = "r";
-}
+        if(TypeTable.at(expressionList.at(0))=="Na"){
+            type = "a";
+        } else{
+            type = "r";
+        }
         //symTab.insert(pair<string, string>(row.getLabel(),expressionList.at(0) ));
         TypeTable.insert(pair<string, string>(row.getLabel(),type));
         row.setOperand(expressionList.at(0));
