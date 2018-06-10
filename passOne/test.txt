@@ -1,13 +1,16 @@
-STRCP2	START   1000
-FIRST	LDT	    #11
-	    LDX	    #0
-MOVECH  LDCH	STR1,X
-        TIXR	T
-rita    equ     first+movech
-bo7lo2   org     rita+movech
-	    STCH	STR2,X
-	    JLT	    MOVECH
-test    equ     100
-STR1	BYTE	C'TEST STRING'
-STR2	RESB	11
-        END  	FIRST
+STRCP2	START    1000
+FIRST	LDT	     #11
+	    LDX	     #0
+MOVECH  LDCH	 STR1,X
+        TIXR     T
+rita    equ      first+1000
+uuiu    tixr     t
+bo7lo2   org     1000+movech
+jsd      lda     1000
+temona   equ     movech+1000+5*10
+	     STCH	 STR2,X
+	     JLT	 MOVECH
+test     equ     100
+STR1	byte	 c'TEST STRING'
+STR2	RESB	 11
+        END  	 FIRST

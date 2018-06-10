@@ -4,15 +4,17 @@ line   Address     Label    Opcode  Operands   Comment
 2      1003                 ldx     #0          
 3      1006        movech   ldch    str1,x      
 4      1009                 tixr    t           
-5      f           rita     equ     15          
-          ****Error:relative + relative is invalid expression
-6      1008        bo7lo2   org     rita+movech  
-7      100b                 stch    str2,x      
-8      100e                 jlt     movech      
-9      64          test     equ     100         
-10     1011        str1     byte    c'test string'  
-11     101c        str2     resb    11          
-12     1027                 end     first       
+5      13e8        rita     equ     5096        
+6      100b        uuiu     tixr    t           
+7                  bo7lo2   org     5102        
+8      13ee        jsd      lda     1000        
+9      1420        temona   equ     5152        
+10     13f1                 stch    str2,x      
+11     13f4                 jlt     movech      
+12     64          test     equ     100         
+13     13f7        str1     byte    c'test string'  
+14     1402        str2     resb    11          
+15     140d                 end     first       
 
 
 --------------------------------
@@ -20,17 +22,25 @@ line   Address     Label    Opcode  Operands   Comment
 --------------------------------
 |Label           |   Address   |
 --------------------------------
-|bo7lo2          |      1008   |
+|bo7lo2          |      5102   |
 --------------------------------
 |first           |      1000   |
 --------------------------------
+|jsd             |      13ee   |
+--------------------------------
 |movech          |      1006   |
 --------------------------------
-|str1            |      1011   |
+|rita            |      13e8   |
 --------------------------------
-|str2            |      101c   |
+|str1            |      13f7   |
+--------------------------------
+|str2            |      1402   |
 --------------------------------
 |strcp2          |      1000   |
 --------------------------------
+|temona          |      1420   |
+--------------------------------
 |test            |        64   |
+--------------------------------
+|uuiu            |      100b   |
 --------------------------------
