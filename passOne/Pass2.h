@@ -19,8 +19,9 @@ class Pass2{
 private:
 
 public:
+    string partOfExpression;
 
-    void pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vector<litLine> litTab);
+    void pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vector<litLine> litTab,map<string,string> TypeTable);
     bool startsWith (string line, string charsStartWith);
     bool endWith (string line, string charsStartWith);
     int formatType (string opcode);
@@ -41,6 +42,13 @@ public:
     string resb_operand(Row entry);
     string resw_operand(Row entry);
     string toHex(int i,int format);
+    void printing(vector<string> objects,vector<string> modificationRecords );
+    string subHex(string hex1,string hex2);
+    string mulHex(string hex1,string hex2);
+    string divHex(string hex1,string hex2);
+    Row calculateExpression(Row row,map<string,string> symTable,map<string,string> TypeTable);
+    int hexToDecimal(string hexa);
+    string addHex(string hex1,string hex2);
 
 };
 

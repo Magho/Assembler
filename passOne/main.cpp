@@ -50,91 +50,29 @@ int main() {
 
 
     opTab.setTable();
-    list<Line> parsingList=parser.parisngFunction("E:\\Assembler7\\passOne\\test.txt");
+    list<Line> parsingList=parser.parisngFunction("test.txt");
     int size = parsingList.size();
 
-
-    //parser.printTheList(parsingList);
-
-///   parser.printTheList(parsingList);
     validate.setParsinglist(parsingList);
     validate.validate();
+
     std::list<Row> test = validate.getValidationList();
-    //cout << validate.getValidationList().size()<<endl;
     for(int i=0;i<validate.getValidationList().size();i++){
-        //  cout << test.front().getLabel()<<" " <<test.front().getop_code()<<" "<<test.front().getOperand()<<" "<<test.front().getcomment()<<test.front().format<<" "<<test.front().errorMessge<<endl;
         listFile.push_back(test.front());
         test.pop_front();
-        // cout<<listFile.at(i).getop_code();
+
     }
 
 
 
-    // std::list<Line> test1 = parsingList;
-
-//    fillFileList();
     Pass1();
     printFileList();
 
     // test pass2
-    //  pass2.test(listFile);
+    pass2.pass2Algoritm(listFile,symTab,litTab,TypeTable);
 
     return 0;
 }
-list<Line>fillLine(){
-    list<Line> test;
-
-    Line line ;
-    line.setWord1("prog");
-    line.setWord2("start");
-    line.setWord3("1000");
-    line.NumofwORD=3;
-    test.push_back(line);
-
-    line.setWord1("lda");
-    line.setWord2("length");
-    line.setWord3("null");
-    line.NumofwORD=2;
-    test.push_back(line);
-
-    line.setWord1("+add");
-    line.setWord2("length");
-    line.setWord3("null");
-    line.NumofwORD=2;
-    test.push_back(line);
-
-    line.setWord1("loop");
-    line.setWord2("+sta");
-    line.setWord3("null");
-    line.NumofwORD=2;
-    test.push_back(line);
-
-    line.setWord1("lda");
-    line.setWord2("lda");
-    line.setWord3("null");
-    line.NumofwORD=2;
-
-    test.push_back(line);
-
-
-    line.setWord1("addr");
-    line.setWord2("length");
-    line.setWord3("null");
-    line.NumofwORD=2;
-    test.push_back(line);
-
-    line.setWord1("add");
-    line.setWord2("+length");
-    line.setWord3("null");
-    line.setcomment("el comment aho ya ritaaaaa");
-    line.NumofwORD=2;
-
-    test.push_back(line);
-
-    return test;
-
-}
-
 void printFileList() {
     cout<<"\n\n"<<endl;
     FILE *ptr;
@@ -216,127 +154,6 @@ void printFileList() {
         fprintf(ptr,"\n--------------------------------\n");
     }
     fclose(ptr);
-}
-
-void fillFileList(){
-    Row r ;
-    r.setLabel("copy");
-    r.setop_code("start");
-    r.setOperand("1000");
-    listFile.push_back(r);
-
-
-    r.setLabel("first");
-    r.setop_code("add");
-    r.setOperand("retadr");
-    listFile.push_back(r);
-
-    r.setLabel("first");
-    r.setop_code("jsub");
-    r.setOperand("rdrec");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("add");
-    r.setOperand("length");
-    listFile.push_back(r);
-
-    /* r.setLabel("null");
-     r.setop_code("org");
-     r.setOperand("5500");
-     listFile.push_back(r);*/
-
-    r.setLabel("null");
-    r.setop_code("comp");
-    r.setOperand("zero");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("jeq");
-    r.setOperand("endfil");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("jsub");
-    r.setOperand("wrrec");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("j");
-    r.setOperand("cloop");
-    listFile.push_back(r);
-
-    r.setLabel("endfil");
-    r.setop_code("add");
-    r.setOperand("eof");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("add");
-    r.setOperand("buffer");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("add");
-    r.setOperand("three");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("add");
-    r.setOperand("length");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("jsub");
-    r.setOperand("wrrec");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("add");
-    r.setOperand("retadr");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("rsub");
-    r.setOperand("null");
-    listFile.push_back(r);
-
-    r.setLabel("eof");
-    r.setop_code("byte");
-    r.setOperand("c'eof'");
-    listFile.push_back(r);
-
-    r.setLabel("three");
-    r.setop_code("word");
-    r.setOperand("3");
-    listFile.push_back(r);
-
-    r.setLabel("zero");
-    r.setop_code("word");
-    r.setOperand("0");
-    listFile.push_back(r);
-
-    r.setLabel("retadr");
-    r.setop_code("resw");
-    r.setOperand("1");
-    listFile.push_back(r);
-
-    r.setLabel("length");
-    r.setop_code("resw");
-    r.setOperand("1");
-    listFile.push_back(r);
-
-    r.setLabel("buffer");
-    r.setop_code("resb");
-    r.setOperand("4096");
-    listFile.push_back(r);
-
-//    r.setLabel("null");
-//    r.setop_code("end");
-//    r.setOperand("first");
-//    listFile.push_back(r);
-
-
 }
 
 void Pass1 () {
