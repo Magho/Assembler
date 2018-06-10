@@ -354,9 +354,6 @@ void Pass1 () {
         index++;
         row = listFile.at(index);
         if(row.getop_code().compare("equ")==0) {
-//            if(row.isExpression){
-//                row=calculateExpression(row);
-//            }
             if(row.hasError){
                 listFile.at(index).hasError=true;
                 listFile.at(index).errorMessge=row.errorMessge;
@@ -374,7 +371,6 @@ void Pass1 () {
 
     while ((row.getop_code().compare("end") != 0) && (index < listFile.size()-1)) {
         //is not a comment line
-        //cout<<row()<<endl;
         if (!row.hasError) {
             if (!row.isComment) {
                 if (row.getLabel().compare("null") != 0) {
@@ -385,9 +381,6 @@ void Pass1 () {
                         goto h;
                     } else {
                         if (row.getop_code().compare("equ") == 0) {
-//                            if(row.isExpression){
-//                                row=calculateExpression(row);
-//                            }
                             if(row.hasError){
                                 listFile.at(index).hasError=true;
                                 listFile.at(index).errorMessge=row.errorMessge;
@@ -514,7 +507,7 @@ void Pass1 () {
                     if(row.isExpression){
                         row=calculateExpression(row);
                         stringstream str;
-                        str << atoi(row.getOperand().c_str());
+                        str << hexToDecimal(row.getOperand());
                         listFile.at(index).setOperand(str.str());
                         row=listFile.at(index);
                     }
@@ -539,12 +532,19 @@ void Pass1 () {
                 }
             } else if (row.getop_code().compare("org") == 0) {
                 if(row.format!=4){
+                    if(row.isExpression){
+                        row=calculateExpression(row);
+                        stringstream str;
+                        str << hexToDecimal(row.getOperand());
+                        listFile.at(index).setOperand(str.str());
+                        row=listFile.at(index);
+                    }
                     string label = row.getOperand();
                     int num = atoi(label.c_str());
                     stringstream str;
                     str << num;
                     if (str.str().size() == label.size()) {
-                        LOCCTR = row.getOperand();
+                        LOCCTR = decimalToHex(num);
                         index++;
                         listFile.at(index).setAddress(LOCCTR);
                         row = listFile.at(index);
