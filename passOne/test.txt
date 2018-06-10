@@ -3,7 +3,7 @@ FIRST	LDT	    #11
 	    LDX	    #0
 MOVECH  LDCH	STR1,X
         TIXR	T
-rita    equ     10*100/5+7
+rita    equ     first+movech
 bo7lo2   org     rita+movech
 	    STCH	STR2,X
 	    JLT	    MOVECH

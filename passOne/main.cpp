@@ -510,7 +510,10 @@ void Pass1 () {
                     LOCCTR = addHex(LOCCTR, "-3");
                     if(row.isExpression){
                         row=calculateExpression(row);
-                        stringstream str;
+                        if(row.hasError){
+                            listFile.at(index).hasError=true;
+                            listFile.at(index).errorMessge=row.errorMessge;
+                        }                        stringstream str;
                         str << hexToDecimal(row.getOperand());
                         listFile.at(index).setOperand(str.str());
                         row=listFile.at(index);
@@ -539,6 +542,10 @@ void Pass1 () {
                 if(row.format!=4){
                     if(row.isExpression){
                         row=calculateExpression(row);
+                        if(row.hasError){
+                            listFile.at(index).hasError=true;
+                            listFile.at(index).errorMessge=row.errorMessge;
+                        }
                         stringstream str;
                         str << hexToDecimal(row.getOperand());
                         listFile.at(index).setOperand(str.str());
@@ -750,7 +757,7 @@ Row calculateExpression(Row row) {
             cout<< expressionList.at(ii)<<" ";
         }
         row.hasError = true;
-        row.errorMessge = "expression has un defined label ";
+        row.errorMessge = "expression  syntax error ";
         return row;
 
     } else {
@@ -901,7 +908,7 @@ Row calculateExpression(Row row) {
 
                     row.hasError = true;
                     // cout<< "e7m" << TypeTable.at(expressionList.at(i-1)) <<" " << expressionList.at(i-1) ;
-                    row.errorMessge = "relative + relative is invalid expression";
+                    row.errorMessge = "absolute - relative  is invalid expression";
                     return row;
 
                 }else{
