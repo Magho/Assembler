@@ -436,11 +436,12 @@ void Pass1 () {
                     LOCCTR = addHex(LOCCTR, decimalToHex(atoi(row.getOperand().c_str())));
                 } else if (row.getop_code().compare("byte") == 0) {
                     char ch = row.getOperand().at(0);
+
                     switch (ch) {
                         case 'c': {
                             stringstream str;
                             str << row.getOperand().size() - 3;
-                            LOCCTR = addHex(LOCCTR, str.str());
+                            LOCCTR = addHex(LOCCTR, decimalToHex(atoi(str.str().c_str())));
                         }
                             break;
                         case 'x': {
