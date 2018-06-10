@@ -28,7 +28,7 @@ list<Line> parsing :: parisngFunction (string path) {
             Line bbbb;
 
             //transfer to string to lower case
-            std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+          std::transform(str.begin(), str.end(), str.begin(), ::tolower);
             cout << str << "\n";
             //check if comment line
             if (startsWith(str, ".")) {

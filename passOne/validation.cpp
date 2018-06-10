@@ -54,6 +54,8 @@ void validation ::validate() {
         if(line.getWord1().length()>0&&line.getWord1().at(0)=='+'){
             counter ++;
             std::string temp = line.getWord1().substr(1,line.getWord1().length());
+
+            //std::transform(str.begin(), str.end(), str.begin(), ::tolower);
             if (opT.opTable.find(temp) == opT.opTable.end()){
                 row.errorMessge="un correct format";
                 row.hasError= true;
@@ -448,7 +450,7 @@ void validation ::validate() {
 
 
         }
-        if(row.getOperand().find('+') ||row.getOperand().find('-') || row.getOperand().find('*')||row.getOperand().find('/')){
+        if( row.getOperand().find("+") != std::string::npos   || row.getOperand().find("-") != std::string::npos || row.getOperand().find("*") != std::string::npos || row.getOperand().find("/") != std::string::npos){
             row.isExpression = true;
             validationRows.back().isExpression=true;
 

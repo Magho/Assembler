@@ -1,19 +1,18 @@
 line   Address     Label    Opcode  Operands   Comment
-0      1000        prob1    start   1000        
-1      1000                 ldx     #0          
-2      1003                 ldt     =c'rita'    
-3      1006                 lda     =x'05'      
-4      1009                 lds     #2          
-5      100c                 ltorg               
-6      100c                 =c'rita'72697461    
-7      1010                 =x'05'  05          
-8      1011        loop     ldch    beta,x    dddddddddddddd kkkkk kkkkk  
-9      1014                 subr    t,a         
-10                 lop      org     10          
-11     2011        bomb     equ     loop+1000   
-12     10                   jlt     loop        
-13     13          beta     byte    c'45'       
-14     15                   end     prob1       
+0      1000        strcp2   start   1000        
+1      1000        first    ldt     #11         
+2      1003                 ldx     #0          
+3      1006        movech   ldch    str1,x      
+4      1009                 tixr    t           
+5      f           rita     equ     15          
+          ****Error:relative + relative is invalid expression
+6      1008        bo7lo2   org     rita+movech  
+7      100b                 stch    str2,x      
+8      100e                 jlt     movech      
+9      64          test     equ     100         
+10     1011        str1     byte    c'test string'  
+11     101c        str2     resb    11          
+12     1027                 end     first       
 
 
 --------------------------------
@@ -21,11 +20,17 @@ line   Address     Label    Opcode  Operands   Comment
 --------------------------------
 |Label           |   Address   |
 --------------------------------
-|beta            |        13   |
+|bo7lo2          |      1008   |
 --------------------------------
-|bomb            |      2011   |
+|first           |      1000   |
 --------------------------------
-|loop            |      1011   |
+|movech          |      1006   |
 --------------------------------
-|prob1           |      1000   |
+|str1            |      1011   |
+--------------------------------
+|str2            |      101c   |
+--------------------------------
+|strcp2          |      1000   |
+--------------------------------
+|test            |        64   |
 --------------------------------

@@ -29,14 +29,12 @@ bool checkIfSymbolDefinedBefore(string symbol);
 bool checkIfLiteralDefinedBefore(string litValue);
 bool searchOPTABForOPCODE (string OPCODE);
 string addHex(string hex1,string hex2);
+string subHex(string hex1,string hex2);
 string mulHex(string hex1,string hex2);
 string divHex(string hex1,string hex2);
-string subHex(string hex1,string hex2);
 string decimalToHex(int decimal);
 int hexToDecimal(string hexa);
 void printFileList();
-Pass2 pass2;
-Row calculateExpression(Row row);
 static vector <Row> listFile ;
 map<string,string> symTab;
 map<string,string> TypeTable;
@@ -44,8 +42,9 @@ vector<litLine> litTab;
 optable opTab;
 parsing parser;
 validation validate;
-
-string partOfExpression;
+Pass2 pass2;
+string partOfExpression ;
+Row calculateExpression(Row row);
 
 int main() {
 
@@ -54,85 +53,26 @@ int main() {
     list<Line> parsingList=parser.parisngFunction("test.txt");
     int size = parsingList.size();
 
-
-    //parser.printTheList(parsingList);
-
-    ///   parser.printTheList(parsingList);
     validate.setParsinglist(parsingList);
     validate.validate();
+
     std::list<Row> test = validate.getValidationList();
-    //cout << validate.getValidationList().size()<<endl;
     for(int i=0;i<validate.getValidationList().size();i++){
-        //  cout << test.front().getLabel()<<" " <<test.front().getop_code()<<" "<<test.front().getOperand()<<" "<<test.front().getcomment()<<test.front().format<<" "<<test.front().errorMessge<<endl;
         listFile.push_back(test.front());
         test.pop_front();
-        // cout<<listFile.at(i).getop_code();
+
     }
 
 
 
-    // std::list<Line> test1 = parsingList;
-
-    //    fillFileList();
     Pass1();
     printFileList();
-    pass2.pass2Algoritm(listFile, symTab,litTab);
+
+    // test pass2
+    pass2.pass2Algoritm(listFile,symTab,litTab);
+
     return 0;
 }
-list<Line>fillLine(){
-    list<Line> test;
-
-    Line line ;
-    line.setWord1("prog");
-    line.setWord2("start");
-    line.setWord3("1000");
-    line.NumofwORD=3;
-    test.push_back(line);
-
-    line.setWord1("lda");
-    line.setWord2("length");
-    line.setWord3("null");
-    line.NumofwORD=2;
-    test.push_back(line);
-
-    line.setWord1("+add");
-    line.setWord2("length");
-    line.setWord3("null");
-    line.NumofwORD=2;
-    test.push_back(line);
-
-    line.setWord1("loop");
-    line.setWord2("+sta");
-    line.setWord3("null");
-    line.NumofwORD=2;
-    test.push_back(line);
-
-    line.setWord1("lda");
-    line.setWord2("lda");
-    line.setWord3("null");
-    line.NumofwORD=2;
-
-    test.push_back(line);
-
-
-    line.setWord1("addr");
-    line.setWord2("length");
-    line.setWord3("null");
-    line.NumofwORD=2;
-    test.push_back(line);
-
-    line.setWord1("add");
-    line.setWord2("+length");
-    line.setWord3("null");
-    line.setcomment("el comment aho ya ritaaaaa");
-    line.NumofwORD=2;
-
-    test.push_back(line);
-
-    return test;
-
-}
-
 void printFileList() {
     cout<<"\n\n"<<endl;
     FILE *ptr;
@@ -216,127 +156,6 @@ void printFileList() {
     fclose(ptr);
 }
 
-void fillFileList(){
-    Row r ;
-    r.setLabel("copy");
-    r.setop_code("start");
-    r.setOperand("1000");
-    listFile.push_back(r);
-
-
-    r.setLabel("first");
-    r.setop_code("add");
-    r.setOperand("retadr");
-    listFile.push_back(r);
-
-    r.setLabel("first");
-    r.setop_code("jsub");
-    r.setOperand("rdrec");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("add");
-    r.setOperand("length");
-    listFile.push_back(r);
-
-    /* r.setLabel("null");
-     r.setop_code("org");
-     r.setOperand("5500");
-     listFile.push_back(r);*/
-
-    r.setLabel("null");
-    r.setop_code("comp");
-    r.setOperand("zero");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("jeq");
-    r.setOperand("endfil");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("jsub");
-    r.setOperand("wrrec");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("j");
-    r.setOperand("cloop");
-    listFile.push_back(r);
-
-    r.setLabel("endfil");
-    r.setop_code("add");
-    r.setOperand("eof");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("add");
-    r.setOperand("buffer");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("add");
-    r.setOperand("three");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("add");
-    r.setOperand("length");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("jsub");
-    r.setOperand("wrrec");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("add");
-    r.setOperand("retadr");
-    listFile.push_back(r);
-
-    r.setLabel("null");
-    r.setop_code("rsub");
-    r.setOperand("null");
-    listFile.push_back(r);
-
-    r.setLabel("eof");
-    r.setop_code("byte");
-    r.setOperand("c'eof'");
-    listFile.push_back(r);
-
-    r.setLabel("three");
-    r.setop_code("word");
-    r.setOperand("3");
-    listFile.push_back(r);
-
-    r.setLabel("zero");
-    r.setop_code("word");
-    r.setOperand("0");
-    listFile.push_back(r);
-
-    r.setLabel("retadr");
-    r.setop_code("resw");
-    r.setOperand("1");
-    listFile.push_back(r);
-
-    r.setLabel("length");
-    r.setop_code("resw");
-    r.setOperand("1");
-    listFile.push_back(r);
-
-    r.setLabel("buffer");
-    r.setop_code("resb");
-    r.setOperand("4096");
-    listFile.push_back(r);
-
-    //    r.setLabel("null");
-    //    r.setop_code("end");
-    //    r.setOperand("first");
-    //    listFile.push_back(r);
-
-
-}
-
 void Pass1 () {
     string LOCCTR;
     int index = 0;
@@ -351,14 +170,13 @@ void Pass1 () {
         index++;
         row = listFile.at(index);
         if(row.getop_code().compare("equ")==0) {
-            if(row.isExpression){
-
-                calculateExpression(row);
-            } else{
-
-                listFile.at(index).setAddress(row.getOperand());
-
+            if(row.hasError){
+                listFile.at(index).hasError=true;
+                listFile.at(index).errorMessge=row.errorMessge;
+                goto h;
             }
+            listFile.at(index).setAddress(row.getOperand());
+
         }else{
             listFile.at(index).setAddress(LOCCTR);
         }
@@ -369,61 +187,57 @@ void Pass1 () {
 
     while ((row.getop_code().compare("end") != 0) && (index < listFile.size()-1)) {
         //is not a comment line
-        //cout<<row()<<endl;
+
         if (!row.hasError) {
+
             if (!row.isComment) {
                 if (row.getLabel().compare("null") != 0) {
                     bool found = checkIfSymbolDefinedBefore(row.getLabel());//return true if exist
                     if (found) {
+
                         listFile.at(index).hasError = true;
                         listFile.at(index).errorMessge = "The Label already exists";
                         goto h;
                     } else {
-                        if (row.getop_code().compare("equ") == 0) {
-                            if(row.isExpression){
-                                row=calculateExpression(row);
 
-                                listFile.at(index).hasError = true;
-                                listFile.at(index).errorMessge = row.errorMessge;
-                                listFile.at(index).setAddress(row.getAddress());
+                        if (row.getop_code().compare("equ") == 0) {
+                            if(row.hasError){
+                                listFile.at(index).hasError=true;
+                                listFile.at(index).errorMessge=row.errorMessge;
                                 goto h;
+                            }
+                            string label = row.getOperand();
+                            int num = atoi(label.c_str());
+                            stringstream str;
+                            str << num;
+                            if (str.str().size() == label.size()) {
+                                symTab.insert(pair<string, string>(row.getLabel(), decimalToHex(num)));
+                                TypeTable.insert(pair<string, string>(row.getLabel(), "r"));
+
+                            } else if (symTab.count(label)) {
+                                symTab.insert(pair<string, string>(row.getLabel(), symTab.at(label)));
+                                TypeTable.insert(pair<string, string>(row.getLabel(), "r"));
 
                             } else {
+                                listFile.at(index).hasError = true;
+                                listFile.at(index).errorMessge = "Not defined label, may be forward ref";
+                            }
 
 
-                                string label = row.getOperand();
-                                int num = atoi(label.c_str());
-                                stringstream str;
-                                str << num;
-                                if (row.isExpression) {
-                                    //   string EquAddress = calculateExpression(row);
-                                }
-                                //                            string EquAddress =calculateExpression();
-                                if (str.str().size() == label.size()) {
-                                    symTab.insert(pair<string, string>(row.getLabel(), row.getOperand()));
-                                    TypeTable.insert(pair<string, string>(row.getLabel(), "r"));
-
-                                } else if (symTab.count(label)) {
-                                    symTab.insert(pair<string, string>(row.getLabel(), symTab.at(label)));
-                                    TypeTable.insert(pair<string, string>(row.getLabel(), "r"));
-
-                                } else {
-                                    listFile.at(index).hasError = true;
-                                    listFile.at(index).errorMessge = "Not defined label, may be forward ref";
-                                }
-
-
-                            } } else {
+                        } else {
+                            cout << row.getLabel()<<"   anaaa"<<endl;
                             symTab.insert(pair<string, string>(row.getLabel(), LOCCTR));
                             TypeTable.insert(pair<string, string>(row.getLabel(), "r"));
 
-                        }}
+                        }
+                    }
                 }
                 //search OPTAB for OPCODE
                 if (searchOPTABForOPCODE(row.getop_code())&&opTab.opTable.at(row.getop_code())!="null") {
                     // increase location counter by length of the line (assume all 3)
                     stringstream str;
                     str << row.format;
+
                     LOCCTR = addHex(LOCCTR, str.str());
                 } else if (row.getop_code().compare("word") == 0) {
                     // increase location counter by length of the word  (3 bytes)
@@ -436,6 +250,7 @@ void Pass1 () {
                     LOCCTR = addHex(LOCCTR, decimalToHex(atoi(row.getOperand().c_str())));
                 } else if (row.getop_code().compare("byte") == 0) {
                     char ch = row.getOperand().at(0);
+
                     switch (ch) {
                         case 'c': {
                             stringstream str;
@@ -454,12 +269,11 @@ void Pass1 () {
                             }
                         }
                             break;
-
-
                     }
 
-                } else if (row.getop_code().compare("base")==0){
+                }else if (row.getop_code().compare("base")==0){
                     goto h;
+
                 } else if (row.getop_code().compare("ltorg")==0){
 
                     for(int i=0;i<litTab.size();i++){
@@ -502,7 +316,6 @@ void Pass1 () {
                     }
                     if(!checkIfLiteralDefinedBefore(line.getValue())){
                         litTab.push_back(line);
-                        cout<<"literalssss"<<litTab.at(0).getLength();
                     }
                 }
             }
@@ -512,44 +325,75 @@ void Pass1 () {
             if (row.getop_code().compare("equ") == 0) {
                 if(row.format!=4){
                     LOCCTR = addHex(LOCCTR, "-3");
+                    if(row.isExpression){
+                        row=calculateExpression(row);
+                        if(row.hasError){
+                            listFile.at(index).hasError=true;
+                            listFile.at(index).errorMessge=row.errorMessge;
+                        }                        stringstream str;
+                        str << hexToDecimal(row.getOperand());
+                        listFile.at(index).setOperand(str.str());
+                        row=listFile.at(index);
+                    }
                     string label = row.getOperand();
                     int num = atoi(label.c_str());
                     stringstream str;
                     str << num;
                     if (str.str().size() == label.size()) {
-                        listFile.at(index).setAddress(label);
+                        listFile.at(index).setAddress(decimalToHex(num));
                     } else if (symTab.count(label)) {
                         listFile.at(index).setAddress(symTab.at(label));
                     } else {
                         listFile.at(index).hasError = true;
                         listFile.at(index).errorMessge = "Not defined label, may be forward ref";
+
+
                     }
                 }else {
                     listFile.at(index).hasError=true;
                     listFile.at(index).errorMessge="+ before equ";
                     LOCCTR = addHex(LOCCTR, "-4");
                 }
-
-                if(row.isExpression){
-                    row = calculateExpression(row);
-                }
             } else if (row.getop_code().compare("org") == 0) {
+
                 if(row.format!=4){
+                    if(row.isExpression){
+                        row=calculateExpression(row);
+                        if(row.hasError){
+                            listFile.at(index).hasError=true;
+                            listFile.at(index).errorMessge=row.errorMessge;
+                        }
+                        stringstream str;
+                        str << hexToDecimal(row.getOperand());
+                        listFile.at(index).setOperand(str.str());
+                        row=listFile.at(index);
+                    }
+
                     string label = row.getOperand();
                     int num = atoi(label.c_str());
                     stringstream str;
                     str << num;
                     if (str.str().size() == label.size()) {
-                        LOCCTR = row.getOperand();
+                        LOCCTR = decimalToHex(num);
                         index++;
                         listFile.at(index).setAddress(LOCCTR);
                         row = listFile.at(index);
+                        string str;          //The string
+                        ostringstream temp;  //temp as in temporary
+                        temp<<num;
+                        str=temp.str();
+                        Row lastRow = listFile.at(index-1);
+                        symTab.insert(pair<string, string>(lastRow.getLabel(),str));
+                        TypeTable.insert(pair<string, string>(lastRow.getLabel(), "a"));
 
                     } else if (symTab.count(label)) {
                         LOCCTR = symTab.at(label);
                         index++;
                         listFile.at(index).setAddress(LOCCTR);
                         row = listFile.at(index);
+                        Row lastRow = listFile.at(index-1);
+                        symTab.insert(pair<string, string>(lastRow.getLabel(),LOCCTR));
+                        TypeTable.insert(pair<string, string>(lastRow.getLabel(), "r"));
                     } else {
                         LOCCTR=addHex(LOCCTR,"-3");
                         listFile.at(index).hasError = true;
@@ -602,7 +446,46 @@ void Pass1 () {
 
 }
 
+bool checkIfSymbolDefinedBefore(string symbol) {
+    return symTab.count(symbol);
+}
+bool checkIfLiteralDefinedBefore(string litValue) {
+    for(int i=0;i<litTab.size();i++){
+        if(litTab.at(i).getValue().compare(litValue)==0){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool searchOPTABForOPCODE(string OPCODE) {
+
+    return opTab.opTable.count( OPCODE );
+}
+
+string addHex(string hex1,string hex2){
+    return decimalToHex(hexToDecimal(hex1)+hexToDecimal(hex2));
+}
+
+string decimalToHex(int decimal){
+    stringstream ss;
+    ss<<hex << decimal;
+    string res ( ss.str() );
+
+    return res.c_str();
+}
+
+int hexToDecimal(string hexa){
+    int decimal;
+    stringstream ss;
+    ss  <<  hexa;
+    ss >> hex >> decimal ;
+
+    return decimal;
+}
+
 Row calculateExpression(Row row) {
+
     string expression = row.getOperand();
 
     vector<string>expressionList;
@@ -610,14 +493,13 @@ Row calculateExpression(Row row) {
     int substringStart=0;
     while (counter < expression.length()){
 
-        if(expression.at(counter) == '*' ||expression.at(counter) == '+' ||expression.at(counter) == '/'||expression.at(counter) == '-' ) {
+        if(expression.at(counter) == '*' || expression.at(counter) == '+' || expression.at(counter) == '/' || expression.at(counter) == '-' ) {
 
             int length = counter-substringStart;
             partOfExpression = expression.substr(substringStart, length);
 
             if (symTab.find(partOfExpression) == symTab.end()) {
                 bool flag = false;
-
                 for(int j=0;j<partOfExpression.length();j++){
                     if(isalpha(partOfExpression.at(j))){
                         flag = true;
@@ -630,12 +512,17 @@ Row calculateExpression(Row row) {
                     row.errorMessge = "expression has un defined label ";
                     return row;
 
-                    break;} else{
+                } else{
 
-                    expressionList.push_back(partOfExpression);
+                    cout << partOfExpression<<"  part"<<endl;
+                    int num = atoi( partOfExpression.c_str());
+                    string hexNum = decimalToHex(num);
+                    cout << hexNum << endl;
+                    expressionList.push_back(hexNum);
+
                     expressionList.push_back(expression.substr(counter,1));
 
-                    TypeTable.insert(pair<string, string>(expression.substr(substringStart,counter-substringStart), "Na"));
+                    TypeTable.insert(pair<string, string>(hexNum, "Na"));
                     substringStart = counter + 1;
 
                 }
@@ -645,10 +532,10 @@ Row calculateExpression(Row row) {
                 expressionList.push_back(expression.substr(counter,1));
                 substringStart = counter + 1;
             }
+
         }
         counter++;
         if(counter == expression.length()){
-            cout << endl;
             partOfExpression = expression.substr(substringStart, counter-substringStart);
             if (symTab.find(partOfExpression) == symTab.end()) {
                 bool flag = false;
@@ -665,11 +552,12 @@ Row calculateExpression(Row row) {
                     row.errorMessge = "expression has un defined label ";
                     return row;
                     break;} else{
+                    int num = atoi( expression.substr(substringStart, counter-substringStart).c_str());
+                    string hexNum = decimalToHex(num);
+                    cout << hexNum << endl;
+                    expressionList.push_back(hexNum);
 
-                    expressionList.push_back(expression.substr(substringStart, counter-substringStart));
-
-                    TypeTable.insert(pair<string, string>(expression.substr(substringStart,counter-substringStart), "Na"));
-
+                    TypeTable.insert(pair<string, string>(hexNum, "Na"));
 
                 }
             } else {
@@ -682,8 +570,11 @@ Row calculateExpression(Row row) {
 
 
     if(expressionList.size()<3){
+        for(int ii=0;ii<expressionList.size();ii++){
+            cout<< expressionList.at(ii)<<" ";
+        }
         row.hasError = true;
-        row.errorMessge = "expression has un defined label ";
+        row.errorMessge = "expression  syntax error ";
         return row;
 
     } else {
@@ -707,6 +598,7 @@ Row calculateExpression(Row row) {
                     string num2 = "";
                     if(TypeTable.at(expressionList.at(i-1))=="Na"){
                         num1 =expressionList.at(i-1);
+
                     } else {
                         num1 = symTab.at(expressionList.at(i-1));
 
@@ -719,6 +611,7 @@ Row calculateExpression(Row row) {
                     }
 
                     if(expressionList.at(i)=="*"){
+
 
                         expressionList.at(i-1)=mulHex(num1,num2);
                         TypeTable.insert(pair<string, string>(expressionList.at(i-1), "Na"));
@@ -746,8 +639,15 @@ Row calculateExpression(Row row) {
 
             if(expressionList.size()==1){
                 row.setAddress(expressionList.at(0));
-                symTab.insert(pair<string, string>(row.getLabel(),expressionList.at(0) ));
-                TypeTable.insert(pair<string, string>(row.getLabel(),TypeTable.at(expressionList.at(0))));
+                string type = "";
+                if(TypeTable.at(expressionList.at(0))=="Na"){
+                    type = "a";
+                } else{
+                    type = "r";
+                }
+                //         symTab.insert(pair<string, string>(row.getLabel(),expressionList.at(0) ));
+                TypeTable.insert(pair<string, string>(row.getLabel(),type));
+                row.setOperand(expressionList.at(0));
                 //TypeTable.at(row.getLabel())=TypeTable.at(expressionList.at(0));
                 return row;
 
@@ -791,7 +691,6 @@ Row calculateExpression(Row row) {
 
                     }
 
-
                     if(TypeTable.at(expressionList.at(i-1)).find('r') ||TypeTable.at(expressionList.at(i+1)).find('r') ){
 
                         expressionList.at(i-1)=addHex(num1,num2);
@@ -826,7 +725,7 @@ Row calculateExpression(Row row) {
 
                     row.hasError = true;
                     // cout<< "e7m" << TypeTable.at(expressionList.at(i-1)) <<" " << expressionList.at(i-1) ;
-                    row.errorMessge = "relative + relative is invalid expression";
+                    row.errorMessge = "absolute - relative  is invalid expression";
                     return row;
 
                 }else{
@@ -853,7 +752,6 @@ Row calculateExpression(Row row) {
                        (TypeTable.at(expressionList.at(i-1))=="r" && TypeTable.at(expressionList.at(i+1))=="Nr" )||
                        (TypeTable.at(expressionList.at(i-1))=="Nr" && TypeTable.at(expressionList.at(i+1))=="Nr" )){
 
-                        cout << TypeTable.at(expressionList.at(i+1))<< TypeTable.at(expressionList.at(i-1)) <<endl;
                         expressionList.at(i-1)=subHex(num1,num2);
                         TypeTable.insert(pair<string, string>(expressionList.at(i-1), "Na"));
 
@@ -891,8 +789,15 @@ Row calculateExpression(Row row) {
 
     if(expressionList.size()==1){
         row.setAddress(expressionList.at(0));
-        symTab.insert(pair<string, string>(row.getLabel(),expressionList.at(0) ));
-        TypeTable.insert(pair<string, string>(row.getLabel(),TypeTable.at(expressionList.at(0))));
+        string type = "";
+        if(TypeTable.at(expressionList.at(0))=="Na"){
+            type = "a";
+        } else{
+            type = "r";
+        }
+        //symTab.insert(pair<string, string>(row.getLabel(),expressionList.at(0) ));
+        TypeTable.insert(pair<string, string>(row.getLabel(),type));
+        row.setOperand(expressionList.at(0));
         //TypeTable.at(row.getLabel())=TypeTable.at(expressionList.at(0));
 
 
@@ -900,66 +805,12 @@ Row calculateExpression(Row row) {
     return row;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-bool checkIfSymbolDefinedBefore(string symbol) {
-    return symTab.count(symbol);
-}
-bool checkIfLiteralDefinedBefore(string litValue) {
-    for(int i=0;i<litTab.size();i++){
-        if(litTab.at(i).getValue().compare(litValue)==0){
-            return true;
-        }
-    }
-    return false;
-}
-
-bool searchOPTABForOPCODE(string OPCODE) {
-
-    return opTab.opTable.count( OPCODE );
-
-}
-
-string addHex(string hex1,string hex2){
-    return decimalToHex(hexToDecimal(hex1)+hexToDecimal(hex2));
-}
 string subHex(string hex1,string hex2){
-    return decimalToHex(hexToDecimal(hex1)-hexToDecimal(hex2));
+    return decimalToHex(abs(hexToDecimal(hex1)-hexToDecimal(hex2)));
 }
 string mulHex(string hex1,string hex2){
     return decimalToHex(hexToDecimal(hex1)*hexToDecimal(hex2));
 }
 string divHex(string hex1,string hex2){
     return decimalToHex(hexToDecimal(hex1)/hexToDecimal(hex2));
-}
-
-string decimalToHex(int decimal){
-    stringstream ss;
-    ss<<hex << decimal;
-    string res ( ss.str() );
-
-    return res.c_str();
-}
-
-int hexToDecimal(string hexa){
-    int decimal;
-    stringstream ss;
-    ss  <<  hexa;
-    ss >> hex >> decimal ;
-
-    return decimal;
 }

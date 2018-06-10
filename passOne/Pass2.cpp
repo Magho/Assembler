@@ -19,10 +19,11 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
 
     vector<string> objectcodes;
     vector<string> modificationRecords;
+
     int pc;
     int base = -1;
     int format;
-    int n, i, x, b, p, e;
+
     string nameOfProg;
     int lengthOfProg;
     int startAddressAtEndStatment;
@@ -372,7 +373,12 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
 							opr = opr.substr(0,opr.size()-2);
 							obj |= (1 << 3);//setting x's bit
 						}
-						int addr = std::stoi(symTable[opr], nullptr, 16);
+						int addr = 0;
+						try{
+                            addr = std::stoi(symTable[opr], nullptr, 16);
+						}catch(exception& e){
+
+						}
 						if (format == 4) {
 							obj |= 1;
 							obj <<= 4*5;
@@ -632,3 +638,4 @@ string Pass2::toHex(int i,int format){
 	    ss >> result;
 	    return result;
 }
+

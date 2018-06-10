@@ -6,35 +6,19 @@
 
 #IncludeRegexTransform: 
 
-E:/Assembler4/passOne/Line.cpp
+E:/Assembler7/passOne/Line.cpp
 Line.h
-E:/Assembler4/passOne/Line.h
+E:/Assembler7/passOne/Line.h
 
-E:/Assembler4/passOne/Line.h
+E:/Assembler7/passOne/Line.h
 string
 -
 cstring
 -
 
-E:/Assembler4/passOne/Pass2.cpp
-Pass2.h
-E:/Assembler4/passOne/Pass2.h
-parsing.h
-E:/Assembler4/passOne/parsing.h
-optable.h
-E:/Assembler4/passOne/optable.h
-bits/stdc++.h
-E:/Assembler4/passOne/bits/stdc++.h
-optable.h
-E:/Assembler4/passOne/optable.h
-litLine.h
-E:/Assembler4/passOne/litLine.h
-string
--
-iostream
--
+E:/Assembler7/passOne/Pass2.cpp
 
-E:/Assembler4/passOne/Pass2.h
+E:/Assembler7/passOne/Pass2.h
 string
 -
 vector
@@ -42,29 +26,29 @@ vector
 map
 -
 Row.h
-E:/Assembler4/passOne/Row.h
+E:/Assembler7/passOne/Row.h
 litLine.h
-E:/Assembler4/passOne/litLine.h
+E:/Assembler7/passOne/litLine.h
 
-E:/Assembler4/passOne/Row.h
+E:/Assembler7/passOne/Row.h
 string
 -
 
-E:/Assembler4/passOne/cmake-build-debug/Row.cpp
+E:/Assembler7/passOne/cmake-build-debug/Row.cpp
 ../Row.h
-E:/Assembler4/passOne/Row.h
+E:/Assembler7/passOne/Row.h
 
-E:/Assembler4/passOne/litLine.cpp
+E:/Assembler7/passOne/litLine.cpp
 litLine.h
-E:/Assembler4/passOne/litLine.h
+E:/Assembler7/passOne/litLine.h
 
-E:/Assembler4/passOne/litLine.h
+E:/Assembler7/passOne/litLine.h
 cstring
 -
 string
 -
 
-E:/Assembler4/passOne/main.cpp
+E:/Assembler7/passOne/main.cpp
 iostream
 -
 cstring
@@ -82,33 +66,33 @@ sstream
 cstdio
 -
 Row.h
-E:/Assembler4/passOne/Row.h
+E:/Assembler7/passOne/Row.h
 litLine.h
-E:/Assembler4/passOne/litLine.h
+E:/Assembler7/passOne/litLine.h
 optable.h
-E:/Assembler4/passOne/optable.h
+E:/Assembler7/passOne/optable.h
 Line.h
-E:/Assembler4/passOne/Line.h
+E:/Assembler7/passOne/Line.h
 parsing.h
-E:/Assembler4/passOne/parsing.h
+E:/Assembler7/passOne/parsing.h
 validation.h
-E:/Assembler4/passOne/validation.h
+E:/Assembler7/passOne/validation.h
 Pass2.h
-E:/Assembler4/passOne/Pass2.h
+E:/Assembler7/passOne/Pass2.h
 
-E:/Assembler4/passOne/optable.cpp
+E:/Assembler7/passOne/optable.cpp
 optable.h
-E:/Assembler4/passOne/optable.h
+E:/Assembler7/passOne/optable.h
 
-E:/Assembler4/passOne/optable.h
+E:/Assembler7/passOne/optable.h
 map
 -
 cstring
 -
 
-E:/Assembler4/passOne/parsing.cpp
+E:/Assembler7/passOne/parsing.cpp
 parsing.h
-E:/Assembler4/passOne/parsing.h
+E:/Assembler7/passOne/parsing.h
 fstream
 -
 iostream
@@ -122,9 +106,9 @@ vector
 algorithm
 -
 Line.h
-E:/Assembler4/passOne/Line.h
+E:/Assembler7/passOne/Line.h
 
-E:/Assembler4/passOne/parsing.h
+E:/Assembler7/passOne/parsing.h
 cstring
 -
 string
@@ -134,11 +118,11 @@ vector
 list
 -
 Line.h
-E:/Assembler4/passOne/Line.h
+E:/Assembler7/passOne/Line.h
 
-E:/Assembler4/passOne/parsing_map.cpp
+E:/Assembler7/passOne/parsing_map.cpp
 parsing_map.h
-E:/Assembler4/passOne/parsing_map.h
+E:/Assembler7/passOne/parsing_map.h
 fstream
 -
 iostream
@@ -152,7 +136,7 @@ vector
 algorithm
 -
 
-E:/Assembler4/passOne/parsing_map.h
+E:/Assembler7/passOne/parsing_map.h
 cstring
 -
 string
@@ -164,17 +148,17 @@ list
 map
 -
 
-E:/Assembler4/passOne/validation.cpp
+E:/Assembler7/passOne/validation.cpp
 iostream
 -
 validation.h
-E:/Assembler4/passOne/validation.h
+E:/Assembler7/passOne/validation.h
 Row.h
-E:/Assembler4/passOne/Row.h
+E:/Assembler7/passOne/Row.h
 optable.h
-E:/Assembler4/passOne/optable.h
+E:/Assembler7/passOne/optable.h
 
-E:/Assembler4/passOne/validation.h
+E:/Assembler7/passOne/validation.h
 cstring
 -
 string
@@ -186,7 +170,7 @@ list
 vector
 -
 Row.h
-E:/Assembler4/passOne/Row.h
+E:/Assembler7/passOne/Row.h
 Line.h
-E:/Assembler4/passOne/Line.h
+E:/Assembler7/passOne/Line.h
 
