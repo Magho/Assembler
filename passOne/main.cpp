@@ -46,11 +46,11 @@ Pass2 pass2;
 string partOfExpression ;
 Row calculateExpression(Row row);
 
-int main() {
+int main(int argc,char* argv[]) {
 
 
     opTab.setTable();
-    list<Line> parsingList=parser.parisngFunction("D:\\Assemb\\passOne\\test.txt");
+    list<Line> parsingList=parser.parisngFunction(argv[1]);
     int size = parsingList.size();
 
     validate.setParsinglist(parsingList);
@@ -69,7 +69,7 @@ int main() {
     printFileList();
 
     // test pass2
-  //  pass2.pass2Algoritm(listFile,symTab,litTab,TypeTable);
+    pass2.pass2Algoritm(listFile,symTab,litTab,TypeTable);
 
     return 0;
 }
