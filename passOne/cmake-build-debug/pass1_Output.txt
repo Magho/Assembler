@@ -54,29 +54,28 @@ line   Address     Label    Opcode  Operands   Comment
 51     83c         sajed1   equ     2108        
 52     0           sajed2   equ     0           
           ****Error: Relative don't use * or /  operations
-53     509b        sajed3   equ     loop/7      
-          ****Error:Not defined label, may be forward ref
+53     0           sajed3   equ     0           
+          ****Error: Relative don't use * or /  operations
 54     424         sajed4   equ     1060        
-55     0           sajed5   equ     0           
+55     1000        sajed5   equ     4096        
           ****Error:absolute - relative  is invalid expression
-56     509b        sajed6   equ     loop-sajed1  
-          ****Error:Not defined label, may be forward ref
+56     3e8         sajed6   equ     1000        
 57     6c          sajed7   equ     108         
-58     509e                 jeq     found       
-59     50a1                 stch    output,x    
-60     50a4                 tix     #5          
-61     50a7                                     
+58     5095                 jeq     found       
+59     5098                 stch    output,x    
+60     509b                 tix     #5          
+61     509e                                     
           ****Error: No op_code is exist
-62     50a7        found    j       output      
-63     50aa        alpha    word    2           
-64     50ad        savew    resw    2           
-65     50b3        hexchar  byte    X'6145fd56'  
-66     50b3        input    resb    1           
-67     50b4        beso     byte    C'F4   '    
-68     50b4                 byte    c'f5    '   
-69     50ba        string   resw    1           
-70     50bd        output   resb    5           
-71     50c2                 end                 
+62     509e        found    j       output      
+63     50a1        alpha    word    2           
+64     50a4        savew    resw    2           
+65     50aa        hexchar  byte    X'6145fd56'  
+66     50aa        input    resb    1           
+67     50ab        beso     byte    C'F4   '    
+68     50ab                 byte    c'f5    '   
+69     50b1        string   resw    1           
+70     50b4        output   resb    5           
+71     50b9                 end                 
 
 
 --------------------------------
@@ -84,7 +83,7 @@ line   Address     Label    Opcode  Operands   Comment
 --------------------------------
 |Label           |   Address   |
 --------------------------------
-|alpha           |      50aa   |
+|alpha           |      50a1   |
 --------------------------------
 |b1              |       fa0   |
 --------------------------------
@@ -96,13 +95,13 @@ line   Address     Label    Opcode  Operands   Comment
 --------------------------------
 |b5              |       1f4   |
 --------------------------------
-|beso            |      50b4   |
+|beso            |      50ab   |
 --------------------------------
-|found           |      50a7   |
+|found           |      509e   |
 --------------------------------
-|hexchar         |      50b3   |
+|hexchar         |      50aa   |
 --------------------------------
-|input           |      50b3   |
+|input           |      50aa   |
 --------------------------------
 |lab2c           |      0000   |
 --------------------------------
@@ -110,7 +109,7 @@ line   Address     Label    Opcode  Operands   Comment
 --------------------------------
 |null            |      1000   |
 --------------------------------
-|output          |      50bd   |
+|output          |      50b4   |
 --------------------------------
 |sajed           |        6c   |
 --------------------------------
@@ -118,11 +117,13 @@ line   Address     Label    Opcode  Operands   Comment
 --------------------------------
 |sajed4          |       424   |
 --------------------------------
+|sajed6          |       3e8   |
+--------------------------------
 |sajed7          |        6c   |
 --------------------------------
-|savew           |      50ad   |
+|savew           |      50a4   |
 --------------------------------
-|string          |      50ba   |
+|string          |      50b1   |
 --------------------------------
 |test            |      509b   |
 --------------------------------

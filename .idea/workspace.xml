@@ -13,26 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="14aaa7ca-56d4-4b09-b45c-81e68b4ae215" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/Pass2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/Pass2.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/3.10.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/3.10.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/3.10.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/3.10.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/3.10.3/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/3.10.3/CMakeSystem.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/passOne.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/passOne.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/passOne.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/passOne.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/passOne.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/passOne.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/passOne.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/passOne.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/passOne.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/CMakeFiles/passOne.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/pass1_Output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/pass1_Output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/passOne.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/passOne.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passOne/cmake-build-debug/passOne.exe" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/cmake-build-debug/passOne.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passOne/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passOne/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passOne/test.txt" afterDir="false" />
@@ -69,8 +50,8 @@
       <file leaf-file-name="test.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/passOne/test.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="87" column="14" lean-forward="true" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
+            <state relative-caret-position="221">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -96,11 +77,13 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/passOne/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="302" column="82" selection-start-line="302" selection-start-column="82" selection-end-line="302" selection-end-column="82" />
+            <state relative-caret-position="330">
+              <caret line="424" column="19" selection-start-line="424" selection-start-column="19" selection-end-line="424" selection-end-column="19" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#169#185#0" expanded="true" />
+                <element signature="e#1036#1585#0" />
+                <element signature="e#1586#4363#0" />
               </folding>
             </state>
           </provider>
@@ -137,9 +120,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>row</find>
-      <find>line</find>
-      <find>list</find>
       <find>validationRows</find>
       <find>rsub</find>
       <find>endl</find>
@@ -160,13 +140,16 @@
       <find>equ</find>
       <find>org</find>
       <find>hextode</find>
-      <find>cout</find>
       <find>num</find>
       <find>Numofword</find>
       <find>syntax error  not  the right format c'sds'</find>
       <find>byte</find>
       <find>cal</find>
       <find>literal</find>
+      <find>cout</find>
+      <find>anaa</find>
+      <find>h</find>
+      <find>index++</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -217,7 +200,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -234,6 +216,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -327,7 +310,9 @@
       <workItem from="1528668527783" duration="1775000" />
       <workItem from="1528670415125" duration="1788000" />
       <workItem from="1528731167567" duration="1277000" />
-      <workItem from="1528732548163" duration="624000" />
+      <workItem from="1528732548163" duration="1734000" />
+      <workItem from="1528734388085" duration="1737000" />
+      <workItem from="1528736265445" duration="458000" />
     </task>
     <task id="LOCAL-00001" summary="after fixing alot of errors">
       <created>1525008592697</created>
@@ -476,11 +461,18 @@
       <option name="project" value="LOCAL" />
       <updated>1528666039611</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="add w to literals">
+      <created>1528733260027</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1528733260027</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111182000" />
+    <option name="totallyTimeSpent" value="114487000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -493,15 +485,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.23352855" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.23352855" />
       <window_info anchor="bottom" id="TODO" order="11" weight="0.32913387" />
       <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.48382354" weight="0.4456693" />
       <window_info anchor="bottom" id="CMake" order="4" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5176471" side_tool="true" weight="0.40996784" />
       <window_info anchor="bottom" id="Version Control" order="3" sideWeight="0.49779412" weight="0.32913387" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" sideWeight="0.48235294" visible="true" weight="0.31181103" />
+      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.48235294" visible="true" weight="0.07716536" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -538,11 +529,12 @@
     <MESSAGE value="fix org Expressions and make users absolute inputs decimal" />
     <MESSAGE value="cmake" />
     <MESSAGE value="ADD error to equ and org" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD error to equ and org" />
+    <MESSAGE value="add w to literals" />
+    <option name="LAST_COMMIT_MESSAGE" value="add w to literals" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -823,13 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/passOne/parsing_map.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/passOne/parsing.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -858,6 +843,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/passOne/parsing_map.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/passOne/Pass2.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
@@ -867,18 +859,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/passOne/test.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="87" column="14" lean-forward="true" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/passOne/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="302" column="82" selection-start-line="302" selection-start-column="82" selection-end-line="302" selection-end-column="82" />
+        <state relative-caret-position="330">
+          <caret line="424" column="19" selection-start-line="424" selection-start-column="19" selection-end-line="424" selection-end-column="19" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#169#185#0" expanded="true" />
+            <element signature="e#1036#1585#0" />
+            <element signature="e#1586#4363#0" />
           </folding>
         </state>
       </provider>

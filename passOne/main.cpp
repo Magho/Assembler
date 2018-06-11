@@ -201,6 +201,8 @@ void Pass1 () {
                     } else {
 
                         if (row.getop_code().compare("equ") == 0) {
+                            cout<<"index "<<index<<endl;
+                            cout<<row.getLabel()<<row.hasError<<" expressio"<<endl;
                             if(row.hasError){
                                 listFile.at(index).hasError=true;
                                 listFile.at(index).errorMessge=row.errorMessge;
@@ -225,7 +227,7 @@ void Pass1 () {
 
 
                         } else {
-                            cout << row.getLabel()<<"   anaaa"<<endl;
+                         //   cout << row.getLabel()<<"   anaaa"<<endl;
                             symTab.insert(pair<string, string>(row.getLabel(), LOCCTR));
                             TypeTable.insert(pair<string, string>(row.getLabel(), "r"));
 
@@ -329,7 +331,10 @@ void Pass1 () {
 
             h:        index++;
             row = listFile.at(index);
+
             if (row.getop_code().compare("equ") == 0) {
+
+
                 if(row.format!=4){
                     LOCCTR = addHex(LOCCTR, "-3");
                     if(row.isExpression){
@@ -337,7 +342,8 @@ void Pass1 () {
                         if(row.hasError){
                             listFile.at(index).hasError=true;
                             listFile.at(index).errorMessge=row.errorMessge;
-                        }                        stringstream str;
+                        }
+                        stringstream str;
                         str << hexToDecimal(row.getOperand());
                         listFile.at(index).setOperand(str.str());
                         row=listFile.at(index);
@@ -362,7 +368,7 @@ void Pass1 () {
                     LOCCTR = addHex(LOCCTR, "-4");
                 }
             } else if (row.getop_code().compare("org") == 0) {
-
+cout<<"org  "<<row.getLabel()<<endl;
                 if(row.format!=4){
                     if(row.isExpression){
                         row=calculateExpression(row);
@@ -416,9 +422,7 @@ void Pass1 () {
             }
 
         }else{
-            index++;
-            row = listFile.at(index);
-            listFile.at(index).setAddress(LOCCTR);
+            goto h;
         }
     }
 
@@ -520,11 +524,8 @@ Row calculateExpression(Row row) {
                     return row;
 
                 } else{
-
-                    cout << partOfExpression<<"  part"<<endl;
                     int num = atoi( partOfExpression.c_str());
                     string hexNum = decimalToHex(num);
-                    cout << hexNum << endl;
                     expressionList.push_back(hexNum);
 
                     expressionList.push_back(expression.substr(counter,1));
@@ -561,7 +562,6 @@ Row calculateExpression(Row row) {
                     break;} else{
                     int num = atoi( expression.substr(substringStart, counter-substringStart).c_str());
                     string hexNum = decimalToHex(num);
-                    cout << hexNum << endl;
                     expressionList.push_back(hexNum);
 
                     TypeTable.insert(pair<string, string>(hexNum, "Na"));
@@ -578,7 +578,7 @@ Row calculateExpression(Row row) {
 
     if(expressionList.size()<3){
         for(int ii=0;ii<expressionList.size();ii++){
-            cout<< expressionList.at(ii)<<" ";
+        //    cout<< expressionList.at(ii)<<" ";
         }
         row.hasError = true;
         row.errorMessge = "expression  syntax error ";
