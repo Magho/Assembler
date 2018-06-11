@@ -50,7 +50,7 @@ int main() {
 
 
     opTab.setTable();
-    list<Line> parsingList=parser.parisngFunction("test.txt");
+    list<Line> parsingList=parser.parisngFunction("D:\\Assemb\\passOne\\test.txt");
     int size = parsingList.size();
 
     validate.setParsinglist(parsingList);
@@ -69,7 +69,7 @@ int main() {
     printFileList();
 
     // test pass2
-    pass2.pass2Algoritm(listFile,symTab,litTab,TypeTable);
+  //  pass2.pass2Algoritm(listFile,symTab,litTab,TypeTable);
 
     return 0;
 }
@@ -296,7 +296,7 @@ void Pass1 () {
                     litLine line ;
                     line.setLiteral(listFile.at(index).getOperand());
                     //set Length and value of literal
-                    if(listFile.at(index).getOperand().at(1)=='c'){
+                    if(listFile.at(index).getOperand().at(1)=='c'||listFile.at(index).getOperand().at(1)=='C'){
                         line.setLength(decimalToHex(listFile.at(index).getOperand().size()-4));
                         string str=listFile.at(index).getOperand();
                         string hexStr="";
@@ -304,7 +304,7 @@ void Pass1 () {
                             hexStr+=decimalToHex(int(str[i]));
                         }
                         line.setValue(hexStr);
-                    }else if (listFile.at(index).getOperand().at(1)=='x'){
+                    }else if (listFile.at(index).getOperand().at(1)=='x'||listFile.at(index).getOperand().at(1)=='X'){
                         if(((listFile.at(index).getOperand().size() - 4) % 2) == 0) {
                             line.setLength(decimalToHex((listFile.at(index).getOperand().size()-4)/2));
                             string str = listFile.at(index).getOperand().substr(3,hexToDecimal(line.getLength())*2);
@@ -313,6 +313,13 @@ void Pass1 () {
                             listFile.at(index).hasError = true;
                             listFile.at(index).errorMessge = "The hexidecimal value has an odd numbers of digits";
                         }
+                    }else if(listFile.at(index).getOperand().at(1)=='w'||listFile.at(index).getOperand().at(1)=='W'){
+                        line.setLength(decimalToHex((listFile.at(index).getOperand().size()-4)*3));
+                        string str = listFile.at(index).getOperand().substr(3,listFile.at(index).getOperand().size()-4);
+                        line.setValue(str);
+                    }else{
+                        listFile.at(index).hasError=true;
+                        listFile.at(index).errorMessge="The literal is not defined";
                     }
                     if(!checkIfLiteralDefinedBefore(line.getValue())){
                         litTab.push_back(line);

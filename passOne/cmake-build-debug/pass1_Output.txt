@@ -1,20 +1,82 @@
 line   Address     Label    Opcode  Operands   Comment
-0      1000        strcp2   start   1000        
-1      1000        first    ldt     #11         
-2      1003                 ldx     #0          
-3      1006        movech   ldch    str1,x      
-4      1009                 tixr    t           
-5      13e8        rita     equ     5096        
-6      100b        uuiu     tixr    t           
-7                  bo7lo2   org     5102        
-8      13ee        jsd      lda     1000        
-9      1420        temona   equ     5152        
-10     13f1                 stch    str2,x      
-11     13f4                 jlt     movech      
-12     64          test     equ     100         
-13     13f7        str1     byte    c'test string'  
-14     1402        str2     resb    11          
-15     140d                 end     first       
+0      0000        lab2c    start   0000        
+1      0000                 ldb     #10         
+2      3                    ldx     #0          
+3      6                    addr    a,b         
+4                           org     1000        
+5      3e8                  lda     =X'5f'      
+6      3eb                  lda     =X'df'      
+7      3ee                  lda     =C'8j5'     
+8      3f1                  lda     =w'1552'    
+9      3f4                  lda     =w'-152'    
+10     3f7                  lda     =W'124'     
+11     3fa                  lda     =W'-152'    
+12     3fd                  lda     =W'1624'    
+13     400                  lda     =W'4095'    
+14     403                  ltorg               
+15     403                  =X'5f'  5f          
+16     404                  =X'df'  df          
+17     405                  =C'8j5' 386a35      
+18     408                  =w'1552'1552        
+19     414                  =w'-152'-152        
+20     420                  =W'124' 124         
+21     429                  =W'1624'1624        
+22     435                  =W'4095'4095        
+23     441                  word    -1000       
+24     444                  resw    1           
+25     447                  base    alpha       
+26     447                  sub     #12         
+27     44b                  ldx     #0          
+28     44e                  ldch    hexchar     
+29     451                  sta     input       
+30     454         loop     ldch    string,x    
+31     457         v1       lda     4095        
+32     45a         v3       lda     #4095       
+33     45d         v5       lda     @4095       
+34     460                  comp    input       
+35     463                  lda     1000        
+36     6c          sajed    equ     108         
+37     fa0         b1       equ     4000        
+38     fa0         b11      equ     4000        
+39     3e8         b2       equ     1000        
+40     7d0         b3       equ     2000        
+41     1f4         b5       equ     500         
+42     466                  base    1500        
+43     466                  lda     b1          
+44     469                                      
+          ****Error: No op_code is exist
+45     469                  lda     b3          
+46     46c                  lda     b2          
+47     46f                  resw    3500        
+48     2d73                 base    4000        
+49     2d73                 resw    3000        
+50     509b        test     word    5           
+51     83c         sajed1   equ     2108        
+52     0           sajed2   equ     0           
+          ****Error: Relative don't use * or /  operations
+53     509b        sajed3   equ     loop/7      
+          ****Error:Not defined label, may be forward ref
+54     424         sajed4   equ     1060        
+55     0           sajed5   equ     0           
+          ****Error:absolute - relative  is invalid expression
+56     509b        sajed6   equ     loop-sajed1  
+          ****Error:Not defined label, may be forward ref
+57     6c          sajed7   equ     108         
+58     509e                 jeq     found       
+59     50a1                 stch    output,x    
+60     50a4                 tix     #5          
+61     50a7                                     
+          ****Error: No op_code is exist
+62     50a7        found    j       output      
+63     50aa        alpha    word    2           
+64     50ad        savew    resw    2           
+65     50b3        hexchar  byte    X'6145fd56'  
+66     50b3        input    resb    1           
+67     50b4        beso     byte    C'F4   '    
+68     50b4                 byte    c'f5    '   
+69     50ba        string   resw    1           
+70     50bd        output   resb    5           
+71     50c2                 end                 
 
 
 --------------------------------
@@ -22,25 +84,51 @@ line   Address     Label    Opcode  Operands   Comment
 --------------------------------
 |Label           |   Address   |
 --------------------------------
-|bo7lo2          |      5102   |
+|alpha           |      50aa   |
 --------------------------------
-|first           |      1000   |
+|b1              |       fa0   |
 --------------------------------
-|jsd             |      13ee   |
+|b11             |       fa0   |
 --------------------------------
-|movech          |      1006   |
+|b2              |       3e8   |
 --------------------------------
-|rita            |      13e8   |
+|b3              |       7d0   |
 --------------------------------
-|str1            |      13f7   |
+|b5              |       1f4   |
 --------------------------------
-|str2            |      1402   |
+|beso            |      50b4   |
 --------------------------------
-|strcp2          |      1000   |
+|found           |      50a7   |
 --------------------------------
-|temona          |      1420   |
+|hexchar         |      50b3   |
 --------------------------------
-|test            |        64   |
+|input           |      50b3   |
 --------------------------------
-|uuiu            |      100b   |
+|lab2c           |      0000   |
+--------------------------------
+|loop            |       454   |
+--------------------------------
+|null            |      1000   |
+--------------------------------
+|output          |      50bd   |
+--------------------------------
+|sajed           |        6c   |
+--------------------------------
+|sajed1          |       83c   |
+--------------------------------
+|sajed4          |       424   |
+--------------------------------
+|sajed7          |        6c   |
+--------------------------------
+|savew           |      50ad   |
+--------------------------------
+|string          |      50ba   |
+--------------------------------
+|test            |      509b   |
+--------------------------------
+|v1              |       457   |
+--------------------------------
+|v3              |       45a   |
+--------------------------------
+|v5              |       45d   |
 --------------------------------
