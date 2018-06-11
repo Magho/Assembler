@@ -107,7 +107,9 @@
 
             for (int i = 0 ; i < txt.size() ; i++) {
                 if (txt[i] != ' ' && txt[i] != '\t') {
-                    if (txt.find("byte") != std::string::npos) {
+                    std :: string str = txt;
+                    std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+                    if (str.find("byte") != std::string::npos) {
                         if ((txt[i] == 'c'||txt[i] == 'C' ) && txt[i+1] == '\'') {
                             int k  = i;
                             i = i+2;
