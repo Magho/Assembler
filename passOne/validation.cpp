@@ -49,7 +49,7 @@ void validation ::validate() {
             std::transform(str.begin(), str.end(),str.begin(), ::tolower);
 line.setWord2(str);
         }
-        if(line.getWord3().find("=") != std::string::npos || line.getWord3().find("/'") != std::string::npos){
+        if(line.getWord3().find("=") != std::string::npos || line.getWord3().find("'") != std::string::npos){
 
         }else{
 
