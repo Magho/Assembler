@@ -552,7 +552,7 @@ string Pass2:: decimalToHex(int decimal){
 string Pass2:: byte_operand(string operand){
 
     string object_code;
-    if (startsWith(operand, "c")) {
+    if (startsWith(operand, "c")||startsWith(operand, "C")) {
         //skip c="...."
         string operand_value = operand.substr(2, operand.size()-3);
         object_code = string_to_hex(operand_value);
