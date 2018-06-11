@@ -12,7 +12,7 @@
 #include <string>
 #include <iostream>
 
-void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vector<litLine> litTab) {
+void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vector<litLine> litTab,map<string,string> TypeTable) {
 
     optable optable1;
     optable1.setTable();
@@ -376,7 +376,10 @@ void Pass2::pass2Algoritm(vector<Row> listFile,map<string,string> symTable,vecto
 						int addr = 0;
 						try{
                             addr = std::stoi(symTable[opr], nullptr, 16);
+
 						}catch(exception& e){
+                            string exp = calculateExpression(listFile[i],symTable,TypeTable).getOperand();
+                            addr = std::stoi(exp,nullptr,16);
 
 						}
 						if (format == 4) {
@@ -637,5 +640,350 @@ string Pass2::toHex(int i,int format){
 	    ss <<std::hex <<i;
 	    ss >> result;
 	    return result;
+}
+
+
+string Pass2::addHex(string hex1,string hex2){
+    return decimalToHex(hexToDecimal(hex1)+hexToDecimal(hex2));
+}
+
+int Pass2::hexToDecimal(string hexa){
+    int decimal;
+    stringstream ss;
+    ss  <<  hexa;
+    ss >> hex >> decimal ;
+
+    return decimal;
+}
+
+Row Pass2::calculateExpression(Row row,map<string,string> symTab,map<string,string> TypeTable) {
+
+    string expression = row.getOperand();
+
+    vector<string>expressionList;
+    int counter =0;
+    int substringStart=0;
+    while (counter < expression.length()){
+
+        if(expression.at(counter) == '*' || expression.at(counter) == '+' || expression.at(counter) == '/' || expression.at(counter) == '-' ) {
+
+            int length = counter-substringStart;
+            partOfExpression = expression.substr(substringStart, length);
+
+            if (symTab.find(partOfExpression) == symTab.end()) {
+                bool flag = false;
+                for(int j=0;j<partOfExpression.length();j++){
+                    if(isalpha(partOfExpression.at(j))){
+                        flag = true;
+                        break;
+                    }
+
+                }
+                if(flag){
+                    row.hasError = true;
+                    row.errorMessge = "expression has un defined label ";
+                    return row;
+
+                } else{
+
+                    cout << partOfExpression<<"  part"<<endl;
+                    int num = atoi( partOfExpression.c_str());
+                    string hexNum = decimalToHex(num);
+                    cout << hexNum << endl;
+                    expressionList.push_back(hexNum);
+
+                    expressionList.push_back(expression.substr(counter,1));
+
+                    TypeTable.insert(pair<string, string>(hexNum, "Na"));
+                    substringStart = counter + 1;
+
+                }
+            } else {
+
+                expressionList.push_back(expression.substr(substringStart, counter-substringStart ));
+                expressionList.push_back(expression.substr(counter,1));
+                substringStart = counter + 1;
+            }
+
+        }
+        counter++;
+        if(counter == expression.length()){
+            partOfExpression = expression.substr(substringStart, counter-substringStart);
+            if (symTab.find(partOfExpression) == symTab.end()) {
+                bool flag = false;
+                string temp =partOfExpression;
+                for(int j=0;j<temp.length();j++){
+                    if(isalpha(temp.at(j))){
+                        flag = true;
+                        break;
+                    }
+
+                }
+                if(flag){
+                    row.hasError = true;
+                    row.errorMessge = "expression has un defined label ";
+                    return row;
+                    break;} else{
+                    int num = atoi( expression.substr(substringStart, counter-substringStart).c_str());
+                    string hexNum = decimalToHex(num);
+                    cout << hexNum << endl;
+                    expressionList.push_back(hexNum);
+
+                    TypeTable.insert(pair<string, string>(hexNum, "Na"));
+
+                }
+            } else {
+                expressionList.push_back(expression.substr(substringStart, counter-substringStart));
+            }
+
+        }
+
+    }
+
+
+    if(expressionList.size()<3){
+        for(int ii=0;ii<expressionList.size();ii++){
+            cout<< expressionList.at(ii)<<" ";
+        }
+        row.hasError = true;
+        row.errorMessge = "expression  syntax error ";
+        return row;
+
+    } else {
+        // cout << TypeTable.at(expressionList.back());
+
+        for(int i=0; i <expressionList.size();i++) {
+
+            if(expressionList.at(i)=="*" || expressionList.at(i)=="/" ){
+
+                if(TypeTable.at(expressionList.at(i-1)) == "r" || TypeTable.at(expressionList.at(i+1)) == "r" ||
+                   TypeTable.at(expressionList.at(i-1)) == "Nr"||TypeTable.at(expressionList.at(i+1)) == "Nr")
+                {
+                    row.errorMessge = " Relative don't use * or /  operations";
+                    row.hasError = true;
+                    return row;
+
+
+                }else{
+
+                    string num1 ="";
+                    string num2 = "";
+                    if(TypeTable.at(expressionList.at(i-1))=="Na"){
+                        num1 =expressionList.at(i-1);
+
+                    } else {
+                        num1 = symTab.at(expressionList.at(i-1));
+
+                    }
+                    if(TypeTable.at(expressionList.at(i+1))=="Na"){
+                        num2 = expressionList.at(i+1);
+                    } else {
+                        num2 = symTab.at(expressionList.at(i+1));
+
+                    }
+
+                    if(expressionList.at(i)=="*"){
+
+
+                        expressionList.at(i-1)=mulHex(num1,num2);
+                        TypeTable.insert(pair<string, string>(expressionList.at(i-1), "Na"));
+                        expressionList.erase(expressionList.begin()+i);
+                        expressionList.erase(expressionList.begin()+i);
+                        i=0;
+
+                    } else{
+
+                        expressionList.at(i-1)=divHex(num1,num2);
+                        TypeTable.insert(pair<string, string>(expressionList.at(i-1), "Na"));
+                        expressionList.erase(expressionList.begin()+i);
+                        expressionList.erase(expressionList.begin()+i);
+                        i=0;
+                    }
+
+                }
+
+
+
+
+
+            }
+
+
+            if(expressionList.size()==1){
+                row.setAddress(expressionList.at(0));
+                string type = "";
+                if(TypeTable.at(expressionList.at(0))=="Na"){
+                    type = "a";
+                } else{
+                    type = "r";
+                }
+                //         symTab.insert(pair<string, string>(row.getLabel(),expressionList.at(0) ));
+                TypeTable.insert(pair<string, string>(row.getLabel(),type));
+                row.setOperand(expressionList.at(0));
+                //TypeTable.at(row.getLabel())=TypeTable.at(expressionList.at(0));
+                return row;
+
+            }
+
+        }
+
+
+
+
+
+
+
+        for(int i=0 ; i < expressionList.size();i++){
+
+            if(expressionList.at(i)=="+"){
+
+                if((TypeTable.at(expressionList.at(i-1)) == "r" && TypeTable.at(expressionList.at(i+1)) == "r") ||
+                   (TypeTable.at(expressionList.at(i-1)) == "Nr" && TypeTable.at(expressionList.at(i+1)) == "Nr")||
+                   (TypeTable.at(expressionList.at(i-1)) == "r" && TypeTable.at(expressionList.at(i+1)) == "Nr" ||
+                    (TypeTable.at(expressionList.at(i-1)) == "Nr" && TypeTable.at(expressionList.at(i+1)) == "r")
+                   )){
+
+                    row.hasError = true;
+                    row.errorMessge = "relative + relative is invalid expression";
+                    return row;
+                }else{
+
+                    string num1 ="";
+                    string num2 = "";
+                    if(TypeTable.at(expressionList.at(i-1))=="Na" ||TypeTable.at(expressionList.at(i-1))=="Nr"){
+                        num1 =expressionList.at(i-1);
+                    } else {
+                        num1 = symTab.at(expressionList.at(i-1));
+
+                    }
+                    if(TypeTable.at(expressionList.at(i+1))=="Na" ||TypeTable.at(expressionList.at(i+1))=="Nr"){
+                        num2 = expressionList.at(i+1);
+                    } else {
+                        num2 = symTab.at(expressionList.at(i+1));
+
+                    }
+
+                    if(TypeTable.at(expressionList.at(i-1)).find('r') ||TypeTable.at(expressionList.at(i+1)).find('r') ){
+
+                        expressionList.at(i-1)=addHex(num1,num2);
+
+                        TypeTable.insert(pair<string, string>(expressionList.at(i-1), "Nr"));
+
+                    } else{
+                        expressionList.at(i-1)= addHex(num1,num2);
+
+                        TypeTable.insert(pair<string, string>(expressionList.at(i-1), "Na"));
+
+                    }
+                    expressionList.erase(expressionList.begin()+i);
+                    expressionList.erase(expressionList.begin()+i);
+                    i=0;
+
+
+                }
+
+
+
+            }
+
+
+            if(expressionList.at(i)=="-"){
+
+                if((TypeTable.at(expressionList.at(i-1)) == "a" && TypeTable.at(expressionList.at(i+1)) == "r") ||
+                   (TypeTable.at(expressionList.at(i-1)) == "Na" && TypeTable.at(expressionList.at(i+1)) == "Nr")||
+                   (TypeTable.at(expressionList.at(i-1)) == "a" && TypeTable.at(expressionList.at(i+1)) == "Nr" ||
+                    (TypeTable.at(expressionList.at(i-1)) == "Na" && TypeTable.at(expressionList.at(i+1)) == "r")
+                   )){
+
+                    row.hasError = true;
+                    // cout<< "e7m" << TypeTable.at(expressionList.at(i-1)) <<" " << expressionList.at(i-1) ;
+                    row.errorMessge = "absolute - relative  is invalid expression";
+                    return row;
+
+                }else{
+
+                    string num1 ="";
+                    string num2 = "";
+
+                    if(TypeTable.at(expressionList.at(i-1))=="Na" ||TypeTable.at(expressionList.at(i-1))=="Nr"){
+                        num1 =expressionList.at(i-1);
+                    } else {
+                        num1 = symTab.at(expressionList.at(i-1));
+
+                    }
+                    if(TypeTable.at(expressionList.at(i+1))=="Na" ||TypeTable.at(expressionList.at(i+1))=="Nr"){
+                        num2 = expressionList.at(i+1);
+                    } else {
+                        num2 = symTab.at(expressionList.at(i+1));
+
+                    }
+
+
+                    if((TypeTable.at(expressionList.at(i-1))=="r" && TypeTable.at(expressionList.at(i+1))=="r" ) ||
+                       (TypeTable.at(expressionList.at(i-1))=="Nr" && TypeTable.at(expressionList.at(i+1))=="r" )||
+                       (TypeTable.at(expressionList.at(i-1))=="r" && TypeTable.at(expressionList.at(i+1))=="Nr" )||
+                       (TypeTable.at(expressionList.at(i-1))=="Nr" && TypeTable.at(expressionList.at(i+1))=="Nr" )){
+
+                        expressionList.at(i-1)=subHex(num1,num2);
+                        TypeTable.insert(pair<string, string>(expressionList.at(i-1), "Na"));
+
+                    } else if((TypeTable.at(expressionList.at(i-1)).find('r') || TypeTable.at(expressionList.at(i+1)).find('r')) ){
+
+                        expressionList.at(i-1)=subHex(num1,num2);
+                        TypeTable.insert(pair<string, string>(expressionList.at(i-1), "Nr"));
+
+                    }else{
+                        expressionList.at(i-1)=subHex(num1,num2);
+                        TypeTable.insert(pair<string, string>(expressionList.at(i-1), "Na"));
+
+                    }
+                    expressionList.erase(expressionList.begin()+i);
+                    expressionList.erase(expressionList.begin()+i);
+                    i=0;
+
+
+
+                }
+
+
+
+            }
+
+
+
+
+
+
+        }
+    }
+
+
+
+    if(expressionList.size()==1){
+        row.setAddress(expressionList.at(0));
+        string type = "";
+        if(TypeTable.at(expressionList.at(0))=="Na"){
+            type = "a";
+        } else{
+            type = "r";
+        }
+        //symTab.insert(pair<string, string>(row.getLabel(),expressionList.at(0) ));
+        TypeTable.insert(pair<string, string>(row.getLabel(),type));
+        row.setOperand(expressionList.at(0));
+        //TypeTable.at(row.getLabel())=TypeTable.at(expressionList.at(0));
+
+
+    }
+    return row;
+}
+
+string Pass2::subHex(string hex1,string hex2){
+    return decimalToHex(abs(hexToDecimal(hex1)-hexToDecimal(hex2)));
+}
+string Pass2::mulHex(string hex1,string hex2){
+    return decimalToHex(hexToDecimal(hex1)*hexToDecimal(hex2));
+}
+string Pass2::divHex(string hex1,string hex2){
+    return decimalToHex(hexToDecimal(hex1)/hexToDecimal(hex2));
 }
 

@@ -69,7 +69,7 @@ int main() {
     printFileList();
 
     // test pass2
-    pass2.pass2Algoritm(listFile,symTab,litTab);
+    pass2.pass2Algoritm(listFile,symTab,litTab,TypeTable);
 
     return 0;
 }
