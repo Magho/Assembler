@@ -72,6 +72,11 @@ the project consist of 2 pases :
 * cd `Assemblerp`
 * run `assembler.exe` file
 
+## Authors
+  - [Magho](https://github.com/Magho)
+  - [AhmedHesham](https://github.com/ahm7)
+  - [ritasamir](https://github.com/ritasamir)
+  - [Mohamed Kamal](https://github.com/muhammedkamal97)
 
 ## License 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
