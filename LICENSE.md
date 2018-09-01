@@ -1,6 +1,10 @@
 MIT License
 
-Copyright (c) 2018 Magho
+Copyright (c) 2018 :
+  - [Magho](https://github.com/Magho)
+  - [AhmedHesham](https://github.com/ahm7)
+  - [ritasamir](https://github.com/ritasamir)
+  - [Mohamed Kamal](https://github.com/muhammedkamal97)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
