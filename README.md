@@ -80,4 +80,4 @@ the project consist of 2 pases :
 
 ## License 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
-[LICENSE.md](https://github.com/Magho/Assembler/blob/master/LICENSE.md)
+[LICENSE.md](https://github.com/Magho/Assembler/blob/master/LICENSE)
